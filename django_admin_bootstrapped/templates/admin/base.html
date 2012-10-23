@@ -1,0 +1,220 @@
+{% load admin_static bootstrapped_goodies_tags %}{% load url from future %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block extrastyle %}{% endblock %}
+<!-- Le styles -->
+<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+<!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
+<script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+
+{% block extrahead %}{% endblock %}
+
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+<style type="text/css">
+a:active,
+a:focus {
+    outline: none;
+}
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+@media (max-width: 980px) {
+    body {
+        padding-top: 0;
+        padding-bottom: 0px;
+    }
+    /*
+    th, td {
+        margin: 0;
+        vertical-align: top;
+    }
+    th {
+        text-align: left;
+    }
+    table {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+    thead {
+        display: block;
+        float: left;
+    }
+    tbody {
+        display: block;
+        overflow-x: auto;
+        position: relative;
+        white-space: nowrap;
+        width: auto;
+    }
+    thead tr {
+        display: block;
+    }
+    th {
+        display: block;
+        text-align: right;
+    }
+    tbody tr {
+        display: inline-block;
+        vertical-align: top;
+    }
+    td {
+        display: block;
+        min-height: 1.25em;
+        text-align: left;
+    }
+    th {
+        border-bottom: 0 none;
+        border-left: 0 none;
+    }
+    td {
+        border-bottom: 0 none;
+        border-left: 0 none;
+        border-right: 0 none;
+    }
+    tbody tr {
+        border-left: 1px solid #BABCBF;
+    }
+    th:last-child, td:last-child {
+        border-bottom: 1px solid #BABCBF;
+    }
+    */
+}
+.sidebar-nav {
+    padding: 9px 0;
+}
+.control-group input[type=text] {
+    width: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    height: 28px;
+}
+.control-group select {
+    width: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+.selector .selector-filter label {
+    display: none;
+}
+.selector h2 {
+    font-size: 100%;
+    margin: 0;
+}
+.checkbox label {
+    margin-bottom: -20px;
+}
+fieldset.collapse {
+    height: inherit;
+}
+.add-row {
+    margin-bottom: 20px;
+}
+legend a:hover {
+    text-decoration: none;
+}
+
+</style>
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function() {
+        $('input[type="submit"]').addClass('btn');
+    });
+}(jQuery));
+</script>
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+<!-- Container -->
+<div class="container-fluid">
+
+    {% if not is_popup %}
+    <!-- Header -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          {% block branding %}{% endblock %}
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+            {% if user.is_active and user.is_staff %}
+                <li class="navbar-text">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong></li>
+            {% endif %}
+            {% block userlinks %}
+                <li class="divider-vertical"></li>
+                {% url 'django-admindocs-docroot' as docsroot %}
+                {% if docsroot %}
+                    <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
+                {% endif %}
+                <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+            {% endblock %}
+            </ul>
+            {% block nav-global %}{% endblock %}
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <!-- END Header -->
+    <div class="row-fluid">
+        <div class="span12">
+            {% block breadcrumbs %}
+            <ul class="breadcrumb">
+                <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>{% if title %} <span class="divider">/</span>{% endif %}</li>
+                {% if title %}<li>{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</li>{% endif %}
+            </ul>
+            {% endblock %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% block messages %}
+        {% if messages %}
+        <ul class="messagelist">{% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}</ul>
+        {% endif %}
+    {% endblock messages %}
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% block navbar %}
+        <div class="row-fluid">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    {% block pretitle %}{% endblock %}
+                    {% block content_title %}{% if title %}<a class="brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>{% endif %}{% endblock %}
+                    {% block object-tools %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        {% endblock navbar %}
+        {% block content %}
+        {{ content }}
+        {% endblock %}
+        {% block sidebar %}{% endblock %}
+        </div>
+    </div>
+    <!-- END Content -->
+
+    {% block footer %}<footer id="footer"></footer>{% endblock %}
+</div>
+<!-- END Container -->
+
+</body>
+</html>
