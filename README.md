@@ -3,6 +3,12 @@ django-admin-bootstrapped
 
 A Django admin theme using Twitter Bootstrap. It doesn't need any kind of modification on your side, just add it to the installed apps.
 
+## Screenshots
+
+<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_0.png">
+<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_1.png">
+<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_2.png">
+
 ## Requirements
 
 * Django `1.4.x`.
@@ -16,3 +22,4 @@ A Django admin theme using Twitter Bootstrap. It doesn't need any kind of modifi
 ## Goodies
 
 TODO
+
