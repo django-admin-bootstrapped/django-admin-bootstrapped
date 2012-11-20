@@ -18,7 +18,7 @@ setup(
     author="Riccardo Forina",
     author_email="riccardo.forina@codingnot.es",
     name='django-admin-bootstrapped',
-    version='0.1',
+    version='0.1.1',
     description='A Bootstrap theme for Django Admin',
     # long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
     url='https://codingnot.es/',

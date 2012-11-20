@@ -1,0 +1,14 @@
+==== 0.1.1 (2012-11-20) ====
+
+- added a test project
+- upgrade to Twitter Bootstrap 2.1.1 (issue #8)
+- implemented inline tabular view
+- fixed the messages styling
+- temporary fix for the page title
+- open is now the default style for the stacked inlines
+- filters in the change list views are now positioned on the left, to handle wide tables
+- pagination rendered with a smaller style (issue #2)
+
+==== 0.1.0 (2012-10-22) ====
+
+- first release

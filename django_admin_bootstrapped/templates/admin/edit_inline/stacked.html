@@ -20,7 +20,7 @@
         {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}<div class="delete control-group"><div class="checkbox">{{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}</div></div>{% endif %}
     </div>
   </legend>
-  <div class="{% if not forloop.last %}collapse{% endif %}">
+  <div class="{% if not forloop.last %}collapse in{% endif %}">
   {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
   {% for fieldset in inline_admin_form %}
     {% include "admin/includes/fieldset.html" %}
