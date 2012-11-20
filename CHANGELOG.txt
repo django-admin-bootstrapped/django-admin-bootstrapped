@@ -1,7 +1,7 @@
 ==== 0.1.1 (2012-11-20) ====
 
 - added a test project
-- upgrade to Twitter Bootstrap 2.1.1 (issue #8)
+- upgrade to Twitter Bootstrap 2.2.1 (issue #8)
 - implemented inline tabular view
 - fixed the messages styling
 - temporary fix for the page title
