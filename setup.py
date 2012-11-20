@@ -27,7 +27,7 @@ setup(
     classifiers=CLASSIFIERS,
     install_requires=[
         'setuptools',
-        'Django>=1.4,<1.5',
+        'Django>=1.4',
     ],
     packages=find_packages(),
     include_package_data=True,
