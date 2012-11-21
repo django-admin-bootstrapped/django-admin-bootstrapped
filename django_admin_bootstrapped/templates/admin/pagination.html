@@ -9,7 +9,11 @@
         <div class="pagination pagination-small pagination-centered">
             <ul>
             {% for i in page_range %}
-                <li>{% paginator_number cl i %}</li>
+                {% if i == "." %}
+                    <li><span>{% paginator_number cl i %}</span></li>
+                {% else %}
+                    <li>{% paginator_number cl i %}</li>
+                {% endif %}
             {% endfor %}
             </ul>
             <p>
