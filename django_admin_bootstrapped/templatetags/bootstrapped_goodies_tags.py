@@ -9,6 +9,6 @@ def render_with_template_if_exist(context, template, fallback):
     text = fallback
     try:
         text = render_to_string(template, context)
-    except TemplateDoesNotExist:
+    except:
         pass
     return text
