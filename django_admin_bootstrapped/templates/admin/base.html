@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% block extrastyle %}{% endblock %}
 <!-- Le styles -->
-<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet">
 
 <!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
 <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
 {% block extrahead %}{% endblock %}
 
