@@ -111,7 +111,6 @@
 (function($) {
     {% if inline_admin_formset.opts.sortable_field_name %}
     $('.items').sortable({
-        // items: '.dynamic-{{ inline_admin_formset.formset.prefix }}',
         handle: '.drag-handler',
         items: ".dynamic-{{ inline_admin_formset.formset.prefix }}:not(:last:visible)"
     });
