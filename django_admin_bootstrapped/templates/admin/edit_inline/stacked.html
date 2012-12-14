@@ -4,32 +4,38 @@
 {{ inline_admin_formset.formset.management_form }}
 {{ inline_admin_formset.formset.non_form_errors }}
 
-{% for inline_admin_form in inline_admin_formset %}
-<div class="inline-related{% if forloop.last %} empty-form last-related{% endif %}" id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
-  <legend>
-    {% if not forloop.last %}
-    <a data-toggle="collapse" data-target="#{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %} .collapse">
-    {% endif %}
-    {% if inline_admin_form.original %}{{ inline_admin_form.original }}{% else %}#{{ forloop.counter }}{% endif %} <small class="inline_label">({{ inline_admin_formset.opts.verbose_name }})</small>
-    {% if not forloop.last %}
-    <span class="btn btn-mini"><i class="icon-resize-full"></i></span>
-    </a>
-    {% endif %}
-    {% if inline_admin_form.show_url %}<a href="../../../r/{{ inline_admin_form.original_content_type_id }}/{{ inline_admin_form.original.id }}/">{% trans "View on site" %}</a>{% endif %}
-    <div class="pull-right">
-        {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}<div class="delete control-group"><div class="checkbox">{{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}</div></div>{% endif %}
+    <div class="items">
+        {% for inline_admin_form in inline_admin_formset %}
+        <div class="inline-related{% if forloop.last %} empty-form last-related{% endif %}" id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
+          <legend>
+            {% if not forloop.last %}
+            <a data-toggle="collapse" data-target="#{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %} .collapse">
+            {% endif %}
+            {% if inline_admin_form.original %}{{ inline_admin_form.original }}{% else %}#{{ forloop.counter }}{% endif %} <small class="inline_label">({{ inline_admin_formset.opts.verbose_name }})</small>
+            {% if not forloop.last %}
+            <span class="btn btn-mini"><i class="icon-resize-full"></i></span>
+            {% if inline_admin_formset.opts.sortable_field_name %}
+            <span class="btn btn-mini drag-handler"><i class="icon-move"></i></span>
+            {% endif %}
+            </a>
+            {% endif %}
+            {% if inline_admin_form.show_url %}<a href="../../../r/{{ inline_admin_form.original_content_type_id }}/{{ inline_admin_form.original.id }}/">{% trans "View on site" %}</a>{% endif %}
+            <div class="pull-right">
+                {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}<div class="delete control-group"><div class="checkbox">{{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}</div></div>{% endif %}
+            </div>
+          </legend>
+
+          <div class="{% if not forloop.last %}collapse in{% endif %}">
+          {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
+          {% for fieldset in inline_admin_form %}
+            {% include "admin/includes/fieldset.html" %}
+          {% endfor %}
+          {% if inline_admin_form.has_auto_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
+          {{ inline_admin_form.fk_field.field }}
+          </div>
+        </div>
+        {% endfor %}
     </div>
-  </legend>
-  <div class="{% if not forloop.last %}collapse in{% endif %}">
-  {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
-  {% for fieldset in inline_admin_form %}
-    {% include "admin/includes/fieldset.html" %}
-  {% endfor %}
-  {% if inline_admin_form.has_auto_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
-  {{ inline_admin_form.fk_field.field }}
-  </div>
-</div>
-{% endfor %}
 </div>
 
 <script type="text/javascript">
@@ -91,6 +97,31 @@
                 updateInlineLabel(row);
             })
         });
+
+
     });
 })(django.jQuery);
+
+// listener for jquery 1.7.2
+(function($) {
+    {% if inline_admin_formset.opts.sortable_field_name %}
+    $('.items').sortable({
+        handle: '.drag-handler',
+        items: ".dynamic-{{ inline_admin_formset.formset.prefix }}:not(:last:visible)"
+    });
+    $("#{{ opts.module_name }}_form").submit(function(e) {
+        var sortable_field_name = "{{ inline_admin_formset.opts.sortable_field_name }}",
+            i = 0;
+        var initial_form_count = $('#id_{{ inline_admin_formset.formset.prefix }}-INITIAL_FORMS').val();
+
+        $('#{{ inline_admin_formset.formset.prefix }}-group > .items').find(".dynamic-{{ inline_admin_formset.formset.prefix }}").each(function(i, e) {
+            // make sure we don't assign a position unless extra has been moved
+            if ($(this).find("input[name$='" + sortable_field_name + "']").val() || (i <= initial_form_count - 1 )) {
+                $(this).find("input[name$='" + sortable_field_name + "']").val(i);
+                i++;
+            }
+        });
+    });
+    {% endif %}
+})(jQuery);
 </script>

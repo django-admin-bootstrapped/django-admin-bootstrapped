@@ -25,6 +25,9 @@
         <tr class="form-row {% cycle "row1" "row2" %} {% if inline_admin_form.original or inline_admin_form.show_url %}has_original{% endif %}{% if forloop.last %} empty-form{% endif %}"
              id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
         <td class="original">
+          {% if inline_admin_formset.opts.sortable_field_name %}
+          <span class="btn btn-mini drag-handler pull-left"><i class="icon-move"></i></span>
+          {% endif %}
           {% if inline_admin_form.original or inline_admin_form.show_url %}<p>
           {% if inline_admin_form.original %} {{ inline_admin_form.original }}{% endif %}
           {% if inline_admin_form.show_url %}<a href="../../../r/{{ inline_admin_form.original_content_type_id }}/{{ inline_admin_form.original.id }}/">{% trans "View on site" %}</a>{% endif %}
@@ -127,4 +130,28 @@
         });
     });
 })(django.jQuery);
+
+// listener for jquery 1.7.2
+(function($) {
+    {% if inline_admin_formset.opts.sortable_field_name %}
+    $('tbody').sortable({
+        // items: '.dynamic-{{ inline_admin_formset.formset.prefix }}',
+        handle: '.drag-handler',
+        items: ".form-row"
+    });
+    $("#{{ opts.module_name }}_form").submit(function(e) {
+        var sortable_field_name = "{{ inline_admin_formset.opts.sortable_field_name }}",
+            i = 0;
+        var initial_form_count = $('#id_{{ inline_admin_formset.formset.prefix }}-INITIAL_FORMS').val();
+
+        $('#{{ inline_admin_formset.formset.prefix }}-group table > tbody').find(".form-row").each(function(i, e) {
+            // make sure we don't assign a position unless extra has been moved
+            if ($(this).find("input[name$='" + sortable_field_name + "']").val() || (i <= initial_form_count - 1 )) {
+                $(this).find("input[name$='" + sortable_field_name + "']").val(i);
+                i++;
+            }
+        });
+    });
+    {% endif %}
+})(jQuery);
 </script>
