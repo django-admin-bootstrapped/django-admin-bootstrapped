@@ -1,9 +1,4 @@
 {% load i18n admin_static %}
-<style type="text/css">
-.sortable-placeholder {
-    border: 1px dashed #ccc;
-}
-</style>
 <div class="_inline-group" id="{{ inline_admin_formset.formset.prefix }}-group">
   <h2>{{ inline_admin_formset.opts.verbose_name_plural|title }}</h2>
 {{ inline_admin_formset.formset.management_form }}
