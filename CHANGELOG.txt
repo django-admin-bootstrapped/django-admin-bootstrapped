@@ -1,3 +1,8 @@
+==== 0.2 (2012-12-04) ====
+
+- sortable inlines
+- inlines wrapped in wells for UI consistency
+
 ==== 0.1.1 (2012-11-20) ====
 
 - added a test project
