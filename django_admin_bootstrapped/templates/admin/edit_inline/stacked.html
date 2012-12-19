@@ -25,7 +25,7 @@
             </div>
           </legend>
 
-          <div class="{% if not forloop.last %}collapse in{% endif %}">
+          <div class="{% if not forloop.last %}collapse{% endif %}{% if not inline_admin_formset.opts.collapse_stacked %} in{% endif %}">
           {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
           {% for fieldset in inline_admin_form %}
             {% include "admin/includes/fieldset.html" %}
