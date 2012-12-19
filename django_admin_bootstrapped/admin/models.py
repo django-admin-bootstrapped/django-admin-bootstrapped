@@ -1,6 +1,5 @@
 class SortableInline:
     sortable_field_name = "position"
-    collapse_stacked = True
 
     class Media:
         js = (
@@ -10,3 +9,6 @@ class SortableInline:
         css = {
             'all':('/static/admin/css/admin-inlines.css',)
         }
+
+class CollapsibleInline:
+    start_collapsed = False
