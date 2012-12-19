@@ -36,6 +36,7 @@ class TestMeProxyForFieldsets(TestMe):
         verbose_name = u'Test me fieldsets'
         verbose_name_plural = u'Lot of Test me fieldsets'
 
+
 class TestThat(models.Model):
     that = models.ForeignKey(TestMe)
     test_ip = models.IPAddressField()
@@ -47,3 +48,12 @@ class TestThat(models.Model):
     class Meta:
         verbose_name = u'Test that'
         verbose_name_plural = u'Lot of Test that'
+
+
+class TestSortable(models.Model):
+    that = models.ForeignKey(TestMe)
+    position = models.PositiveSmallIntegerField("Position")
+    test_char = models.CharField(max_length=5)
+
+    class Meta:
+        ordering = ('position', )
