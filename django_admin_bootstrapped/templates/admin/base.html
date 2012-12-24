@@ -159,7 +159,6 @@ legend a:hover {
             <ul class="nav pull-right">
             {% if user.is_active and user.is_staff %}
                 <li class="navbar-text">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong></li>
-            {% endif %}
             {% block userlinks %}
                 <li class="divider-vertical"></li>
                 {% url 'django-admindocs-docroot' as docsroot %}
@@ -169,6 +168,7 @@ legend a:hover {
                 <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
                 <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
             {% endblock %}
+            {% endif %}
             </ul>
             {% block nav-global %}{% endblock %}
           </div><!--/.nav-collapse -->
