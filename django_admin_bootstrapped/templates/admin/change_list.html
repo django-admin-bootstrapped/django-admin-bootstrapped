@@ -41,7 +41,7 @@
 {% block breadcrumbs %}
 <ul class="breadcrumb">
 <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
-<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</a> <span class="divider">/</span></li>
+<!--<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</a> <span class="divider">/</span></li>-->
 <li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{  app_label|title }}</a> <span class="divider">/</span></li>
 <li>{{ cl.opts.verbose_name_plural|capfirst }}</li>
 </ul>
