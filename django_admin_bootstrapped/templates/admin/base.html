@@ -155,22 +155,50 @@ legend a:hover {
             <span class="icon-bar"></span>
           </a>
           {% block branding %}{% endblock %}
-          <div class="nav-collapse collapse">
-            <ul class="nav pull-right">
+          <div class="nav-collapse collapse pull-right">
+            <ul class="nav">
             {% if user.is_active and user.is_staff %}
-                <li class="navbar-text">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong></li>
-            {% block userlinks %}
-                <li class="divider-vertical"></li>
-                {% url 'django-admindocs-docroot' as docsroot %}
-                {% if docsroot %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <b class="caret"></b></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                        <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+                    </ul>
+                </li>
+                {% block logs %}
+                    <li class="dropdown" id="recent-actions-module">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
+                        {% load log %}
+                        {% get_admin_log 10 as admin_log for_user user %}
+                        <ul class="dropdown-menu pull-right">
+                        {% for entry in admin_log %}
+                            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+                                <a href="{% if entry.is_deletion or not entry.get_admin_url %}#{% else %}{{ entry.get_admin_url }}{% endif %}">
+                                    <i class="icon-{% if entry.is_addition %}plus{% endif %}{% if entry.is_change %}edit{% endif %}{% if entry.is_deletion %}remove{% endif %}"></i>
+                                    {{ entry.object_repr }}
+                                    {% if entry.content_type %}
+                                        <span class="mini quiet">({% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %})</span>
+                                    {% else %}
+                                        <span class="mini quiet">({% trans 'Unknown content' %})</span>
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% empty %}
+                            <li>{% trans 'None available' %}</li>
+                        {% endfor %}
+                        </ul>
+                    </li>
+                {% endblock %}
+                {% block userlinks %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                    <li class="divider-vertical"></li>
                     <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
-                {% endif %}
-                <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
-                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
-            {% endblock %}
+                    {% endif %}
+                {% endblock %}
             {% endif %}
-            </ul>
             {% block nav-global %}{% endblock %}
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>

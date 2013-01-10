@@ -14,11 +14,6 @@
     <script type="text/javascript" src="{{ jsi18nurl|default:'../../jsi18n/' }}"></script>
   {% endif %}
   {{ media.css }}
-  {% if not actions_on_top and not actions_on_bottom %}
-    <style>
-      #changelist table thead th:first-child {width: inherit}
-    </style>
-  {% endif %}
 {% endblock %}
 
 {% block extrahead %}
@@ -51,17 +46,34 @@
 {% block coltype %}flex{% endblock %}
 
 {% block object-tools %}
-    {% block search %}{% search_form cl %}{% endblock %}
-
-    {% if has_add_permission %}
-    <div class="pull-right">
-      {% block object-tools-items %}
-          <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn addlink">
-            <i class="icon-plus"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
-          </a>
-      {% endblock %}
+    {% block object-tools-items %}
+    <div class="form-inline pull-left">
+        {% if has_add_permission %}
+        <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary">
+            <i class="icon-plus icon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+        </a>
+        {% endif %}
+        {% if action_form and actions_on_top and cl.full_result_count %}
+            {% admin_actions %}
+        {% endif %}
     </div>
-    {% endif %}
+    {% endblock %}
+
+    <div class="pull-right">
+        {% block search %}{% search_form cl %}{% endblock %}
+        {% if cl.has_filters %}
+        <ul class="nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Filter' %} <b class="caret"></b></a>
+                <ul class="dropdown-menu pull-right">
+                    {% for spec in cl.filter_specs %}
+                        {% admin_list_filter cl spec %}
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -84,30 +96,7 @@
         {% render_with_template_if_exist cl.opts.app_label|lower|add:"/admin_app_"|add:app_name|add:"_description.html" "" %}
     {% endwith %}
 
-    {% if cl.has_filters %}
-    <div class="span3" id="_changelist-filter">
-        <div class="well well-small">
-            <strong>{% trans 'Filter' %}</strong>
-            <hr style="margin-top:5px">
-            {% for spec in cl.filter_specs %}
-                {% admin_list_filter cl spec %}
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-
-    <div class="{% if cl.has_filters %}span9{% else %}span12{% endif %}">
-        <div class="row-fluid">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <div class="navbar-form">
-                    {% if action_form and actions_on_top and cl.full_result_count %}
-                        {% admin_actions %}
-                    {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="span12">
 
         <div id="content-main" class="row-fluid">
             <div class="module{% if cl.has_filters %} filtered{% endif %}" id="_changelist">
@@ -121,9 +110,7 @@
 
                 {% block result_list %}
                     {% result_list cl %}
-                    {% if action_form and actions_on_bottom and cl.full_result_count %}
-                        {% admin_actions %}
-                    {% endif %}
+
                 {% endblock %}
             </div>
         </div>
@@ -131,6 +118,11 @@
         <div class="row-fluid">
             <div class="navbar">
                 <div class="navbar-inner">
+                    <div class="form-inline pull-left">
+                        {% if action_form and actions_on_bottom and cl.full_result_count %}
+                            {% admin_actions %}
+                        {% endif %}
+                    </div>
                     <div class="pull-right">
                         <input type="submit" name="_save" class="btn btn-primary default" value="{% trans 'Save' %}"/>
                     </div>

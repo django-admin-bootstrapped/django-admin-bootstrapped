@@ -1,5 +1,5 @@
 {% load i18n %}
-<div class="actions form-inline">
+<div class="actions" style="display:inline-block;">
     {% for field in action_form %}{% if field.label %}<span style="vertical-align:sub">{{ field.label }}</span> {% endif %}{{ field }}{% endfor %}
     <button type="submit" class="btn" title="{% trans "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% trans "Go" %}</button>
     {% if actions_selection_counter %}

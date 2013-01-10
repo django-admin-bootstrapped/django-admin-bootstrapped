@@ -7,48 +7,33 @@
 
 {% block bodyclass %}dashboard{% endblock %}
 
-{% block breadcrumbs %}{% endblock %}
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+<li>{% trans 'Home' %}</li>
+</ul>
+{% endblock %}
 
 {% block object-tools %}
 <ul class="nav">
-    {% for app in app_list %}
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %} <b class="caret"></b></a>
-            <ul class="dropdown-menu">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu">
+            {% for app in app_list %}
+            <li class="dropdown-submenu">
+                <a href="#">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}</a>
+                <ul class="dropdown-menu">
                 {% for model in app.models %}
-                <li>
-                    {% if model.admin_url %}
-                        <a href="{{ model.admin_url }}">{{ model.name }}</a>
-                    {% else %}
-                        {{ model.name }}
-                    {% endif %}
-                </li>
+                    <li>
+                        {% if model.admin_url %}
+                            <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                        {% else %}
+                            {{ model.name }}
+                        {% endif %}
+                    </li>
                 {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
-<ul class="nav pull-right">
-    <li class="dropdown" id="recent-actions-module">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
-        {% load log %}
-        {% get_admin_log 10 as admin_log for_user user %}
-        <ul class="dropdown-menu">
-        {% for entry in admin_log %}
-            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
-                <a href="{% if entry.is_deletion or not entry.get_admin_url %}#{% else %}{{ entry.get_admin_url }}{% endif %}">
-                    <i class="icon-{% if entry.is_addition %}plus{% endif %}{% if entry.is_change %}edit{% endif %}{% if entry.is_deletion %}remove{% endif %}"></i>
-                    {{ entry.object_repr }}
-                    {% if entry.content_type %}
-                        <span class="mini quiet">({% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %})</span>
-                    {% else %}
-                        <span class="mini quiet">({% trans 'Unknown content' %})</span>
-                    {% endif %}
-                </a>
+                </ul>
             </li>
-        {% empty %}
-            <li>{% trans 'None available' %}</li>
-        {% endfor %}
+            {% endfor %}
         </ul>
     </li>
 </ul>
