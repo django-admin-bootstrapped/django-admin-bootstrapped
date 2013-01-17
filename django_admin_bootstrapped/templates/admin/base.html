@@ -207,10 +207,6 @@ legend a:hover {
     <div class="row-fluid">
         <div class="span12">
             {% block breadcrumbs %}
-            <ul class="breadcrumb">
-                <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>{% if title %} <span class="divider">/</span>{% endif %}</li>
-                {% if title %}<li>{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</li>{% endif %}
-            </ul>
             {% endblock %}
         </div>
     </div>

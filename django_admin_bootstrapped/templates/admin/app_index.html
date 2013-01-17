@@ -13,4 +13,10 @@
 {% endblock %}
 {% endif %}
 
+{% block content_title %}
+{% for app in app_list %}
+<a class="brand">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %} {% trans "administration" %}</a>
+{% endfor %}
+{% endblock %}
+
 {% block sidebar %}{% endblock %}

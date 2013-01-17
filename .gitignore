@@ -2,3 +2,4 @@
 *.pyo
 .DS_Store
 *.egg-info
+testenv

@@ -1,3 +1,10 @@
+==== 0.3 (2013-01-17) ====
+
+- dropped tabs in homepage in favour of vanilla list of available applications
+- application dropdown menu for fast access in navbar
+- filters moved to a dropdown in navbar to gain screen space
+- added documentation for the translation goodies
+
 ==== 0.2 (2012-12-04) ====
 
 - sortable inlines

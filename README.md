@@ -3,12 +3,6 @@ django-admin-bootstrapped
 
 A Django admin theme using Twitter Bootstrap. It doesn't need any kind of modification on your side, just add it to the installed apps.
 
-## Screenshots
-
-<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_0.png">
-<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_1.png">
-<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_2.png">
-
 ## Requirements
 
 * Django `1.4.x`.
@@ -20,6 +14,14 @@ A Django admin theme using Twitter Bootstrap. It doesn't need any kind of modifi
 3. Have fun!
 
 ## Goodies
+
+### Translate/change an application name with a template
+
+With the default admin you can't change the application name, but django-admin-bootstrapped let you do it in a really easy way. Just create a file named `admin_app_name.html` into the application's template folder. Eg: `myapp/templates/admin_app_name.html` or `project/templates/myapp/admin_app_name.html`.
+
+### Add custom html to the change form of any model with a template
+
+You can inject custom html on top of any change form creating a template named `admin_model_MODELNAME_change_form.html` into the application's template folder. Eg: `myapp/templates/admin_model_mymodelname_change_form.html` or `project/templates/myapp/admin_model_mymodelname_change_form.html`.
 
 ### Inline sortable
 
@@ -50,3 +52,16 @@ You can now use the inline as usual. The result will look like this:
 
 This feature was brought to you by [Kyle Bock](https://github.com/kwbock). Thank you Kyle!
 
+## Screenshots
+
+### Homepage
+
+<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_v02_index.png">
+
+### List view with filters in dropdown
+
+<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_v02_list_filter.png">
+
+### Change form view
+
+<img src="http://www.codingnot.es/static/screens/admin_model_MODELNAME_change_form">
