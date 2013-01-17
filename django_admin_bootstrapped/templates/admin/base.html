@@ -165,7 +165,9 @@ legend a:hover {
                 {% if docsroot %}
                     <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
                 {% endif %}
-                <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                {% if user.has_usable_password %}
+                    <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                {% endif %}
                 <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
             {% endblock %}
             {% endif %}
