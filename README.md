@@ -64,4 +64,4 @@ This feature was brought to you by [Kyle Bock](https://github.com/kwbock). Thank
 
 ### Change form view
 
-<img src="http://www.codingnot.es/static/screens/admin_model_MODELNAME_change_form">
+<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_v02_change_form.png">
