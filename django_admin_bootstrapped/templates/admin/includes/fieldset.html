@@ -18,7 +18,7 @@
     {% for line in fieldset %}
         <div class="control-group {% if line.fields|length_is:'1' and line.errors %} error{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
             {% for field in line %}
-                <div{% if not line.fields|length_is:'1' %} class="control-group field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}"{% endif %}>
+                <div{% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}"{% endif %}>
                     {% if field.is_checkbox %}
                     <div class="controls">
                         <div class="checkbox">

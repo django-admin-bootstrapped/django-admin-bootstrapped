@@ -2,10 +2,6 @@
 {% load i18n admin_static %}
 {% load url from future %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />{% endblock %}
-
-{% block bodyclass %}login{% endblock %}
-
 {% block nav-global %}{% endblock %}
 
 {% block content_title %}{% blocktrans %}<a class="brand">Login</a>{% endblocktrans %}{% endblock %}
@@ -14,39 +10,51 @@
 
 {% block content %}
 {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
-<p class="errornote">
+<div class="alert alert-error">
 {% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
-</p>
+</div>
 {% endif %}
 
 {% if form.non_field_errors or form.this_is_the_login_form.errors %}
 {% for error in form.non_field_errors|add:form.this_is_the_login_form.errors %}
-<p class="errornote">
+<div class="alert alert-error">
     {{ error }}
-</p>
+</div>
 {% endfor %}
 {% endif %}
 
 <div id="content-main">
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-  <div class="form-row">
-    <label for="id_username" class="required">{% trans 'Username:' %}</label> {{ form.username }}
-    {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.username.errors|striptags }}</span>{% endif %}
+<form class="form-horizontal" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+  <div class="control-group">
+    <div class="control-label">
+        <label for="id_username" class="required">{% trans 'Username:' %}</label> 
+    </div>
+    <div class="controls">
+        {{ form.username }}
+        {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.username.errors|striptags }}</span>{% endif %}
+    </div>
   </div>
-  <div class="form-row">
-    <label for="id_password" class="required">{% trans 'Password:' %}</label> {{ form.password }}
-    {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.password.errors|striptags }}</span>{% endif %}
+  <div class="control-group">
+    <div class="control-label">
+        <label for="id_password" class="required">{% trans 'Password:' %}</label> 
+    </div>
+    <div class="controls">
+        {{ form.password }}
+        {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.password.errors|striptags }}</span>{% endif %}
+    </div>
     <input type="hidden" name="this_is_the_login_form" value="1" />
     <input type="hidden" name="next" value="{{ next }}" />
   </div>
   {% url 'admin_password_reset' as password_reset_url %}
   {% if password_reset_url %}
-  <div class="password-reset-link">
-    <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
+  <div class="control-group">
+    <div class="controls">
+        <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
+    </div>
   </div>
   {% endif %}
-  <div class="submit-row">
-    <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}" />
+  <div class="form-actions">
+    <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
   </div>
 </form>
 

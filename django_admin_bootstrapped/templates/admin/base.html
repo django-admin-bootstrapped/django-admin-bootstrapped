@@ -52,7 +52,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <b class="caret"></b></a>
                     <ul class="dropdown-menu pull-right">
+                        {% if user.has_usable_password %}
                         <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                        {% endif %}
                         <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
                     </ul>
                 </li>

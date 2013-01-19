@@ -5,8 +5,8 @@ a:focus {
     outline: none;
 }
 body {
-    padding-top: 60;
-    padding-bottom: 40;
+    padding-top: 60px;
+    padding-bottom: 40px;
 }
 @media (max-width: 980) {
     body {
@@ -95,13 +95,13 @@ body {
     margin: 0;
 }
 .checkbox label {
-    margin-bottom: -20;
+    margin-bottom: -20px;
 }
 fieldset.collapse {
     height: inherit;
 }
 .add-row {
-    margin-bottom: 20;
+    margin-bottom: 20px;
 }
 legend a:hover {
     text-decoration: none;
