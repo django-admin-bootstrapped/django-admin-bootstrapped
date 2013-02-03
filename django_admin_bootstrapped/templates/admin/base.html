@@ -65,7 +65,7 @@
                         <ul class="dropdown-menu pull-right">
                         {% for entry in admin_log %}
                             <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
-                                <a href="{% if entry.is_deletion or not entry.get_admin_url %}#{% else %}{{ entry.get_admin_url }}{% endif %}">
+                                <a href="{% if entry.is_deletion or not entry.get_admin_url %}#{% else %}{% url 'admin:index' %}{{ entry.get_admin_url }}{% endif %}">
                                     <i class="icon-{% if entry.is_addition %}plus{% endif %}{% if entry.is_change %}edit{% endif %}{% if entry.is_deletion %}remove{% endif %}"></i>
                                     {{ entry.object_repr }}
                                     {% if entry.content_type %}
