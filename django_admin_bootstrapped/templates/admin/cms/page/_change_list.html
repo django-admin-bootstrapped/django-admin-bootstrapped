@@ -47,23 +47,32 @@
 
 {% block object-tools %}
 
-    <div class="pull-right">
-        <div class="object-tools">
-            {% if has_recover_permission %}
-                <a href="recover/" class="btn recoverlink">{% blocktrans with cl.opts.verbose_name_plural|escape as name %}Recover deleted {{name}}{% endblocktrans %}</a>
-            {% endif %}
-            {% if has_add_permission %}
-            <a href="add/{% if is_popup %}?_popup=1{% endif %}" class="btn addlink">{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
-            {% endif %}
-        </div>
-    </div>
+    {% if has_recover_permission %}
+        <a href="recover/" class="btn recoverlink">{% blocktrans with cl.opts.verbose_name_plural|escape as name %}Recover deleted {{name}}{% endblocktrans %}</a>
+    {% endif %}
 
-    {% include "admin/cms/page/loading.html" %}
+    {% if has_add_permission %}
+      <a href="add/{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary addlink"><i class="icon-plus icon-white"></i>{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
+    {% endif %}
 
-    <div class="module{% if cl.has_filters %} filtered{% endif %}" id="_changelist">
+
     {% block search %}
 
+      <div class="pull-right">
+        {% search_form cl %}
+        {% if cl.has_filters %}
+          <ul class="nav" id="_changelist-filter">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Filter' %}<b class="caret"></b></a>
+                <ul class="dropdown-menu pull-right">
+                  {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
+                </ul>
+            </li>
+          </ul>
+        {% endif %}
+      </div>
 
+    <div class="module{% if cl.has_filters %} filtered{% endif %}" id="_changelist">
     {% if cl.has_access_to_multiple_sites %}
         <div id="site-selector">{% trans "Pages on:" %}
             <select id="site-select">{% for site in cl.sites %}
@@ -73,8 +82,6 @@
     {% else %}
         <input type="hidden" id="site-select" value="{{ cl.sites.0.pk }}">
     {% endif %}
-
-    {% search_form cl %}
     {% endblock %}
     {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
 
@@ -95,63 +102,50 @@
 {% endblock %}
 
 {% block content %}
-<script type="text/javascript">
-//<![CDATA[	
-(function($) {
-	$(document).ready(function() {
-		{% if not cl.is_filtered %}
-			initTree();
-		{% endif %}		
-	});
-	
-	showchangelistfilter = function(){
-		$("#changelist-filter").toggle();
-	}
-	moveSuccess = function(node){
-		var msg = $({% javascript_string %}<span class="success">{% trans "Successfully moved" %}</span>{% end_javascript_string %});
-		node.append(msg);
-	    msg.fadeOut(3000);
-	}
-	moveError = function(node){
-		var msg = $({% javascript_string %}<span class="success">{% trans "An error occured. Please reload the page" %}</span>{% end_javascript_string %});
-		node.append(msg);
-	}
-	// some settings used by javascript functions
 
-	cmsSettings = {
-		cmsPermission: {{ CMS_PERMISSION|js }},
-		cmsModerator: {{ CMS_MODERATOR|js }},
-		debug: {{ DEBUG|js }}
-	};
+{% include "admin/cms/page/loading.html" %}
+
+<script type="text/javascript">
+//<![CDATA[ 
+(function($) {
+  $(document).ready(function() {
+    {% if not cl.is_filtered %}
+      initTree();
+    {% endif %}   
+  });
+  
+  showchangelistfilter = function(){
+    $("#changelist-filter").toggle();
+  }
+  moveSuccess = function(node){
+    var msg = $({% javascript_string %}<span class="success">{% trans "Successfully moved" %}</span>{% end_javascript_string %});
+    node.append(msg);
+      msg.fadeOut(3000);
+  }
+  moveError = function(node){
+    var msg = $({% javascript_string %}<span class="success">{% trans "An error occured. Please reload the page" %}</span>{% end_javascript_string %});
+    node.append(msg);
+  }
+  // some settings used by javascript functions
+
+  cmsSettings = {
+    cmsPermission: {{ CMS_PERMISSION|js }},
+    cmsModerator: {{ CMS_MODERATOR|js }},
+    debug: {{ DEBUG|js }}
+  };
 })(jQuery);
 //]]>
 </script>
 
 <div class="row-fluid">
     <div id="content-main" class="span12">
-
-
-
     {% include "admin/cms/page/change_list_tree.html" %}
-
     </div>
 </div>
-
-<div class="row-fluid">
 
 {% endblock %}
 
 {% block sidebar %}
-{% if cl.has_filters %}
-  <div class="span3" id="_changelist-filter">
-    <div class="well well-small">
-        <strong>{% trans 'Filter' %}</strong>
-        <hr style="margin-top:5px">
-        {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
-    </div>
-  </div>
-{% endif %}
-</div>
 
 <div id="dialogs"></div>
 
