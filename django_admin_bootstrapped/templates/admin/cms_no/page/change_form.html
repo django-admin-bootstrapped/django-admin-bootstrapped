@@ -1,11 +1,12 @@
 {% extends "admin/change_form.html" %}
 {% load i18n admin_modify adminmedia cms_tags cms_admin %}
+{% load url from future %}
 {% block title %}{% trans "Change a page" %}{% endblock %}
 
 {% block extrahead %}
 {{ block.super }}
 <script type="text/javascript" src="{{ STATIC_URL }}cms/js/csrf.js"></script>
-<script type="text/javascript" src="{% url admin:jsi18n %}"></script>
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
 
 {% if not add %}
 <script type="text/javascript" src="{{ STATIC_URL }}cms/js/change_form.js"></script>
@@ -15,16 +16,16 @@
 {% if add %}
 <script type="text/javascript">
 //<![CDATA[	
-(function($) {
-	$(document).ready(function (){
-		$("#id_title").keyup(function () {
-			var e = $("#id_slug")[0];
+
+	jQuery(document).ready(function (){
+		jQuery("#id_title").keyup(function () {
+			var e = jQuery("#id_slug")[0];
 			if(!e._changed) {
 				e.value = URLify(this.value, 64);
 			}
 	    });
 	});
-})(jQuery);
+
 //]]>
 </script>
 {% endif %}
@@ -36,7 +37,7 @@
 	margin-bottom:-1px;
 	border-color:#ddd #aaa #ccc #ddd !important;
 	border:1px;
-	background:#fff url('{% admin_static_url %}img/admin/nav-bg.gif') repeat-x center bottom !important;
+	background:#fff url('{% cms_admin_icon_base %}nav-bg.gif') repeat-x center bottom !important;
 }
 
 #lang_tab_content h2.header {
@@ -45,13 +46,24 @@
 	font-size:11px;
 	text-align:left;
 	font-weight:bold;
-	background:#7ca0c7 url('{% admin_static_url %}img/admin/default-bg.gif') repeat-x left top;
+	background:#7ca0c7 url('{% cms_admin_icon_base %}default-bg.gif') repeat-x left top;
 	color:#fff;
 }
 
 .notfilled {
     color: #808080 !important;
 }
+
+fieldset.collapsed h2,
+.fieldset.collapsed h2 {
+	background:none;
+}
+.well h2 {
+	font-size: 21px;
+	line-height: 40px;
+	margin:0;
+}
+.plugin-list-holder { margin-left:-9px; }
 -->
 </style>
 
@@ -59,43 +71,53 @@
 {% endblock %}
 
 
+{% block breadcrumbs %}{% if not is_popup %}
+<ul class="breadcrumb">
+	<li><a href="../../../">{% trans "Home" %}</a><span class="divider">/</span></li>
+	<li><a href="../../">{{ app_label|capfirst|escape }}</a><span class="divider">/</span></li>
+	{% if has_change_permission %}<li><a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}<span class="divider">/</span></li>
+	<li>{% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original.get_title|truncatewords:"18" }}{% endif %}</li>
+</ul>
+{% endif %}{% endblock %}
+
 {% block content_title %}
-    <a class="brand">
 	{% if moderation_delete_request %}
-	{% trans "Approve page deletion" %}
+	<span class="brand moderation-approve-deletion">{% trans "Approve page deletion" %}</span>
 
 	{% else %}
 
-	{{ title }}
+	<span class="brand">{{ title }}
 	{% if CMS_MODERATOR %}
 		{% if moderation_required %}<span class="moderation-requires-approvement">{% blocktrans %}(requires approvement at {{ moderation_level }} level){% endblocktrans %}</span>
 		{% else %}<span>{% trans '(you can perform actions on this page directly)' %}</span>
 		{% endif %}
 	{% endif %}
-
+	</span>
 	{% endif %}
-	</a>
+	
 {% endblock %}
 
 {% block object-tools %}
 {% if change %}{% if not is_popup %}
-<div class="pull-right">
-  <div class="object-tools">
-	{% if moderation_delete_request %}<a href="remove-delete-state/" class="btn approvelink">{% trans "Remove delete request" %}</a>{% endif %}  	
+  <div class="pull-right">
+	{% if moderation_delete_request %}
+		<a href="remove-delete-state/" class="btn approvelink">{% trans "Remove delete request" %}</a>
+	{% endif %}
 	{% if moderator_should_approve %}
-	<a href="approve/" class="btn approvelink">{% if moderation_delete_request %}{% trans "Approve delete" %}{% else %}{% trans "Approve" %} {% trans "draft" %}{% endif %}</a>
-	<a href="{% if current_site_id %}{% ifnotequal current_site_id page.site.id %}http{% if request.is_secure %}s{% endif %}://{{ page.site.domain }}{% endifnotequal %}{% endif %}{{ page.get_absolute_url }}?preview&draft=1" class="btn previewdraftlink">{% trans "Preview" %} {% trans "draft" %}</a>
+		<a href="approve/" class="btn approvelink">{% if moderation_delete_request %}{% trans "Approve delete" %}{% else %}{% trans "Approve" %} {% trans "draft" %}{% endif %}</a>
+		<a href="{% if current_site_id %}{% ifnotequal current_site_id page.site.id %}http{% if request.is_secure %}s{% endif %}://{{ page.site.domain }}{% endifnotequal %}{% endif %}{{ page.get_absolute_url }}?preview&draft=1" class="btn previewdraftlink">{% trans "Preview" %} {% trans "draft" %}</a>
 	{% endif %}
 	
-	<a href="history/" class="btn historylink">{% trans "History" %}</a>
-  	{% if has_absolute_url %}<a href="{% if current_site_id %}{% ifnotequal current_site_id page.site.id %}http{% if request.is_secure %}s{% endif %}://{{ page.site.domain }}{% endifnotequal %}{% endif %}{{ page|preview_link:language }}?preview" class="btn viewsitelink">{% trans "View on site" %}</a>{% endif%}
+	<a href="history/" class="btn btn-inverse historylink">{% trans "History" %}</a>
+  
+  {% if has_absolute_url %}
+  	<a href="{% if current_site_id %}{% ifnotequal current_site_id page.site.id %}http{% if request.is_secure %}s{% endif %}://{{ page.site.domain }}{% endifnotequal %}{% endif %}{{ page|preview_link:language }}?preview" class="btn viewsitelink">{% trans "View on site" %}</a>
+  {% endif %}
   </div>
-</div>
 {% endif %}{% endif %}
 {% endblock %}
 
 {% block content %}<div id="content-main">
-
 
 <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="?language={{ language }}{%if request.GET.target %}&amp;target={{ request.GET.target }}{% endif %}&amp;{%if request.GET.target %}position={{ request.GET.position }}{% endif %}" method="post" id="page_form">{% csrf_token %}{% block form_top %}{% endblock %}
 {{ adminForm.fields.parent }}
@@ -130,11 +152,9 @@
   {% include "admin/cms/page/includes/fieldset.html" %}
 {% endfor %}
 
-
 {% for inline_admin_formset in inline_admin_formsets %}
     {% include inline_admin_formset.opts.template %}
 {% endfor %}
-
 
 {% if not add %}
 	{% if CMS_PERMISSION and has_change_permissions_permission %}
@@ -162,6 +182,7 @@
 	{% endif %}
 
 	{% if moderation_delete_request %}<script type="text/javascript">
+	(function namespacing($) {
 		$(function(){
 			// disable all fields
 			function lockControls(){
@@ -172,6 +193,7 @@
 			lockControls();
 			setTimeout(lockControls,200);
 		});
+	})(window.CMS.$);
 	</script>{% endif %}
 
 	{% if CMS_MODERATOR and moderation_required %}
@@ -254,7 +276,7 @@
 					}
 				});
 			});
-		})(jQuery);
+		})(window.CMS.$);
 		//]]>
 		</script>
 	{% endif %}
@@ -264,9 +286,11 @@
 {% block after_related_objects %}{% endblock %}
 
 {% if add %}
-	<div class="submit-row"{% if is_popup %} style="overflow: auto;"{% endif %}>
-		<input type="submit" name="_save" class="default" value="{% trans 'Save' %}" {{ onclick_attrib }}/>
-		<input type="submit" name="_continue" value="{% trans 'Save and continue editing' %}" {{ onclick_attrib }}/>
+	<div class="form-actions"{% if is_popup %} style="overflow: auto;"{% endif %}>
+		<div class="pull-right">
+			<button type="submit" name="_continue" class="btn" {{ onclick_attrib }}>{% trans 'Save and continue editing' %}</button>
+			<button type="submit" name="_save" class="btn btn-primary" {{ onclick_attrib }}>{% trans 'Save' %}</button>
+		</div>
 	</div>
 {% else %}
 	{% if not moderation_delete_request %}{% page_submit_row %}{% endif %}
