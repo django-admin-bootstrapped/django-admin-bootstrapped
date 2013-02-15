@@ -1,0 +1,178 @@
+{% extends "admin/change_list.html" %}
+{% load adminmedia admin_list i18n cms_admin cms_js_tags %}
+{% block title %}{% trans "List of pages" %}{% endblock %}
+{% block bodyclass %}change-list{% endblock %}
+
+{% if not is_popup %}{% block breadcrumbs %}
+<ul class="breadcrumb">
+    <li><a href="../../">{% trans "Home" %}</a> <span class="divider">/</span></li>
+    <li><a href="../">{{ app_label|capfirst|escape }}</a> <span class="divider">/</span></li>
+    <li>{{ opts.verbose_name_plural|capfirst|escape }}</li>
+</ul>
+{% endblock %}{% endif %}
+
+{% block coltype %}flex{% endblock %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms/css/pages.css"/>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms/jstree/tree_component.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms/css/jquery.dialog.css" />
+
+{{ block.super }}
+
+<style>
+#sitemap li a.copy,
+#sitemap li a.move {
+width: auto;
+height: auto;
+margin-left: 4px;
+display: inline-block;
+background-color: #f5f5f5;
+background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+}
+
+#sitemap .cont:hover a, #sitemap .cont:hover .col-language, #sitemap .cont:hover .col-language a {
+  color:#333;
+}
+div#sitemap a:hover {
+  text-decoration: none;
+}
+
+#sitemap li .col-softroot,
+#sitemap li .col-language,
+#sitemap li .col-actions, 
+#sitemap li .col-published,
+#sitemap li .col-navigation,
+#sitemap li .col-moderator,
+#sitemap li .col-lastchange,
+#sitemap li .col-draft,
+#sitemap li .col-view-perms,
+#sitemap li .col-creator{
+  filter: alpha(opacity=100);
+  -moz-opacity: 1.0;
+  opacity: 1.0;
+}
+</style>
+<script type="text/javascript" src="{% admin_static_url %}js/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.livequery.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.ui.core.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.bind.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.ui.checkbox.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.ui.effects.core.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.ui.effects.highlight.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.form.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/jstree/_lib/_all.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/jstree/tree_component.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.ui.dialog.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/jquery.functional.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/classy.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/plugins/cms.setup.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/plugins/cms.base.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}cms/js/change_list.js"></script>
+
+
+{% if cl.is_filtered %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cms/jstree/themes/default/style.css" />
+{% endif %}
+{% endblock %}
+
+{% block object-tools %}
+
+  {% if has_recover_permission %}
+    <a href="recover/" class="btn recoverlink">{% blocktrans with cl.opts.verbose_name_plural|escape as name %}Recover deleted {{name}}{% endblocktrans %}</a>
+  {% endif %}
+
+  {% if has_add_permission %}
+    <a href="add/{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary addlink"><i class="icon-plus icon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
+  {% endif %}
+  
+  {% include "admin/cms/page/loading.html" %}
+
+  <div class="pull-right">
+    {% block search %}
+      {% search_form cl %}
+
+      {% if cl.has_access_to_multiple_sites %}
+      <div id="site-selector">{% trans "Pages on:" %}
+        <select id="site-select">{% for site in cl.sites %}
+          <option {% ifequal site.pk cl.current_site.pk %}selected {% endifequal %}value="{{ site.pk }}">{{ site.name }}</option>{% endfor %}
+        </select>
+      </div>
+      {% else %}
+      <input type="hidden" id="site-select" value="{{ cl.sites.0.pk }}">
+      {% endif %}
+
+    {% endblock %}
+
+    {% if cl.has_filters %}
+      <ul class="nav" id="_changelist-filter">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Filter' %}<b class="caret"></b></a>
+            <ul class="dropdown-menu pull-right">
+              {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
+            </ul>
+        </li>
+      </ul>
+    {% endif %}
+  </div>
+
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+//<![CDATA[	
+(function namespacing($) {
+	$(document).ready(function() {
+		{% if not cl.is_filtered %}
+			initTree();
+		{% endif %}		
+	});
+	
+	showchangelistfilter = function(){
+		$("#changelist-filter").toggle();
+	}
+	moveSuccess = function(node){
+		var msg = $({% javascript_string %}<span class="success">{% trans "Successfully moved" %}</span>{% end_javascript_string %});
+		node.append(msg);
+	    msg.fadeOut(3000);
+	}
+	moveError = function(node,message){
+        if(message && message!="error") {
+            var msg = $({% javascript_string %}<span class="success">{% end_javascript_string %}+message+{% javascript_string %}</span>{% end_javascript_string %});
+        }
+        else {
+            var msg = $({% javascript_string %}<span class="success">{% trans "An error occured. Please reload the page" %}</span>{% end_javascript_string %});
+        }
+		node.append(msg);
+	}
+	// some settings used by javascript functions
+
+	cmsSettings = {
+		cmsPermission: {{ CMS_PERMISSION|js }},
+		cmsModerator: {{ CMS_MODERATOR|js }},
+		debug: {{ DEBUG|js }}
+	};
+})(window.CMS.$);
+//]]>
+</script>
+
+
+<div id="content-main"{% if cl.is_filtered %} class="activ-filter"{% endif %}>
+  <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
+
+    {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
+
+    {% block filters %}{% endblock %}
+
+    {% include "admin/cms/page/change_list_tree.html" %}
+  </div>
+</div>
+
+<div id="dialogs"></div>
+
+{% endblock content %}
