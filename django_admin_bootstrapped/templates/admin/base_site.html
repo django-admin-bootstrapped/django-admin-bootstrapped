@@ -4,7 +4,7 @@
 {% block title %}{% render_with_template_if_exist cl.opts.app_label|lower|add:"/admin_app_name.html" cl.opts.app_label|default:"Django administration" %} | {% trans 'Django site admin' %}{% endblock %}
 
 {% block branding %}
-<a class="brand" href="{% url 'admin:index' %}">{% trans 'Django administration' %}</a>
+<a class="brand hidden-phone" href="{% url 'admin:index' %}">{% trans 'Django administration' %}</a>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}

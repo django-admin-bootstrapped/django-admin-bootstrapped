@@ -28,12 +28,10 @@
 
 {% block object-tools %}
 {% if change %}{% if not is_popup %}
-  <div class="pull-right">
     {% block object-tools-items %}
     <a href="history/" class="btn btn-inverse historylink">{% trans "History" %}</a>
     {% if has_absolute_url %}<a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="btn viewsitelink">{% trans "View on site" %}</a>{% endif%}
     {% endblock %}
-  </div>
 {% endif %}{% endif %}
 {% endblock %}
 
@@ -53,7 +51,13 @@
     </div>
     {% endif %}
     <div class="row-fluid">
-        {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
+        {% if save_on_top %}
+        <div class="navbar">
+            <div class="navbar-inner">
+            {% block submit_buttons_top %}{% submit_row %}{% endblock %}
+            </div>
+        </div>
+        {% endif %}
     </div>
     <div class="row-fluid">
         <div id="content-main" class="span12">
@@ -87,8 +91,10 @@
         </div>
     </div>
     <div class="row-fluid">
-        <div class="form-actions">
-            {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+        <div class="navbar">
+            <div class="navbar-inner">
+                {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+            </div>
         </div>
     </div>
 </form>

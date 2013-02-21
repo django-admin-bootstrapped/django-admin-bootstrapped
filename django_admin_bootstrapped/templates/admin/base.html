@@ -45,8 +45,12 @@
             <span class="icon-bar"></span>
           </a>
           {% block branding %}{% endblock %}
-          <div class="nav-collapse collapse pull-right">
-            <ul class="nav">
+          {% block pretitle %}{% endblock %}
+          {% block content_title %}{% if title %}<a class="brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>{% endif %}{% endblock %}
+
+          <div class="nav-collapse collapse">
+            {% block object-tools %}{% endblock %}
+            <ul class="nav pull-right">
             {% if user.is_active and user.is_staff %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <b class="caret"></b></a>
@@ -107,15 +111,13 @@
     <!-- Content -->
     <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block navbar %}
-        <div class="row-fluid">
+        <!-- <div class="row-fluid">
             <div class="navbar">
                 <div class="navbar-inner">
-                    {% block pretitle %}{% endblock %}
-                    {% block content_title %}{% if title %}<a class="brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>{% endif %}{% endblock %}
-                    {% block object-tools %}{% endblock %}
+                    
                 </div>
             </div>
-        </div>
+        </div> -->
         {% endblock navbar %}
 
         {% block messages %}
