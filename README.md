@@ -1,6 +1,9 @@
 django-admin-bootstrapped
 =========================
 
+Modified to be compatible with setting
+DEFAULT_CONTENT_TYPE = 'application/xhtml+xml'
+
 A Django admin theme using Twitter Bootstrap. It doesn't need any kind of modification on your side, just add it to the installed apps.
 
 ## Requirements
