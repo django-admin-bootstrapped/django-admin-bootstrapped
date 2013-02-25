@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="pull-left">
-    {% if show_delete_link %}<a class="btn btn-danger" href="delete/" class="deletelink">{% trans "Delete" %}</a>{% endif %}
+    {% if show_delete_link %}<a class="btn btn-danger deletelink" href="delete/">{% trans "Delete" %}</a>{% endif %}
 </div>
 <div class="pull-right">
 {% if show_save_as_new %}<input type="submit" value="{% trans 'Save as new' %}" class="btn" name="_saveasnew" {{ onclick_attrib }}/>{%endif%}
