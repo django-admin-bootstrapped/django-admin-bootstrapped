@@ -1,31 +1,34 @@
-{% load admin_static bootstrapped_goodies_tags %}{% load url from future %}<!DOCTYPE html>
+{% load admin_static bootstrapped_goodies_tags %}{% load url from future %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
-<title>{% block title %}{% endblock %}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-{% block extrastyle %}{% endblock %}
+    {% block extrastyle %}{% endblock %}
 
-<!-- Le styles, placed after extrastyle to correctly override default styling -->
-<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-<link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
+    <!-- Le styles, placed after extrastyle to correctly override default styling -->
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet"/>
+    <link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
 
-<!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
-<script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
+    <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
-{% block extrahead %}{% endblock %}
+    {% block extrahead %}{% endblock %}
 
-{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
-<script type="text/javascript">
-(function($) {
-    $(document).ready(function() {
-        $('input[type="submit"]').addClass('btn');
-    });
-}(jQuery));
-</script>
+    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+    <script type="text/javascript">
+//<![CDATA[
+            (function($) {
+                $(document).ready(function() {
+                    $('input[type="submit"]').addClass('btn');
+                });
+            }(jQuery));
+    //]]>
+    </script>
 </head>
 {% load i18n %}
 
@@ -37,63 +40,63 @@
     {% if not is_popup %}
     <!-- Header -->
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          {% block branding %}{% endblock %}
-          <div class="nav-collapse collapse pull-right">
-            <ul class="nav">
-            {% if user.is_active and user.is_staff %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <b class="caret"></b></a>
-                    <ul class="dropdown-menu pull-right">
-                        {% if user.has_usable_password %}
-                        <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
-                        {% endif %}
-                        <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
-                    </ul>
-                </li>
-                {% block logs %}
-                    <li class="dropdown" id="recent-actions-module">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
-                        {% load log %}
-                        {% get_admin_log 10 as admin_log for_user user %}
-                        <ul class="dropdown-menu pull-right">
-                        {% for entry in admin_log %}
-                            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
-                                <a href="{% if entry.is_deletion or not entry.get_admin_url %}#{% else %}{% url 'admin:index' %}{{ entry.get_admin_url }}{% endif %}">
-                                    <i class="icon-{% if entry.is_addition %}plus{% endif %}{% if entry.is_change %}edit{% endif %}{% if entry.is_deletion %}remove{% endif %}"></i>
-                                    {{ entry.object_repr }}
-                                    {% if entry.content_type %}
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                {% block branding %}{% endblock %}
+                <div class="nav-collapse collapse pull-right">
+                    <ul class="nav">
+                        {% if user.is_active and user.is_staff %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <b class="caret"></b></a>
+                            <ul class="dropdown-menu pull-right">
+                                {% if user.has_usable_password %}
+                                <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                                {% endif %}
+                                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+                            </ul>
+                        </li>
+                        {% block logs %}
+                        <li class="dropdown" id="recent-actions-module">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
+                            {% load log %}
+                            {% get_admin_log 10 as admin_log for_user user %}
+                            <ul class="dropdown-menu pull-right">
+                                {% for entry in admin_log %}
+                                <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+                                    <a href="{% if entry.is_deletion or not entry.get_admin_url %}#{% else %}{% url 'admin:index' %}{{ entry.get_admin_url }}{% endif %}">
+                                        <i class="icon-{% if entry.is_addition %}plus{% endif %}{% if entry.is_change %}edit{% endif %}{% if entry.is_deletion %}remove{% endif %}"></i>
+                                        {{ entry.object_repr }}
+                                        {% if entry.content_type %}
                                         <span class="mini quiet">({% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %})</span>
-                                    {% else %}
+                                        {% else %}
                                         <span class="mini quiet">({% trans 'Unknown content' %})</span>
-                                    {% endif %}
-                                </a>
-                            </li>
-                        {% empty %}
-                            <li>{% trans 'None available' %}</li>
-                        {% endfor %}
-                        </ul>
-                    </li>
-                {% endblock %}
-                {% block userlinks %}
-                    {% url 'django-admindocs-docroot' as docsroot %}
-                    {% if docsroot %}
-                    <li class="divider-vertical"></li>
-                    <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
-                    {% endif %}
-                {% endblock %}
-            {% endif %}
-            {% block nav-global %}{% endblock %}
-            </ul>
-          </div><!--/.nav-collapse -->
+                                        {% endif %}
+                                    </a>
+                                </li>
+                                {% empty %}
+                                <li>{% trans 'None available' %}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endblock %}
+                        {% block userlinks %}
+                        {% url 'django-admindocs-docroot' as docsroot %}
+                        {% if docsroot %}
+                        <li class="divider-vertical"></li>
+                        <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
+                        {% endif %}
+                        {% endblock %}
+                        {% endif %}
+                        {% block nav-global %}{% endblock %}
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
         </div>
-      </div>
     </div>
     <!-- END Header -->
     <div class="row-fluid">
@@ -119,19 +122,19 @@
         {% endblock navbar %}
 
         {% block messages %}
-            {% if messages %}
-                <div class="row-fluid">
-                    <div class="span12">
-                        <div class="alert alert-info">
-                            <ul class="unstyled">
-                                {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
+        {% if messages %}
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="alert alert-info">
+                    <ul class="unstyled">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
-            {% endif %}
+            </div>
+        </div>
+        {% endif %}
         {% endblock messages %}
 
         {% block content %}{{ content }}{% endblock %}
