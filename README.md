@@ -1,9 +1,6 @@
 django-admin-bootstrapped
 =========================
 
-Modified to be compatible with setting
-DEFAULT_CONTENT_TYPE = 'application/xhtml+xml'
-
 A Django admin theme using Twitter Bootstrap. It doesn't need any kind of modification on your side, just add it to the installed apps.
 
 ## Requirements
@@ -54,6 +51,13 @@ You can now use the inline as usual. The result will look like this:
 <img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_inlines.png">
 
 This feature was brought to you by [Kyle Bock](https://github.com/kwbock). Thank you Kyle!
+
+### XHTML Compatible
+
+Compatible with both html and xhtml.
+To enable xhtml for your django app add the following to your settings.py:
+DEFAULT_CONTENT_TYPE = 'application/xhtml+xml'
+
 
 ## Screenshots
 
