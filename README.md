@@ -52,6 +52,13 @@ You can now use the inline as usual. The result will look like this:
 
 This feature was brought to you by [Kyle Bock](https://github.com/kwbock). Thank you Kyle!
 
+### XHTML Compatible
+
+Compatible with both html and xhtml.
+To enable xhtml for your django app add the following to your settings.py:
+DEFAULT_CONTENT_TYPE = 'application/xhtml+xml'
+
+
 ## Screenshots
 
 ### Homepage
