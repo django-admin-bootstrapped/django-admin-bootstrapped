@@ -14,7 +14,8 @@
 
     <!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
     <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static "admin/js/jquery-1.9.1.min.js" %}"><\/script>')</script>
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
     {% block extrahead %}{% endblock %}
