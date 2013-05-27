@@ -1,3 +1,11 @@
+==== 0.4 (2013-05-27) ====
+
+- added compatibility for django-cms (thanks to kayluhb)
+- xhtml cleanup (thanks to Ricklef Wohlers)
+- UI cleanup (thanks to intuxicated & yceruto)
+- Twitter Bootstrap version 2.3.1 (thanks to yceruto)
+- admin static files now loaded using relative urls (thanks to jmagnusson)
+
 ==== 0.3.2 (2013-02-06) ====
 
 - temporary bugfix for change_list actions 
