@@ -46,18 +46,20 @@
 {% block coltype %}flex{% endblock %}
 
 {% block object-tools %}
-    {% block object-tools-items %}
-    <div class="form-inline pull-left">
+    <ul class="object-tools form-inline pull-left inline">
+        {% block object-tools-items %}
         {% if has_add_permission %}
+        <li>
         <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary">
             <i class="icon-plus icon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
         </a>
+        </li>
         {% endif %}
+        {% endblock %}
         {% comment %} {% if action_form and actions_on_top and cl.full_result_count %}
             {% admin_actions %}
         {% endif %}{% endcomment %}
-    </div>
-    {% endblock %}
+    </ul>
 
     <div class="pull-right">
         {% block search %}{% search_form cl %}{% endblock %}
