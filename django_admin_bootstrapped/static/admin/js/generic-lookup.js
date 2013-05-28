@@ -110,5 +110,6 @@ TODO 2: Don't presume the object id field's name attribute is `object_id`
         $lookupBox.after($lookedUpItem);
         $contentTypeField.on('change', onContentTypeChange)
                          .trigger('change', {noClear: true});
+        $lookupBox.add($lookedUpItem).tooltip();
     });
 })(jQuery);
