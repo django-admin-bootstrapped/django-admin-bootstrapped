@@ -43,4 +43,4 @@ class GenericContentTypeSelect(Select):
 
     class Media(object):
         extend = False
-        js = ('admin/js/generic_lookup.js', )
+        js = ('admin/js/generic-lookup.js', )
