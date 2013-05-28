@@ -42,5 +42,4 @@ class GenericContentTypeSelect(Select):
                            force_text(option_label))
 
     class Media(object):
-        extend = False
         js = ('admin/js/generic-lookup.js', )
