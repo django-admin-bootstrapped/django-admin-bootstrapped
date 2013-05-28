@@ -1,15 +1,6 @@
 /*
 Generic content type object lookups in admin
 
-NOTE 1: This script requires some data attributes to be set on the options
-        of the content type select box. Setting the
-        GenericContentTypeSelect widget on content type fields in admin
-        ensures that, and automatically includes this script.
-NOTE 2: Requires an up-to-date jQuery, at least 1.8 (because of $.parseHTML use)
-
-TODO 1: Enable multiple content_type / object_id fields on one change page
-TODO 2: Don't presume the object id field's name attribute is `object_id`
-
 
 Copyright (c) 2013, Jacob Magnusson
 All rights reserved.
@@ -38,15 +29,35 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+NOTE 1: This script requires some data attributes to be set on the option
+        elements of the content_type select box. Setting the
+        GenericContentTypeSelect widget on content_type fields in admin
+        ensures that, and automatically includes this script.
+NOTE 2: Requires an up-to-date jQuery, at least 1.8 (because of $.parseHTML use)
+
+TODO 1: Enable multiple content_type / object_id fields on one change page
+TODO 2: Don't presume the object id field's name attribute is `object_id`
+
 */
 (function($) {
     $(document).ready(function() {
+        var gettext = window.gettext || function(s) { return s; };
         var $contentTypeField = $('[data-generic-lookup-enabled=yes]')
                                               .parents('select:first');
         var $objectIdField = $('[name=object_id]');
-        var $lookupBox = $('<a id="lookup_' + $objectIdField.attr('id') + '"></a>')
-                           .append('<i class="icon-th-list" style="margin-left: 6px"></i>');
-        var $lookedUpItem = $('<a style="margin-left: 6px;" target="_blank">');
+        var $lookupBox = $('<a>')
+                .append('<i class="icon-th-list" style="margin-left: 6px"></i>')
+                .attr({
+                    id: 'lookup_' + $objectIdField.attr('id'),
+                    title: gettext('Browse')
+                });
+        var $lookedUpItem = $('<a>').attr({
+            style: 'margin-left: 6px;',
+            target: '_blank',
+            title: gettext('Click to open the item in a new tab')
+        });
         var objectIdVal = '';
         var newIdVal = '';
         var intervalId = null;
@@ -72,7 +83,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             var url = $selected.attr('data-admin-url');
             $lookupBox.attr('href', $selected.attr('data-admin-url'));
             if (intervalId !== null) {
-                console.log('intervalId', intervalId, 'cleared');
                 window.clearInterval(intervalId);
             }
             intervalId = window.setInterval(function() {
