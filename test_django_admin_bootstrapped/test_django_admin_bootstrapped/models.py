@@ -2,28 +2,28 @@ from django.db import models
 
 
 class TestMe(models.Model):
-    test_m2m = models.ManyToManyField('self', blank=True)
-    test_ip = models.IPAddressField()
-    test_url = models.URLField()
-    test_int = models.IntegerField()
+    test_m2m = models.ManyToManyField('self', blank=True, help_text="Lorem dolor")
+    test_ip = models.IPAddressField(help_text="Lorem dolor")
+    test_url = models.URLField(help_text="Lorem dolor")
+    test_int = models.IntegerField(help_text="Lorem dolor")
     test_img = models.ImageField(upload_to='dummy', blank=True)
     test_file = models.FileField(upload_to='dummy', blank=True)
-    test_date = models.DateField()
-    test_char = models.CharField(max_length=50)
-    test_bool = models.BooleanField()
-    test_time = models.TimeField()
-    test_slug = models.SlugField()
-    test_text = models.TextField()
-    test_email = models.EmailField()
-    test_float = models.FloatField()
-    test_bigint = models.BigIntegerField()
-    test_positive_integer = models.PositiveIntegerField()
-    test_decimal = models.DecimalField(max_digits=5, decimal_places=2)
-    test_comma_separated_int = models.CommaSeparatedIntegerField(max_length=100)
-    test_small_int = models.SmallIntegerField()
-    test_nullbool = models.NullBooleanField()
-    test_filepath = models.FilePathField(blank=True)
-    test_positive_small_int = models.PositiveSmallIntegerField()
+    test_date = models.DateField(help_text="Lorem dolor")
+    test_char = models.CharField(max_length=50, help_text="Lorem dolor")
+    test_bool = models.BooleanField(help_text="Lorem dolor")
+    test_time = models.TimeField(help_text="Lorem dolor")
+    test_slug = models.SlugField(help_text="Lorem dolor")
+    test_text = models.TextField(help_text="Lorem dolor")
+    test_email = models.EmailField(help_text="Lorem dolor")
+    test_float = models.FloatField(help_text="Lorem dolor")
+    test_bigint = models.BigIntegerField(help_text="Lorem dolor")
+    test_positive_integer = models.PositiveIntegerField(help_text="Lorem dolor")
+    test_decimal = models.DecimalField(max_digits=5, decimal_places=2, help_text="Lorem dolor")
+    test_comma_separated_int = models.CommaSeparatedIntegerField(max_length=100, help_text="Lorem dolor")
+    test_small_int = models.SmallIntegerField(help_text="Lorem dolor")
+    test_nullbool = models.NullBooleanField(help_text="Lorem dolor")
+    test_filepath = models.FilePathField(blank=True, help_text="Lorem dolor")
+    test_positive_small_int = models.PositiveSmallIntegerField(help_text="Lorem dolor")
 
     class Meta:
         verbose_name = u'Test me'
@@ -38,12 +38,12 @@ class TestMeProxyForFieldsets(TestMe):
 
 
 class TestThat(models.Model):
-    that = models.ForeignKey(TestMe)
-    test_ip = models.IPAddressField()
-    test_url = models.URLField()
-    test_int = models.IntegerField()
-    test_date = models.DateField()
-    test_bool = models.BooleanField()
+    that = models.ForeignKey(TestMe, help_text="Lorem dolor")
+    test_ip = models.IPAddressField(help_text="Lorem dolor")
+    test_url = models.URLField(help_text="Lorem dolor")
+    test_int = models.IntegerField(help_text="Lorem dolor")
+    test_date = models.DateField(help_text="Lorem dolor")
+    test_bool = models.BooleanField(help_text="Lorem dolor")
 
     class Meta:
         verbose_name = u'Test that'
