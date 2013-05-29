@@ -20,12 +20,14 @@
             {% for field in line %}
                 <div{% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}"{% endif %}>
                     {% if field.is_checkbox %}
-                    <div class="controls">
-                        <div class="checkbox">
+                        <div class="control-label">
                             {{ field.label_tag }}
-                            {{ field.field }}
                         </div>
-                    </div>
+                        <div class="controls">
+                            <div class="checkbox">
+                                {% if field.field.help_text %}{{ field.field.help_text|safe }}{% endif %} {{ field.field }}
+                            </div>
+                        </div>
                     {% else %}
                         <div class="control-label">
                             {{ field.label_tag }}
