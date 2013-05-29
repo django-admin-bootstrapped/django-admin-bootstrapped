@@ -58,6 +58,32 @@ Compatible with both html and xhtml.
 To enable xhtml for your django app add the following to your settings.py:
 DEFAULT_CONTENT_TYPE = 'application/xhtml+xml'
 
+### Generic lookups in admin
+
+<img src="https://a248.e.akamai.net/camo.github.com/2848fec376b4af6d6a08e2a3a7d575569115f998/687474703a2f2f692e696d6775722e636f6d2f766970547453732e706e67" alt="Generic lookups in admin">
+
+All that needs to be done is change the admin widget with either formfield_overrides like this:
+
+    from django_admin_bootstrapped.widgets import GenericContentTypeSelect
+
+    class SomeModelAdmin(admin.ModelAdmin):
+        formfield_overrides = {
+            models.ForeignKey: {'widget': GenericContentTypeSelect},
+        }
+
+Or if you want to be more specific:
+
+    from django_admin_bootstrapped.widgets import GenericContentTypeSelect
+
+    class SomeModelAdmin(admin.ModelAdmin):
+        def formfield_for_dbfield(self, db_field, **kwargs):
+            if db_field.name == 'content_type':
+                kwargs['widget'] = GenericContentTypeSelect
+            return super(SomeModelAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+
+If you decide on using `formfield_overrides` [you should be aware of its limitations with relation fields](https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.formfield_overrides).
+
+This feature (and many more) was brought to you by [Jacob Magnusson](https://github.com/jmagnusson). Thank you Jacob!
 
 ## Screenshots
 

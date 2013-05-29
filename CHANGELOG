@@ -1,3 +1,13 @@
+==== 0.4.1 (2013-05-29) ====
+
+- tooltips for title attributes
+- generic relation lookup plugin
+- FIX: Twitter Bootstrap Responsive Navbar Broken on Small Screens (http://stackoverflow.com/questions/10185384/twitter-bootstrap-responsive-navbar-broken-on-small-screens) as reported by Fernando (https://twitter.com/fersan3)
+- FIX: login page responsive layout 
+- FIX #6: autocapitalization disabled in the login form (mobile friendly)
+- FIX #13: boolean fields will show the help text if provided
+- FIX #36: list filters now partially usable on a mobile fine
+
 ==== 0.4 (2013-05-27) ====
 
 - added compatibility for django-cms (thanks to kayluhb)
