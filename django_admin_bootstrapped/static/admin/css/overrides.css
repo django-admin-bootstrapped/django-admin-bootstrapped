@@ -28,6 +28,9 @@ a:focus {
     font-size: 100%;
     margin: 0;
 }
+.checkbox{
+    padding-bottom: 5px;
+}
 .checkbox label {
     margin-bottom: -20px;
 }
