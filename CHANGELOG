@@ -1,3 +1,8 @@
+==== 0.4.2 (2013-08-10) ====
+
+- checkboxes now properly aligned
+- admin title translation now working with a dedicated template
+
 ==== 0.4.1 (2013-05-29) ====
 
 - tooltips for title attributes
