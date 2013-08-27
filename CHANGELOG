@@ -1,3 +1,7 @@
+==== 0.4.3 (2013-08-27) ====
+
+- display errors properly for inlines (thanks to jmagnusson)
+
 ==== 0.4.2 (2013-08-10) ====
 
 - checkboxes now properly aligned
