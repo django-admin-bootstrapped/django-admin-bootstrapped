@@ -24,6 +24,13 @@
                 {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}<div class="delete control-group"><div class="checkbox">{{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}</div></div>{% endif %}
             </div>
           </legend>
+          {% for fieldset in inline_admin_form %}{% for line in fieldset %}
+          {% if line.errors %}
+          {% for field in line %}
+          <div class="alert alert-error"><strong>{{ field.field.label }}:</strong> {{ field.errors|striptags }}</div>
+          {% endfor %}
+          {% endif %}
+          {% endfor %}{% endfor %}
 
           <div class="{% if not forloop.last %}collapse{% endif %}{% if not inline_admin_formset.opts.start_collapsed %} in{% endif %}">
           {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}

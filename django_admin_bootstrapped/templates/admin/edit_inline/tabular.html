@@ -51,7 +51,9 @@
               {% if field.is_readonly %}
                   <p>{{ field.contents }}</p>
               {% else %}
-                  {{ field.field.errors.as_ul }}
+                  {% if field.errors %}
+                  <div class="alert alert-error">{{ field.errors|striptags }}</div>
+                  {% endif %}
                   {{ field.field }}
               {% endif %}
               </td>
