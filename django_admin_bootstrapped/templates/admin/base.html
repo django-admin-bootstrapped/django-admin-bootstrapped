@@ -68,6 +68,26 @@
                                 <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
                             </ul>
                         </li>
+                        {% block languages %}
+                        <li class="divider-vertical"></li> 
+                        <li class="dropdown"> 
+                            {% get_language_info for LANGUAGE_CODE as current %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current.name_local|capfirst }}<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                            {% for language in LANGUAGES %}
+                            {% if language.0 != LANGUAGE_CODE %}
+                                <li>
+                                    <form name="setLang{{language.1}}" action="/i18n/setlang/" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="language" value="{{language.0}}" />
+                                        <a href="#" onclick="document.setLang{{language.1}}.submit();return false;">{% trans language.1 %}</a>
+                                    </form>
+                                </li>
+                            {% endif %}
+                            {% endfor %}
+                            </ul>    
+                        </li>
+                        {% endblock languages %}
                         {% block logs %}
                         <li class="dropdown" id="recent-actions-module">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
