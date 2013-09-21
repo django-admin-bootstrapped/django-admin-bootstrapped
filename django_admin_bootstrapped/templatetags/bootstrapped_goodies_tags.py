@@ -12,3 +12,11 @@ def render_with_template_if_exist(context, template, fallback):
     except:
         pass
     return text
+
+@register.inclusion_tag('admin/language_selector.html', takes_context=True)
+def language_selector(context):
+    from django.conf import settings
+    i18 = getattr(settings, 'USE_I18N', False)
+    if i18:
+        context['i18n_is_set'] = True
+    return context
