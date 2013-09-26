@@ -10,7 +10,7 @@
         {% for language in LANGUAGES %}
         {% if language.0 != LANGUAGE_CODE %}
         <li>
-            <form name="setLang{{language.1}}" action="/i18n/setlang/" method="POST">
+        <form name="setLang{{language.1}}" action="{% url 'set_language' %}" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="language" value="{{language.0}}" />
                 <a href="#" onclick="document.setLang{{language.1}}.submit();return false;">{% trans language.1|capfirst%}</a>
