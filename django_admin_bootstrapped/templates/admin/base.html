@@ -76,6 +76,10 @@
                                 <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
                             </ul>
                         </li>
+                        {% block languages %}
+                        <li class="divider-vertical"></li> 
+                        {% language_selector %}
+                        {% endblock languages %}
                         {% block logs %}
                         <li class="dropdown" id="recent-actions-module">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
