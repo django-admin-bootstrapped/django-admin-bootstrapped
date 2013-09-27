@@ -1,0 +1,23 @@
+{% load i18n %}
+{# Display language selector as a dropdown rather than a form --> - see http://blog.oscarcp.com/?p=163#}
+{# https://docs.djangoproject.com/en/dev/topics/i18n/translation/#the-set-language-redirect-view #}
+{% if i18n_is_set %}
+    <li class="dropdown"> 
+      {% get_language_info for LANGUAGE_CODE as current %}
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current.name_local|capfirst }}<strong class="caret"></strong></a>
+
+      <ul class="dropdown-menu">
+        {% for language in LANGUAGES %}
+        {% if language.0 != LANGUAGE_CODE %}
+        <li>
+        <form name="setLang{{language.1}}" action="{% url 'set_language' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="{{language.0}}" />
+                <a href="#" onclick="document.setLang{{language.1}}.submit();return false;">{% trans language.1|capfirst%}</a>
+            </form>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </li>
+{% endif %}
