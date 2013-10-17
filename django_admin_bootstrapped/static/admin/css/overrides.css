@@ -53,4 +53,14 @@ legend a:hover {
     margin-top: 5px;
 }
 
+/* change_list table display */
+th.action-checkbox-column {
+    width: 1.5em;
+    text-align:center;
+}
+
+td.action-checkbox {
+    text-align:center;
+}
+
 .tooltip.in {opacity: 1} /* Hard to see against black text otherwise */
