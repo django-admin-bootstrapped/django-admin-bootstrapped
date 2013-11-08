@@ -2,13 +2,15 @@ from setuptools import setup, find_packages
 import os
 
 CLASSIFIERS = [
-    'Development Status :: 3 - Alpha',
+    'Development Status :: 5 - Production/Stable',
     'Environment :: Web Environment',
     'Framework :: Django',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: BSD License',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
+    'Programming Language :: Python :: 2',
+    'Programming Language :: Python :: 3',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Software Development',
     'Topic :: Software Development :: Libraries :: Application Frameworks',
@@ -16,9 +18,9 @@ CLASSIFIERS = [
 
 setup(
     author="Riccardo Forina",
-    author_email="riccardo.forina@codingnot.es",
+    author_email="riccardo@forina.me",
     name='django-admin-bootstrapped',
-    version='0.4.3',
+    version='1.6.0',
     description='A Bootstrap theme for Django Admin',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
     url='https://github.com/riccardo-forina/django-admin-bootstrapped',

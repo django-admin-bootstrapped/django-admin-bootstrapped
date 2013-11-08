@@ -1,3 +1,10 @@
+==== 1.6.0 (2013-11-08) ====
+
+- django 1.6 compatibility
+- Python 3 compatibility (it has always been compatible, but now it's flagged appropriately as such)
+- changed version to 1.6 to reflect the 'Stable' status of the project and the compatibility with Django 1.6
+
+
 ==== 0.4.3 (2013-08-27) ====
 
 - display errors properly for inlines (thanks to jmagnusson)
@@ -12,7 +19,7 @@
 - tooltips for title attributes
 - generic relation lookup plugin
 - FIX: Twitter Bootstrap Responsive Navbar Broken on Small Screens (http://stackoverflow.com/questions/10185384/twitter-bootstrap-responsive-navbar-broken-on-small-screens) as reported by Fernando (https://twitter.com/fersan3)
-- FIX: login page responsive layout 
+- FIX: login page responsive layout
 - FIX #6: autocapitalization disabled in the login form (mobile friendly)
 - FIX #13: boolean fields will show the help text if provided
 - FIX #36: list filters now partially usable on a mobile fine
@@ -27,7 +34,7 @@
 
 ==== 0.3.2 (2013-02-06) ====
 
-- temporary bugfix for change_list actions 
+- temporary bugfix for change_list actions
 
 ==== 0.3.1 (2013-01-19) ====
 
