@@ -1,9 +1,9 @@
 ==== 1.6.0 (2013-11-08) ====
 
 - django 1.6 compatibility
+- experimental support to Django-CMS 2.4. This is thanks to a fork of kayluhb, which has never been transformed in a PR, but still it's worth a try.
 - Python 3 compatibility (it has always been compatible, but now it's flagged appropriately as such)
 - changed version to 1.6 to reflect the 'Stable' status of the project and the compatibility with Django 1.6
-
 
 ==== 0.4.3 (2013-08-27) ====
 
