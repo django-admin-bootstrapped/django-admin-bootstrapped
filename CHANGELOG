@@ -1,3 +1,8 @@
+==== 1.6.1 (2013-11-16) ====
+
+- FIX #56: jquery now loaded from local installation, not the CDN
+- FIX #65: recent actions now has working urls
+
 ==== 1.6.0 (2013-11-08) ====
 
 - django 1.6 compatibility
