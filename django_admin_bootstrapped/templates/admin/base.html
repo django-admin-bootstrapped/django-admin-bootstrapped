@@ -24,12 +24,7 @@
         window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";
     //]]>
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-    //<![CDATA[
-        window.jQuery || document.write('<script src="{% static "admin/js/jquery-1.9.1.min.js" %}"><\/script>')
-    //]]>
-    </script>
+    <script src="{% static "admin/js/jquery-1.9.1.min.js" %}"></script>
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
     {% block extrahead %}{% endblock %}
