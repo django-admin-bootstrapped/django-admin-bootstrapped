@@ -6,7 +6,7 @@
         {% endif %}
         {{ fieldset.name }}
         {% if 'collapse' in fieldset.classes %}
-        &nbsp;<span class="btn btn-mini"><i class="icon-resize-full"></i></span>
+        &nbsp;<span class="btn btn-xs btn-default"><span class="glyphicon glyphicon-resize-full"></i></span>
         </a>
         {% endif %}
     </legend>
@@ -18,21 +18,21 @@
     {% for line in fieldset %}
         <div class="control-group {% if line.fields|length_is:'1' and line.errors %} error{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
             {% for field in line %}
-                <div{% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}"{% endif %}>
+                <div class="form-group {% if not line.fields|length_is:'1' %} field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% endif %}">
                     {% if field.is_checkbox %}
-                        <div class="control-label">
+                        <div class="control-label col-sm-2">
                             {{ field.label_tag }}
                         </div>
-                        <div class="controls">
+                        <div class="controls cols-sm-10">
                             <div class="checkbox">
                                 {% if field.field.help_text %}{{ field.field.help_text|safe }}{% endif %} {{ field.field }}
                             </div>
                         </div>
                     {% else %}
-                        <div class="control-label">
+                        <div class="control-label col-sm-2">
                             {{ field.label_tag }}
                         </div>
-                        <div class="controls">
+                        <div class="controls col-sm-10">
                             {% if field.is_readonly %}
                                 <p>{{ field.contents }}</p>
                             {% else %}
