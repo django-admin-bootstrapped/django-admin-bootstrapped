@@ -5,16 +5,14 @@
 
 {% block breadcrumbs %}
 <ul class="breadcrumb">
-<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
-<li><a href="{% url 'admin:app_list' app_label=app_label %}">{{ app_label|capfirst|escape }}</a> <span class="divider">/</span></li>
-<li><a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a> <span class="divider">/</span></li>
+<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
+<li><a href="{% url 'admin:app_list' app_label=app_label %}">{{ app_label|capfirst|escape }}</a></li>
+<li><a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a></li>
 <li>{% trans 'Delete multiple objects' %}</li>
 </ul>
 {% endblock %}
 
 {% block content %}
-<div class="row-fluid">
-    <div class="span12">
 {% if perms_lacking or protected %}
     {% if perms_lacking %}
         <p>{% blocktrans %}Deleting the selected {{ objects_name }} would result in deleting related objects, but your account doesn't have permission to delete the following types of objects:{% endblocktrans %}</p>
@@ -52,6 +50,4 @@
     </div>
     </form>
 {% endif %}
-    </div>
-</div>
 {% endblock %}
