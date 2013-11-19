@@ -40,31 +40,31 @@
   <div class="form-signin-inner">
   {% blocktrans %}<h2>Login</h2>{% endblocktrans %}
   {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
        {% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
     </div>
   {% endif %}
   {% if form.non_field_errors or form.this_is_the_login_form.errors %}
     {% for error in form.non_field_errors|add:form.this_is_the_login_form.errors %}
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
       {{ error }}
     </div>
     {% endfor %}
   {% endif %}
-  <div class="control-group">
-    <div class="control-label">
-        <label for="id_username" class="required">{% trans 'Username:' %}</label> 
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+        <label for="id_username" class="required">{% trans 'Username:' %}</label>
     </div>
-    <div class="controls">
+    <div class="controls col-sm-10">
         {{ form.username }}
         {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.username.errors|striptags }}</span>{% endif %}
     </div>
   </div>
-  <div class="control-group">
-    <div class="control-label">
-        <label for="id_password" class="required">{% trans 'Password:' %}</label> 
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+        <label for="id_password" class="required">{% trans 'Password:' %}</label>
     </div>
-    <div class="controls">
+    <div class="controls col-sm-10">
         {{ form.password }}
         {% if not form.this_is_the_login_form.errors %}<span class="help-inline">{{ form.password.errors|striptags }}</span>{% endif %}
     </div>
@@ -73,15 +73,17 @@
   </div>
   {% url 'admin_password_reset' as password_reset_url %}
   {% if password_reset_url %}
-  <div class="control-group">
-    <div class="controls">
+  <div class="form-group">
+    <div class="controls col-sm-offset-2 col-sm-10">
         <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
     </div>
   </div>
   {% endif %}
+  <div class="form-actions clearfix">
+    <div class="controls col-sm-offset-2 col-sm-10">
+      <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
+    </div>
   </div>
-  <div class="form-actions">
-    <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
   </div>
 </form>
 
