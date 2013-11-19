@@ -35,9 +35,9 @@
 {% if not is_popup %}
 {% block breadcrumbs %}
 <ul class="breadcrumb">
-<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
-<!--<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</a> <span class="divider">/</span></li>-->
-<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{  app_label|title }}</a> <span class="divider">/</span></li>
+<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
+<!--<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{% render_with_template_if_exist app_label|lower|add:"/admin_app_name.html" app_label %}</a></li>-->
+<li><a href="{% url 'admin:app_list' app_label=cl.opts.app_label %}">{{ app_label|title }}</a></li>
 <li>{{ cl.opts.verbose_name_plural|capfirst }}</li>
 </ul>
 {% endblock %}
@@ -46,12 +46,12 @@
 {% block coltype %}flex{% endblock %}
 
 {% block object-tools %}
-    <ul class="object-tools form-inline pull-left inline">
+    <ul class="object-tools pull-left navbar-form list-unstyled">
         {% block object-tools-items %}
         {% if has_add_permission %}
         <li>
         <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary">
-            <i class="icon-plus icon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+            <span class="glyphicon glyphicon-plus"></span> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
         </a>
         </li>
         {% endif %}
@@ -64,9 +64,9 @@
     <div class="pull-right">
         {% block search %}{% search_form cl %}{% endblock %}
         {% if cl.has_filters %}
-        <ul class="nav pull-right">
+        <ul class="nav navbar-nav pull-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Filter' %} <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Filter' %} <span class="caret"></span></a>
                 <ul class="dropdown-menu pull-right">
                     {% for spec in cl.filter_specs %}
                         {% admin_list_filter cl spec %}
@@ -82,58 +82,49 @@
 <form class="" id="changelist-form" action="" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %}>{% csrf_token %}
 
 {% if cl.formset.errors %}
-<div class="row-fluid">
-    <div class="alert alert-error">
-        <p class="errornote">
-            {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
-        </p>
-        {{ cl.formset.non_form_errors }}
-    </div>
+<div class="alert alert-error">
+    <p class="errornote">
+        {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+    </p>
+    {{ cl.formset.non_form_errors }}
 </div>
 {% endif %}
 
-<div class="row-fluid">
 
-    {% with app_name=cl.opts.module_name|lower|slugify %}
-        {% render_with_template_if_exist cl.opts.app_label|lower|add:"/admin_app_"|add:app_name|add:"_description.html" "" %}
-    {% endwith %}
+{% with app_name=cl.opts.module_name|lower|slugify %}
+    {% render_with_template_if_exist cl.opts.app_label|lower|add:"/admin_app_"|add:app_name|add:"_description.html" "" %}
+{% endwith %}
 
-    <div class="span12">
+<div id="content-main">
+    <div class="module{% if cl.has_filters %} filtered{% endif %}" id="_changelist">
+        {% block date_hierarchy %}
+            {% date_hierarchy cl %}
+        {% endblock %}
 
-        <div id="content-main" class="row-fluid">
-            <div class="module{% if cl.has_filters %} filtered{% endif %}" id="_changelist">
-                {% block date_hierarchy %}
-                    {% date_hierarchy cl %}
-                {% endblock %}
+        {% if cl.formset %}
+            <div>{{ cl.formset.management_form }}</div>
+        {% endif %}
 
-                {% if cl.formset %}
-                    <div>{{ cl.formset.management_form }}</div>
-                {% endif %}
-
-                {% block result_list %}
-                    {% result_list cl %}
-                {% endblock %}
-            </div>
-        </div>
-        {# {% if cl.formset and cl.result_count %} #}
-        <div class="row-fluid">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <div class="form-inline pull-left">
-                        {% if action_form and cl.full_result_count %}
-                            {% admin_actions %}
-                        {% endif %}
-                    </div>
-                    <div class="pull-right">
-                        <input type="submit" name="_save" class="btn btn-primary default" value="{% trans 'Save' %}"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {# {% endif %} #}
+        {% block result_list %}
+            {% result_list cl %}
+        {% endblock %}
     </div>
-
 </div>
+{# {% if cl.formset and cl.result_count %} #}
+<div class="navbar navbar-default">
+    <div class="navbar-inner">
+        <div class="navbar-form pull-left">
+            {% if action_form and cl.full_result_count %}
+                {% admin_actions %}
+            {% endif %}
+        </div>
+        <div class="navbar-form pull-right">
+            <input type="submit" name="_save" class="btn btn-primary default" value="{% trans 'Save' %}"/>
+        </div>
+    </div>
+</div>
+{# {% endif %} #}
+
 {% block pagination %}
     {% pagination cl %}
 {% endblock %}
