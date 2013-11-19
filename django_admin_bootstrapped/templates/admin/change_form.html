@@ -52,44 +52,41 @@
         {{ adminform.form.non_field_errors }}
     </div>
     {% endif %}
-    <div class="row-fluid">
-        {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
-    </div>
-    <div class="row-fluid">
-        <div id="content-main" class="span12">
-            <div>
-            {% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
 
-            {% block field_sets %}
-            {% for fieldset in adminform %}
-              {% include "admin/includes/fieldset.html" %}
-            {% endfor %}
-            {% endblock %}
+    {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
 
-            {% block after_field_sets %}{% endblock %}
+    <div id="content-main">
+        <div>
+        {% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
 
-            {% block inline_field_sets %}
-            {% for inline_admin_formset in inline_admin_formsets %}
-                {% include inline_admin_formset.opts.template %}
-            {% endfor %}
-            {% endblock %}
+        {% block field_sets %}
+        {% for fieldset in adminform %}
+          {% include "admin/includes/fieldset.html" %}
+        {% endfor %}
+        {% endblock %}
 
-            {% block after_related_objects %}{% endblock %}
+        {% block after_field_sets %}{% endblock %}
 
-            {% if adminform and add %}
-               <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
-            {% endif %}
+        {% block inline_field_sets %}
+        {% for inline_admin_formset in inline_admin_formsets %}
+            {% include inline_admin_formset.opts.template %}
+        {% endfor %}
+        {% endblock %}
 
-            {# JavaScript for prepopulated fields #}
-            {% prepopulated_fields_js %}
+        {% block after_related_objects %}{% endblock %}
 
-            </div>
+        {% if adminform and add %}
+           <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
+        {% endif %}
+
+        {# JavaScript for prepopulated fields #}
+        {% prepopulated_fields_js %}
+
         </div>
     </div>
-    <div class="row-fluid">
-        <div class="form-actions">
-            {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
-        </div>
+
+    <div class="form-actions">
+        {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
     </div>
 </form>
 {% endblock %}
