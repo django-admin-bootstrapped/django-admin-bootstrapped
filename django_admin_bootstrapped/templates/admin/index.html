@@ -14,9 +14,9 @@
 {% endblock %}
 
 {% block object-tools %}
-<ul class="nav">
+<ul class="nav navbar-nav">
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
             {% for app in app_list %}
             <li class="dropdown-submenu">
@@ -41,8 +41,8 @@
 
 
 {% block content %}
-<div class="row-fluid">
-    <div id="content-main" class="span12">
+<div class="row">
+    <div id="content-main" class="col-sm-12">
 
         <div class="tabbable">
             {% for app in app_list %}
@@ -61,10 +61,12 @@
                             {% if model.add_url or model.admin_url%}
                             <div class="pull-right">
                                 {% if model.add_url %}
-                                <a href="{{ model.add_url }}" class="btn btn-mini addlink"><i class="icon-plus"></i> {% trans 'Add' %}</a>
+                                <a href="{{ model.add_url }}" class="btn btn-xs addlink"><span class="glyphicon glyphicon-plus"></span>
+                                {% trans 'Add' %}</a>
                                 {% endif %}
                                 {% if model.admin_url %}
-                                <a href="{{ model.admin_url }}" class="btn btn-mini changelink"><i class="icon-edit"></i> {% trans 'Change' %}</a>
+                                <a href="{{ model.admin_url }}" class="btn btn-xs changelink"><span class="glyphicon glyphicon-edit"></span>
+                                {% trans 'Change' %}</a>
                                 {% endif %}
                             </div>
                             {% endif %}
