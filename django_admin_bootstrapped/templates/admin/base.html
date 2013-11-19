@@ -15,7 +15,7 @@
         padding-bottom: 40px;
       }
     </style>
-    <link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet"/>
+    <link href="{% static "bootstrap/css/bootstrap-theme.min.css" %}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
 
     <!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
@@ -72,7 +72,7 @@
                             </ul>
                         </li>
                         {% block languages %}
-                        <li class="divider-vertical"></li> 
+                        <li class="divider-vertical"></li>
                         {% language_selector %}
                         {% endblock languages %}
                         {% block logs %}
