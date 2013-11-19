@@ -125,13 +125,11 @@
     <!-- Content -->
     <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block navbar %}
-        <div class="row">
-            <div class="navbar navbar-default">
-                <div class="navbar-inner">
-                    {% block pretitle %}{% endblock %}
-                    {% block content_title %}{% if title %}<a class="navbar-brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>{% endif %}{% endblock %}
-                    {% block object-tools %}{% endblock %}
-                </div>
+        <div class="navbar navbar-default">
+            <div class="navbar-inner">
+                {% block pretitle %}{% endblock %}
+                {% block content_title %}{% if title %}<a class="navbar-brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>{% endif %}{% endblock %}
+                {% block object-tools %}{% endblock %}
             </div>
         </div>
         {% endblock navbar %}
