@@ -7,13 +7,13 @@ a:focus {
 .sidebar-nav {
     padding: 9px 0;
 }
-.control-group input[type=text] {
+.form-group input[type=text] {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
     height: 28px;
 }
-.control-group select {
+.form-group select {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */

@@ -98,7 +98,7 @@ TODO 2: Don't presume the object id field's name attribute is `object_id`
             $.get(detailPageURL).done(function(responseText) {
                 var html = $.parseHTML(responseText);
                 $.each(html, function(i, el) {
-                    if ((el.className || '').indexOf('container-fluid') === -1) { return; }
+                    if ((el.className || '').indexOf('container') === -1) { return; }
                     $lookedUpItem.text(($(el).find('.breadcrumb li:last').text() || ''));
                     $lookedUpItem.attr('href', detailPageURL);
                     return false;
