@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load i18n %}{% load admin_static bootstrapped_goodies_tags %}{% load url from future %}
+
+{% block title %}{% render_with_template_if_exist "admin/admin_title.html" "Django administration" %} | {% trans 'Django site admin' %}{% endblock %}
+
+{% block branding %}
+<a class="brand" href="{% url 'admin:index' %}">{% render_with_template_if_exist "admin/admin_title.html" "Django administration" %}</a>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

@@ -1,0 +1,10 @@
+{% load i18n %}
+<div class="pull-left">
+    {% if show_delete_link %}<a class="btn btn-danger deletelink" href="delete/">{% trans "Delete" %}</a>{% endif %}
+</div>
+<div class="pull-right">
+{% if show_save_as_new %}<input type="submit" value="{% trans 'Save as new' %}" class="btn" name="_saveasnew" {{ onclick_attrib }}/>{%endif%}
+{% if show_save_and_add_another %}<input type="submit" value="{% trans 'Save and add another' %}" class="btn" name="_addanother" {{ onclick_attrib }} />{% endif %}
+{% if show_save_and_continue %}<input type="submit" value="{% trans 'Save and continue editing' %}" class="btn" name="_continue" {{ onclick_attrib }}/>{% endif %}
+{% if show_save %}<input type="submit" value="{% trans 'Save' %}" class="btn btn-primary default" name="_save" {{ onclick_attrib }}/>{% endif %}
+</div>
