@@ -1,0 +1,22 @@
+{% extends "admin/index.html" %}
+{% load i18n bootstrapped_goodies_tags %}
+{% load url from future %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
+{% for app in app_list %}
+<li>{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}</li>
+{% endfor %}
+</ul>
+{% endblock %}
+{% endif %}
+
+{% block content_title %}
+{% for app in app_list %}
+<a class="navbar-brand">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %} {% trans "administration" %}</a>
+{% endfor %}
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

@@ -1,0 +1,2 @@
+{% load i18n admin_static bootstrapped_goodies_tags %}
+<h2 id='{{ app.name }}' class="app-name"><a href="{{ app.app_url }}">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}</a></h2>
