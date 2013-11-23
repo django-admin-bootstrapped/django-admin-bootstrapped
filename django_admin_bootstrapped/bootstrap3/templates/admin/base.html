@@ -53,18 +53,20 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="btn navbar-btn" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                {% block branding %}{% endblock %}
-                <div class="navbar-collapse collapse pull-right">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    {% block branding %}{% endblock %}
+                </div>
+                <div class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
                         {% if user.is_active and user.is_staff %}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <span class="caret"></span></a>
-                            <ul class="dropdown-menu pull-right">
+                            <ul class="dropdown-menu">
                                 {% if user.has_usable_password %}
                                 <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
                                 {% endif %}
@@ -80,7 +82,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
                             {% load log %}
                             {% get_admin_log 10 as admin_log for_user user %}
-                            <ul class="dropdown-menu pull-right">
+                            <ul class="dropdown-menu">
                                 {% for entry in admin_log %}
                                 <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
                                     <a href="{% if entry.is_deletion or not entry.get_admin_url %}#{% else %}{{ entry.get_admin_url }}{% endif %}">
