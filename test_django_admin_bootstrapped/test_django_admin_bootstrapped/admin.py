@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_admin_bootstrapped.admin.models import SortableInline
-from models import TestMe, TestThat, TestMeProxyForFieldsets, TestSortable
+from .models import TestMe, TestThat, TestMeProxyForFieldsets, TestSortable
 
 
 class TestThatStackedInline(admin.StackedInline):

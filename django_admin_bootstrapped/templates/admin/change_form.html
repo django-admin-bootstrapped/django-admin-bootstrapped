@@ -40,7 +40,7 @@
 {% block content %}
 
 {% with module_name=opts.module_name|lower|slugify %}
-    {% render_with_template_if_exist opts.app_label|lower|add:"/admin_model_"|add:module_name|add:"_change_form.html" "" %}
+    {% render_with_template_if_exist opts.app_label|add:"/admin_model_"|add:module_name|add:"_change_form.html" "" %}
 {% endwith %}
 
 

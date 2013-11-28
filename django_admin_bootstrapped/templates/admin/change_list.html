@@ -95,7 +95,7 @@
 <div class="row-fluid">
 
     {% with app_name=cl.opts.module_name|lower|slugify %}
-        {% render_with_template_if_exist cl.opts.app_label|lower|add:"/admin_app_"|add:app_name|add:"_description.html" "" %}
+        {% render_with_template_if_exist cl.opts.app_label|add:"/admin_app_"|add:app_name|add:"_description.html" "" %}
     {% endwith %}
 
     <div class="span12">
