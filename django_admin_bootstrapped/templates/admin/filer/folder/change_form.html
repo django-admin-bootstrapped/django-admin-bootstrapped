@@ -4,7 +4,7 @@
 
 {% block breadcrumbs %}
 <ul class="breadcrumb">
-    <li><a href="{% url 'admin:index' %}" title="{% trans "Go back to" %} {% trans "admin homepage" %}">{% trans "Home" %}</a><span class="divider">/</span></li>
+    <li><a href="{% url 'admin:index' %}" title="{% trans "Go back to" %} {% trans "admin homepage" %}"><i class="icon-home"></i> {% trans "Home" %}</a><span class="divider">/</span></li>
     <li><a href="{% url 'admin:index' %}filer/" title="{% trans "Go back to" %} {% trans "Filer" %}"> {% trans "Media" %}</a><span class="divider">/</span></li>
     <li><a href="{% url 'admin:filer-directory_listing-root' %}" title="{% trans "Go back to" %} '{% trans "root"|title %}' {% trans "folder" %}">{% trans "root"|title %}</a><span class="divider">/</span></li>
     {% for ancestor_folder in original.get_ancestors %}

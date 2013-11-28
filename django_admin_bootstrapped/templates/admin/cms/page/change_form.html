@@ -74,7 +74,7 @@ fieldset.collapsed h2,
 
 {% block breadcrumbs %}{% if not is_popup %}
 <ul class="breadcrumb">
-	<li><a href="../../../">{% trans "Home" %}</a><span class="divider">/</span></li>
+	<li><a href="../../../"><i class="icon-home"></i> {% trans "Home" %}</a><span class="divider">/</span></li>
 	<li><a href="../../">{{ app_label|capfirst|escape }}</a><span class="divider">/</span></li>
 	{% if has_change_permission %}<li><a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}<span class="divider">/</span></li>
 	<li>{% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original.get_title|truncatewords:"18" }}{% endif %}</li>
@@ -290,7 +290,7 @@ fieldset.collapsed h2,
 	<div class="form-actions"{% if is_popup %} style="overflow: auto;"{% endif %}>
 		<div class="pull-right">
 			<button type="submit" name="_continue" class="btn" {{ onclick_attrib }}>{% trans 'Save and continue editing' %}</button>
-			<button type="submit" name="_save" class="btn btn-primary" {{ onclick_attrib }}>{% trans 'Save' %}</button>
+			<button type="submit" name="_save" class="btn btn-success" {{ onclick_attrib }}><i class="icon-hdd icon-white"></i> {% trans 'Save' %}</button>
 		</div>
 	</div>
 {% else %}

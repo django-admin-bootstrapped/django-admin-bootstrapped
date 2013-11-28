@@ -38,7 +38,7 @@
 <div id="content-main">
 <form class="form-signin form-horizontal" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
   <div class="form-signin-inner">
-  {% blocktrans %}<h2>Login</h2>{% endblocktrans %}
+  {% blocktrans %}<h2 style="text-align:center;width:100%;padding-left:0;">Login</h2>{% endblocktrans %}
   {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
     <div class="alert alert-error">
        {% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
@@ -81,7 +81,7 @@
   {% endif %}
   </div>
   <div class="form-actions">
-    <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
+    <input type="submit" value="{% trans 'Log in' %}" class="btn btn-success" />
   </div>
 </form>
 

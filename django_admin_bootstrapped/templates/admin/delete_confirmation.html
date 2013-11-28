@@ -5,7 +5,7 @@
 
 {% block breadcrumbs %}
 <ul class="breadcrumb">
-<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
+<li><a href="{% url 'admin:index' %}"><i class="icon-home"></i> {% trans 'Home' %}</a> <span class="divider">/</span></li>
 <li><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ app_label|capfirst }}</a> <span class="divider">/</span></li>
 <li><a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst|escape }}</a> <span class="divider">/</span></li>
 <li><a href="{% url opts|admin_urlname:'changelist' %}{{ object.pk }}">{{ object|truncatewords:"18" }}</a> <span class="divider">/</span></li>
@@ -37,7 +37,7 @@
     <form action="" method="post">{% csrf_token %}
     <div>
     <input type="hidden" name="post" value="yes" />
-    <input type="submit" value="{% trans "Yes, I'm sure" %}" />
+    <input type="submit" class="btn btn-danger" value="{% trans "Yes, I'm sure" %}" />
     </div>
     </form>
 {% endif %}

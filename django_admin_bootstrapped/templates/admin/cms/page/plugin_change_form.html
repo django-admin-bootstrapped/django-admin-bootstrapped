@@ -81,7 +81,7 @@
  
 {% block breadcrumbs %}{% if not is_popup %}
 <ul class="breadcrumb">
-  <li><a href="../../../">{% trans "Home" %}</a> <span class="divider">/</span></li>
+  <li><a href="../../../"><i class="icon-home"></i> {% trans "Home" %}</a> <span class="divider">/</span></li>
   <li><a href="../../">{{ app_label|capfirst|escape }}</a> <span class="divider">/</span></li>
   <li>{% if has_change_permission %}<a href="../">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %} <span class="divider">/</span></li>
   <li>{% if add %}{% trans "Add" %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}</li>

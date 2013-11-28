@@ -8,15 +8,14 @@
     {% block extrastyle %}{% endblock %}
 
     <!-- Le styles, placed after extrastyle to correctly override default styling -->
-    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet"/>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"/>
     <style type="text/css">
-      body {
+      body{
         padding-top: 60px;
-        padding-bottom: 40px;
       }
     </style>
-    <link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
+    <link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/overrides.css' %}" />
 
     <!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
     <script type="text/javascript">
@@ -24,8 +23,8 @@
         window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";
     //]]>
     </script>
-    <script src="{% static "admin/js/jquery-1.9.1.min.js" %}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static 'admin/js/jquery-1.9.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
     {% block extrahead %}{% endblock %}
 
@@ -46,7 +45,7 @@
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
 
 <!-- Container -->
-<div class="container-fluid">
+<div class="container" style="padding-bottom:50px;">
 
     {% if not is_popup %}
     <!-- Header -->
@@ -63,12 +62,12 @@
                     <ul class="nav">
                         {% if user.is_active and user.is_staff %}
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> {% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.first_name user.username %}{% endfilter %}</strong> <b class="caret"></b></a>
                             <ul class="dropdown-menu pull-right">
                                 {% if user.has_usable_password %}
-                                <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                                <li><a href="{% url 'admin:password_change' %}"><i class="icon-lock"></i> {% trans 'Change password' %}</a></li>
                                 {% endif %}
-                                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+                                <li><a href="{% url 'admin:logout' %}"><i class="icon-off"></i> {% trans 'Log out' %}</a></li>
                             </ul>
                         </li>
                         {% block languages %}
@@ -77,7 +76,7 @@
                         {% endblock languages %}
                         {% block logs %}
                         <li class="dropdown" id="recent-actions-module">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list-alt icon-white"></i> {% trans 'Recent Actions' %} <b class="caret"></b></a>
                             {% load log %}
                             {% get_admin_log 10 as admin_log for_user user %}
                             <ul class="dropdown-menu pull-right">
@@ -125,7 +124,6 @@
     <!-- Content -->
     <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block navbar %}
-        <div class="row-fluid">
             <div class="navbar">
                 <div class="navbar-inner">
                     {% block pretitle %}{% endblock %}
@@ -133,7 +131,6 @@
                     {% block object-tools %}{% endblock %}
                 </div>
             </div>
-        </div>
         {% endblock navbar %}
 
         {% block messages %}
@@ -158,6 +155,10 @@
     <!-- END Content -->
 
     {% block footer %}<footer id="footer"></footer>{% endblock %}
+    <hr />
+    <!--Copyright Info -->
+        <span style="width:100%;">&copy; {% now "Y" %}</span>
+    <!-- END Copyright Info -->
 </div>
 <!-- END Container -->
 

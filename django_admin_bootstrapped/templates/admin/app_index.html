@@ -5,7 +5,7 @@
 {% if not is_popup %}
 {% block breadcrumbs %}
 <ul class="breadcrumb">
-<li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a> <span class="divider">/</span></li>
+<li><a href="{% url 'admin:index' %}"><i class="icon-home"></i> {% trans 'Home' %}</a> <span class="divider">/</span></li>
 {% for app in app_list %}
 <li>{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}{% if not forloop.last %} <span class="divider">/</span>{% endif %}</li>
 {% endfor %}

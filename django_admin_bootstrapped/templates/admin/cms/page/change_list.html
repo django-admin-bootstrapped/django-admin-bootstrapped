@@ -5,7 +5,7 @@
 
 {% if not is_popup %}{% block breadcrumbs %}
 <ul class="breadcrumb">
-    <li><a href="../../">{% trans "Home" %}</a> <span class="divider">/</span></li>
+    <li><a href="../../"><i class="icon-home"></i> {% trans "Home" %}</a> <span class="divider">/</span></li>
     <li><a href="../">{{ app_label|capfirst|escape }}</a> <span class="divider">/</span></li>
     <li>{{ opts.verbose_name_plural|capfirst|escape }}</li>
 </ul>
