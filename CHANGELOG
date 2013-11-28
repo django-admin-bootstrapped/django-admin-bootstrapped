@@ -1,3 +1,7 @@
+==== 1.6.2 (2013-11-28) ====
+
+- Boostrap 3 theme (thanks to ze-phyr-us). In order to use it, add `django_admin_bootstrapped.bootstrap3` before `django_admin_bootstrapped` into your `INSTALLED_APPS` setting.
+
 ==== 1.6.1 (2013-11-16) ====
 
 - FIX #56: jquery now loaded from local installation, not the CDN
