@@ -1,5 +1,53 @@
 /* overrides to default admin style */
 
+.search-input-icon {
+    background:url("../img/search.png") no-repeat 210px;
+}
+.app-model-name{
+    font-size: 18px;
+}
+h2 {
+    font-size: 20px;
+    max-width: 520px;
+    padding-left: 20px;
+    background-color: #E4EFFC;
+    background-image: -moz-linear-gradient(top, #ffffff, #E4EFFC);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#E4EFFC));
+    background-image: -webkit-linear-gradient(top, #ffffff, #E4EFFC);
+    background-image: -o-linear-gradient(top, #ffffff, #E4EFFC);
+    background-image: linear-gradient(to bottom, #ffffff, #E4EFFC);
+    background-repeat: repeat-x;border: 1px solid #d4d4d4;
+    -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+            border-radius: 4px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#E4EFFC', GradientType=0);
+    *zoom: 1;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+        -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+h2 > a {
+    color: #444;
+}
+h2 > a:hover {
+    color: #000;
+}
+.breadcrumb > li {
+    display: inline-block;
+    color: #00B85F;
+    font-weight: bold;
+    *display: inline;
+    *zoom: 1;
+}
+.breadcrumb > li > .divider {
+    padding: 0 5px;
+    color: #333;
+    font-weight: bold;
+}
+
 a:active,
 a:focus {
     outline: none;
