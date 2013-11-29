@@ -15,7 +15,7 @@ A Django admin theme using Twitter Bootstrap. It doesn't need any kind of modifi
 
 ### Switch to Bootstrap3
 
-Do the previous steps, then add `'django_admin_boostrapped.bootstrap3'` into the `INSTALLED_APPS` list __before__ `'django_admin_boostrapped'`.
+Do the previous steps, then add `'django_admin_bootstrapped.bootstrap3'` into the `INSTALLED_APPS` list __before__ `'django_admin_bootstrapped'`.
 
 ## Goodies
 
