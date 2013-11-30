@@ -33,10 +33,12 @@
         </ul>
     {% endif %}
 {% else %}
+<div class="alert alert-danger">
     <p>{% blocktrans %}Are you sure you want to delete the selected {{ objects_name }}? All of the following objects and their related items will be deleted:{% endblocktrans %}</p>
     {% for deletable_object in deletable_objects %}
         <ul>{{ deletable_object|unordered_list }}</ul>
     {% endfor %}
+</div>
     <form action="" method="post">{% csrf_token %}
     <div>
     {% for obj in queryset %}
@@ -48,6 +50,7 @@
         <div class="pull-right">
             <input type="submit" class="btn btn-danger" value="{% trans "Yes, I'm sure" %}" />
         </div>
+    </div>
     </div>
     </div>
     </form>

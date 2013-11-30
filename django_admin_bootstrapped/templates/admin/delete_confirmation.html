@@ -32,12 +32,20 @@
         </ul>
     {% endif %}
 {% else %}
+
+<div class="alert alert-danger">
+
     <p>{% blocktrans with escaped_object=object %}Are you sure you want to delete the {{ object_name }} "{{ escaped_object }}"? All of the following related items will be deleted:{% endblocktrans %}</p>
     <ul>{{ deleted_objects|unordered_list }}</ul>
+</div>
     <form action="" method="post">{% csrf_token %}
     <div>
     <input type="hidden" name="post" value="yes" />
-    <input type="submit" value="{% trans "Yes, I'm sure" %}" />
+    <div class="form-actions">
+        <div class="pull-right">
+            <input type="submit" value="{% trans "Yes, I'm sure" %}" />
+        </div>
+    </div>
     </div>
     </form>
 {% endif %}
