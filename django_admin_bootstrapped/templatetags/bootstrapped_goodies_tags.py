@@ -32,3 +32,8 @@ def language_selector(context):
         except:
             pass
     return output
+
+
+@register.filter(name='column_width')
+def column_width(value):
+    return 12/len(list(value))
