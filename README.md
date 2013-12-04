@@ -1,5 +1,7 @@
 django-admin-bootstrapped
 =========================
+[![PyPI version](https://pypip.in/d/django-admin-bootstrapped/badge.png)](https://pypi.python.org/pypi/django-admin-bootstrapped)
+
 
 A Django admin theme using Twitter Bootstrap. It doesn't need any kind of modification on your side, just add it to the installed apps.
 
