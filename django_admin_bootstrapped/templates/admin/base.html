@@ -25,6 +25,7 @@
     //]]>
     </script>
     <script src="{% static "admin/js/jquery-1.9.1.min.js" %}"></script>
+    <script src="{% static "admin/js/jquery-migrate-1.2.1.min.js" %}"></script>
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 
     {% block extrahead %}{% endblock %}
@@ -72,7 +73,7 @@
                             </ul>
                         </li>
                         {% block languages %}
-                        <li class="divider-vertical"></li> 
+                        <li class="divider-vertical"></li>
                         {% language_selector %}
                         {% endblock languages %}
                         {% block logs %}
