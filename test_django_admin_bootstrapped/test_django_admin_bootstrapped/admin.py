@@ -1,6 +1,8 @@
+from django.db import models
 from django.contrib import admin
 from django_admin_bootstrapped.admin.models import SortableInline
 from .models import TestMe, TestThat, TestMeProxyForFieldsets, TestSortable
+from redactor.widgets import RedactorEditor
 
 
 class TestThatStackedInline(admin.StackedInline):
@@ -15,6 +17,12 @@ class TestSortable(admin.StackedInline, SortableInline):
     model = TestSortable
     extra = 0
 
+class BsRedactorEditor(RedactorEditor):
+    def __init__(self, *args, **kwargs):
+        super(BsRedactorEditor, self).__init__(*args, **kwargs)
+        self.Media.js = (
+            'redactor/redactor.js',
+        )
 
 class TestMeAdmin(admin.ModelAdmin):
     list_display = ['test_ip', 'test_url', 'test_int', 'test_img', 'test_file', 'test_date', 'test_char', 'test_bool', 'test_time', 'test_slug', 'test_text', 'test_email', 'test_float', 'test_bigint', 'test_positive_integer', 'test_decimal', 'test_comma_separated_int', 'test_small_int', 'test_nullbool', 'test_filepath', 'test_positive_small_int', ]
@@ -26,6 +34,9 @@ class TestMeAdmin(admin.ModelAdmin):
     inlines = [TestThatStackedInline, TestThatTabularInline, TestSortable]
     save_as = True
     save_on_top = True
+    formfield_overrides = {
+       models.TextField: {'widget': BsRedactorEditor},
+    }
 
 
 class TestMeAdminFieldsets(TestMeAdmin):
