@@ -1,3 +1,10 @@
+==== 1.6.3 (2013-12-04) ====
+
+- Added jquery-migrate to better support external plugins
+- Bootstrap 3: fix display of column groups. Also uses bootstrap grid for layout of multiple fields per row
+- Error in README: updated instruction refering to where to place templates when embedding them in an app
+- Fixing actions_on_top Go button not working
+
 ==== 1.6.2 (2013-11-28) ====
 
 - Boostrap 3 theme (thanks to ze-phyr-us). In order to use it, add `django_admin_bootstrapped.bootstrap3` before `django_admin_bootstrapped` into your `INSTALLED_APPS` setting.
