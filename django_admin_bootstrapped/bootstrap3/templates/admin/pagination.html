@@ -4,8 +4,8 @@
 {% load admin_list %}
 {% load i18n %}
 {% if pagination_required %}
-<div class="pagination pagination-small pagination-centered">
-    <ul>
+<div>
+    <ul class="pagination">
     {% for i in page_range %}
         {% if i == "." %}
             <li><span>{% paginator_number cl i %}</span></li>
