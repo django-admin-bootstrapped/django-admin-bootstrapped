@@ -34,7 +34,7 @@
                 <td>
                     {% if item.file_type == 'Folder' %}
                     <div class="pull-right">
-                        <a class="btn btn-mini changelink" href="{{ subfolder.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with subfolder.name as item_label %}Change '{{ item_label }}' folder details{% endblocktrans %}"><i class="icon-edit"></i> {% trans "Change" %}</a>
+                        <a class="btn btn-default btn-xs changelink" href="{{ subfolder.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with subfolder.name as item_label %}Change '{{ item_label }}' folder details{% endblocktrans %}"><i class="icon-edit"></i> {% trans "Change" %}</a>
                     </div>
                     {% endif %}
                     <div>
@@ -63,9 +63,9 @@
                 <td>
 
                     <div class="pull-right">
-                        <a class="btn btn-mini deletelink" href="{% url 'admin:filer_file_delete' file.pk %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}"" title="{% blocktrans with file.label as item_label %}Delete '{{ item_label }}'{% endblocktrans %}">{% trans "Delete" %}</a>
+                        <a class="btn btn-default btn-xs deletelink" href="{% url 'admin:filer_file_delete' file.pk %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}"" title="{% blocktrans with file.label as item_label %}Delete '{{ item_label }}'{% endblocktrans %}">{% trans "Delete" %}</a>
 
-                        <a class="btn btn-mini changelink" href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}"><i class="icon-edit"></i>{% trans "Change" %}</a>
+                        <a class="btn btn-default btn-xs changelink" href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}"><i class="icon-edit"></i>{% trans "Change" %}</a>
                     </div>
                     
                     <div>
@@ -81,7 +81,7 @@
                     {# {% if file.has_all_mandatory_data %}<div><img alt="0" src="{% admin_icon_base %}img/admin/icon-yes.gif" /> {% trans "has all mandatory metadata" %}</div>{% else %}<div><img alt="1" src="{% admin_icon_base %}img/admin/icon-no.gif"/> {% trans "missing metadata!" %}</div>{% endif %} #}
                 </td>
                 <td>
-                    <button class="btn btn-mini" type="submit" name="move-to-clipboard-{{ file.id }}" title="{% trans "Move to clipboard" %}"{% if file in clipboard_files %} disabled="disabled"{% endif %}>&rarr;</button>
+                    <button class="btn btn-default btn-xs" type="submit" name="move-to-clipboard-{{ file.id }}" title="{% trans "Move to clipboard" %}"{% if file in clipboard_files %} disabled="disabled"{% endif %}>&rarr;</button>
                 </td>
             </tr>
             {% endwith %}{% endif %}
