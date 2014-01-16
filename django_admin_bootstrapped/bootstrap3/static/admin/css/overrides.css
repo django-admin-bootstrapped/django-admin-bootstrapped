@@ -65,4 +65,4 @@ td.action-checkbox {
 
 .tooltip.in {opacity: 1} /* Hard to see against black text otherwise */
 
-#result_list {clear: both;}
+#_changelist {clear: both;}
