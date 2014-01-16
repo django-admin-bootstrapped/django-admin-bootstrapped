@@ -18,20 +18,20 @@
                     <input type="hidden" name="redirect_to" value="{{ current_url }}" />
                     {% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
                     {% if select_folder %}<input type="hidden" name="select_folder" value="1" />{% endif %}
-                    <button class="btn btn-mini" type="submit"{% if folder.is_root %} disabled="disabled" style="color: gray;"{% endif %} title="{% trans "Paste all items here" %}">&lArr;</button>
+                    <button class="btn btn-default btn-xs" type="submit"{% if folder.is_root %} disabled="disabled" style="color: gray;"{% endif %} title="{% trans "Paste all items here" %}">&lArr;</button>
                 </form>
                 <form action="{% url 'admin:filer-discard_clipboard' %}" method="post"  style="display: inline;">{% csrf_token %}
                     <input type="hidden" name="clipboard_id" value="{{ clipboard.id }}" />
                     <input type="hidden" name="redirect_to" value="{{ current_url }}" />
                     {% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
                     {% if select_folder %}<input type="hidden" name="select_folder" value="1" />{% endif %}
-                    <button class="btn btn-mini" type="submit" title="{% trans "Move all clipboard files to" %} '{% trans "unfiled files" %}' {% trans "folder" %}">{% trans "discard" %}</button>
+                    <button class="btn btn-default btn-xs" type="submit" title="{% trans "Move all clipboard files to" %} '{% trans "unfiled files" %}' {% trans "folder" %}">{% trans "discard" %}</button>
                 </form>{% comment %}
                 <form action="{% url 'admin:filer-delete_clipboard' %}" method="post"  style="display: inline;">{% csrf_token %}
                     <input type="hidden" name="clipboard_id" value="{{ clipboard.id }}" />
                     <input type="hidden" name="redirect_to" value="{{ current_url }}" />
                     {% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
-                    <button class="btn btn-mini" type="submit" title="{% trans "Delete all files in the clipboard" %}">{% trans "delete files" %}</button>
+                    <button class="btn btn-default btn-xs" type="submit" title="{% trans "Delete all files in the clipboard" %}">{% trans "delete files" %}</button>
                 </form>{% endcomment %}
             </td>
         </tr>

@@ -30,18 +30,18 @@
 		{% endfor %}</div>
 
 		<div class="col-actions">{% if not filtered %}
-			{% if has_move_page_permission %}<a href="#" class="btn btn-mini move" title="{% trans "Cut" %}" id="move-link-{{ page.id }}">{% trans "cut" %}</a>{% endif %}{% endif %}
-			{% if has_change_permission %}<a href="#" class="btn btn-mini copy" title="{% trans "Copy" %}" id="copy-link-{{ page.id }}">{% trans "copy" %}</a>{% endif %}
+			{% if has_move_page_permission %}<a href="#" class="btn btn-default btn-xs move" title="{% trans "Cut" %}" id="move-link-{{ page.id }}">{% trans "cut" %}</a>{% endif %}{% endif %}
+			{% if has_change_permission %}<a href="#" class="btn btn-default btn-xs copy" title="{% trans "Copy" %}" id="copy-link-{{ page.id }}">{% trans "copy" %}</a>{% endif %}
 
 			{% if has_add_page_permission and has_add_on_same_level_permission %}
-				<a href="#" class="btn btn-mini" title="{% trans "Add Child" %}" id="add-link-{{ page.id }}">{% trans "add child" %}</a>
+				<a href="#" class="btn btn-default btn-xs" title="{% trans "Add Child" %}" id="add-link-{{ page.id }}">{% trans "add child" %}</a>
 			{% else %}
 				{% if has_add_page_permission %}
 					{# if he can add page under current page, go directly to thi url #}
-					<a href="./add/?target={{ page.id }}&amp;position=last-child" class="btn btn-mini" title="{% trans "Add Child" %}" id="add-link-{{ page.id }}">{% trans "add child" %}</a>
+					<a href="./add/?target={{ page.id }}&amp;position=last-child" class="btn btn-default btn-xs" title="{% trans "Add Child" %}" id="add-link-{{ page.id }}">{% trans "add child" %}</a>
 				{% endif %}
 			{% endif %}
-			{% if has_delete_permission %}<a href="{{ page.id }}/delete/" title="{% trans "Delete" %}" class="btn btn-mini">{% trans "delete" %}</a>{% endif %}
+			{% if has_delete_permission %}<a href="{{ page.id }}/delete/" title="{% trans "Delete" %}" class="btn btn-default btn-xs">{% trans "delete" %}</a>{% endif %}
 		</div>
 
 		<div class="col-navigation">
@@ -60,7 +60,7 @@
 		{% if CMS_MODERATOR %}<div class="col-draft">
 			{% if moderator_should_approve %}<a href="./{{ page.id }}/approve/" class="icon approve" title="{% trans 'Approve directly' %}"></a>{% endif %}
 			<span class="state">{{ page_moderator_state.label }}</span>
-			<a href="./{{ page.id }}/preview/" class="btn btn-mini" id="view-page-{{page.id}}">{% trans "view" %}</a>
+			<a href="./{{ page.id }}/preview/" class="btn btn-default btn-xs" id="view-page-{{page.id}}">{% trans "view" %}</a>
 		</div>{% endif %}
 
 		<div class="col-published">
@@ -74,7 +74,7 @@
 				<label>{{ page.is_public_published|boolean_icon }}</label>
 				{% if page.is_public_published %}<a href="./{{ page.id }}/preview/?public=1" title="{% trans "View on page" %}" class="icon selector-add viewpage" id="view-page-{{page.id}}"><span>{% trans "view" %}</span></a>{% endif %}
 			{% else %}
-				<a href="./{{ page.id }}/preview/" class="btn btn-mini" id="view-page-{{page.id}}">{% trans "view" %}</a>
+				<a href="./{{ page.id }}/preview/" class="btn btn-default btn-xs" id="view-page-{{page.id}}">{% trans "view" %}</a>
 			{% endif %}
 		</div>
 
