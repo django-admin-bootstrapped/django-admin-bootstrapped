@@ -25,7 +25,7 @@ $.fn.sortable = function(options) {
         var placeholder;
 
         if (/^tbody$/i.test(this.tagName))
-            placeholder = $("<tr class='sortable-placeholder'>").append($('<td colspan="100%"'));
+            placeholder = $("<tr class='sortable-placeholder'>").append($('<td colspan="100%">'));
         else
             placeholder = $('<' + (/^ul|ol$/i.test(this.tagName) ? 'li' : 'div') + ' class="sortable-placeholder">').html("&nbsp;");
 
