@@ -55,7 +55,7 @@ Then in your admin.py create a class to handle the inline using the `django_admi
 
 You can now use the inline as usual. The result will look like this:
 
-<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_inlines.png">
+<img src="https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_inlines.png">
 
 This feature was brought to you by [Kyle Bock](https://github.com/kwbock). Thank you Kyle!
 
@@ -96,12 +96,12 @@ This feature (and many more) was brought to you by [Jacob Magnusson](https://git
 
 ### Homepage
 
-<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_v02_index.png">
+<img src="https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_index.png">
 
 ### List view with filters in dropdown
 
-<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_v02_list_filter.png">
+<img src="https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_list_filter.png">
 
 ### Change form view
 
-<img src="http://www.codingnot.es/static/screens/django_admin_bootstrapped_screen_v02_change_form.png">
+<img src="https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_change_form.png">
