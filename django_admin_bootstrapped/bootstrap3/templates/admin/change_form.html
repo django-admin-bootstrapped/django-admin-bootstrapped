@@ -47,7 +47,7 @@
 <form class="form-horizontal" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
     <div class="alert alert-warning">{% blocktrans %}Fields in <strong>bold</strong> are required.{% endblocktrans %}</div>
     {% if errors %}
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
         {% blocktrans count counter=errors|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
         {{ adminform.form.non_field_errors }}
     </div>
