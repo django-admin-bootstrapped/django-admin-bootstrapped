@@ -39,7 +39,7 @@
                             {% else %}
                                 {{ field.field }}
                             {% endif %}
-                            {% if not field.is_readonly and field.errors %}<span class="help-inline">{{ field.errors|striptags }}</span>{% endif %}
+                            {% if not field.is_readonly and field.errors %}<span class="text-danger">{{ field.errors|striptags }}</span>{% endif %}
                             {% if field.field.help_text %}
                                 <span class="help-block">{{ field.field.help_text|safe }}</span>
                             {% endif %}

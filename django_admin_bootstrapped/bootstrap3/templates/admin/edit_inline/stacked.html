@@ -27,7 +27,7 @@
           {% for fieldset in inline_admin_form %}{% for line in fieldset %}
           {% if line.errors %}
           {% for field in line %}
-          <div class="alert alert-error"><strong>{{ field.field.label }}:</strong> {{ field.errors|striptags }}</div>
+          <div class="alert alert-danger"><strong>{{ field.field.label }}:</strong> {{ field.errors|striptags }}</div>
           {% endfor %}
           {% endif %}
           {% endfor %}{% endfor %}

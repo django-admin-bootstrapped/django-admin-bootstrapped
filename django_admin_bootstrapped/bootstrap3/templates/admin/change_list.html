@@ -77,7 +77,7 @@
 <form class="" id="changelist-form" action="" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %}>{% csrf_token %}
 
 {% if cl.formset.errors %}
-<div class="alert alert-error">
+<div class="alert alert-danger">
     <p class="errornote">
         {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
     </p>
