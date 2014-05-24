@@ -1,3 +1,8 @@
+==== 1.6.5 (2014-05-24) ====
+
+- lot of bugfixes for the Bootstrap 3 theme (Guillaume Andreu Sabater, xwrogue3)
+- jquery scrollable fixes wrt inlines (xwrogue3)
+
 ==== 1.6.4 (2014-01-16) ====
 
 - lot of bugfixes for the Bootstrap 3 theme
