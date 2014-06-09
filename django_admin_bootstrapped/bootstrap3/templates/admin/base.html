@@ -36,7 +36,9 @@
             (function($) {
                 $(document).ready(function() {
                     $('input[type="submit"]').addClass('btn');
-                    $('[title]').tooltip();
+                    if($('[title]').length){
+                        $('[title]').tooltip();
+                    }
                 });
             }(jQuery));
     //]]>
