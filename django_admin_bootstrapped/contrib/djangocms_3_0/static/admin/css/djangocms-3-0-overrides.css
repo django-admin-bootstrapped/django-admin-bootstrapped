@@ -1,0 +1,173 @@
+body.popup {
+    padding:0!important;
+}
+
+/* Language Tabs */
+
+#page_form_lang_tabs input {
+    -moz-border-radius-bottomleft: 0;
+    -webkit-border-bottom-left-radius: 0;
+    border-bottom-left-radius: 0;
+    -moz-border-radius-bottomright: 0;
+    -webkit-border-bottom-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    background: #ccc !important;
+    color: #666 !important;
+    font-weight: normal !important;
+    border: none !important;
+    margin: 0
+}
+
+#page_form_lang_tabs input:hover, #page_form_lang_tabs input:focus {
+    color: black !important
+}
+
+#page_form_lang_tabs input.selected {
+    background: white !important;
+    color: black !important
+}
+
+#page_form_lang_tabs input.notfilled {
+    background: #f1f1f1 !important;
+    color: #bbb !important
+}
+
+#lang_tab_content h2.header {
+    background: #5bbdee !important;
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+    margin-bottom: -3px !important;
+    position: relative
+}
+
+.nani-language-tabs {
+    border-bottom: 5px solid #5bbdee;
+    margin-bottom: -3px;
+    position: relative
+}
+
+.nani-language-tabs > span {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+    border: none !important;
+    top: 0 !important;
+    color: #666 !important;
+    font-weight: normal !important;
+    vertical-align: top;
+    background: white;
+    padding: 8px 10px !important;
+    margin: 0 !important;
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px
+}
+
+.nani-language-tabs > span a {
+    color: #666 !important;
+    padding: 5px 10px
+}
+
+.nani-language-tabs > span a:hover, .nani-language-tabs > span a:focus {
+    color: black !important;
+    text-decoration: none
+}
+
+.nani-language-tabs > span .deletelink {
+    display: inline;
+    padding: 0 0 0 12px !important;
+    margin: 0;
+    -moz-border-radius-topleft: 0;
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -moz-border-radius-topright: 0;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+    background: url("../img/icon_deletelink.png") 0 0.25em no-repeat !important;
+    bottom: 0px !important;
+    right: -3px !important
+}
+
+.nani-language-tabs > .empty {
+    opacity: 1 !important;
+    background: #f1f1f1;
+    color: #888
+}
+
+.nani-language-tabs > .current {
+    background: #5bbdee;
+    color: white !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2)
+}
+
+.nani-language-tabs > .current .deletelink {
+    right: -12px !important
+}
+
+.inline-group .nani-language-tabs {
+    margin-bottom: 0
+}
+
+.inline-group .nani-language-tabs > span {
+    padding: 4px 10px !important
+}
+
+.inline-group .nani-language-tabs > .current {
+    padding-left: 20px !important;
+    padding-right: 20px !important
+}
+
+.inline-group .nani-language-tabs > .available {
+    background: #eee
+}
+
+/* Object tools */
+
+/* Page treelist */
+#sitemap li a.addlink {
+    background: url(../img/icon_addlink.gif) 0 .2em no-repeat;
+}
+
+#sitemap li a.deletelink {
+    background: url(../img/icon_deletelink.gif) 0 .2em no-repeat;
+}
+.col-navigation label {
+    line-height: 2em;
+}
+#sitemap li a.addlink, #sitemap li a.deletelink {
+    width: 13px;
+    height: 13px
+}
+
+.sitemap-noentry .addlink{
+    padding-left: 12px;
+}
+
+.tree .col1 .changelink {
+    float: left;
+    line-height: 16px !important;
+    margin: 6px 0 0 15px !important
+}
+
+.tree .changelink {
+    background-image: url("../img/icon_changelink_white.png")
+}
+
+#sitemap li .col-softroot span.icon {
+    background: url("../img/icon_softroot.png") 0 0 no-repeat;
+    width: 15px;
+    height: 15px;
+    margin: 7px 5px 0 0
+}

@@ -1,0 +1,96 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static admin_modify cms_admin %}
+{% load url from future %}
+
+{% block title %}{% trans "Change a page" %}{% endblock %}
+
+{% block extrahead %}
+<script src="{% static "admin/js/urlify.js" %}"></script>
+<script src="{% static "cms/js/libs/jquery.min.js" %}"></script>
+<script src="{% static "cms/js/libs/class.min.js" %}"></script>
+<script src="{% static "cms/js/modules/cms.base.js" %}"></script>
+<script src="{% static "cms/js/modules/cms.changeform.js" %}"></script>
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+{% block object-tools %}{% endblock %}
+
+<form class="form-horizontal" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="?language={{ language }}{%if request.GET.target %}&amp;target={{ request.GET.target }}{% endif %}{%if request.GET.position %}&amp;position={{ request.GET.position }}{% endif %}{% if request.GET.copy_target %}&amp;copy_target={{ request.GET.copy_target }}{% endif %}{% if request.GET.add_page_type %}&amp;add_page_type={{ request.GET.add_page_type }}{% endif %}" method="post" id="page_form">
+{% csrf_token %}
+{% block form_top %}{% endblock %}
+{{ adminForm.fields.parent }}
+
+<div style="display: none;"><input type="hidden" name="language" value="{{language}}" id="id_language"/></div>
+
+{% if show_language_tabs and not show_permissions %}
+<div id="page_form_lang_tabs">
+	{% for lang_code, lang_name in language_tabs %}
+		<input type="button" onclick="CMS.API.changeLanguage('./?language={{lang_code}}');"
+			class="language_button {% ifequal lang_code language %}selected{% else %}{% if not lang_code in filled_languages %} notfilled{% endif %}{% endifequal %}"
+			id="debutton" name="{{lang_code}}" value="{{lang_name}}" />
+	{% endfor %}
+	<div class="lang_tabs_line"></div>
+</div>
+{% endif %}
+
+<div id="lang_tab_content">
+{% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
+{% if save_on_top %}{% submit_row %}{% endif %}
+{% if errors %}
+<p class="errornote">
+{% blocktrans count errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+</p>
+<ul class="errorlist">{% for error in adminform.form.non_field_errors %}<li>{{ error }}</li>{% endfor %}</ul>
+{% endif %}
+
+{% for fieldset in adminform %}
+	{% include "admin/cms/page/includes/fieldset.html" %}
+{% endfor %}
+
+{% for inline_admin_formset in inline_admin_formsets %}
+	{% include inline_admin_formset.opts.template %}
+{% endfor %}
+
+{% if show_permissions %}
+	{% if CMS_PERMISSION and can_change_permissions %}
+	<div class="inline-group">
+		<div class="tabular inline-related">
+			<fieldset id="inherited_permissions" class="module aligned collapse">
+			  <h2>{% trans 'All permissions' %}</h2>
+			  <div class="loading" rel="../permissions/">{% trans 'Loading...' %}</div>
+			</fieldset>
+		</div>
+	</div>
+	{% endif %}
+{% endif %}
+
+{% block after_related_objects %}{% endblock %}
+
+{% if add %}
+	<div class="form-actions"{% if is_popup %} style="overflow: auto;"{% endif %}>
+		<div class="pull-right">
+			<input type="submit" name="_save" class="btn btn-primary default" value="{% trans 'Save' %}" {{ onclick_attrib }}/>
+			<input type="submit" name="_continue" class="btn" value="{% trans 'Save and continue editing' %}" {{ onclick_attrib }}/>
+		</div>
+	</div>
+{% else %}
+	{% page_submit_row %}
+{% endif %}
+</div>
+</form>
+</div>
+
+{% for url in unihandecode_urls %}<script src="{{ url }}"></script>{% endfor %}
+{% if unihandecode_urls %}
+<script>
+	var UNIHANDECODER = unihandecode.Unihan('{{ unihandecode_lang }}');
+</script>
+{% endif %}
+
+{# JavaScript for prepopulated fields #}
+{% prepopulated_fields_js %}
+
+{% endblock %}
