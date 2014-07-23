@@ -3,7 +3,7 @@ django-admin-bootstrapped
 
 |PyPI version|
 
-A Django admin theme using Twitter Bootstrap. It doesn't need any kind
+A Django admin theme using Bootstrap. It doesn't need any kind
 of modification on your side, just add it to the installed apps.
 
 Requirements
@@ -15,16 +15,9 @@ Installation
 ------------
 
 1. Download it from PyPi with ``pip install django-admin-bootstrapped``
-2. Add ``'django_admin_bootstrapped'`` into the ``INSTALLED_APPS`` list
+2. Add ``'django_admin_bootstrapped.bootstrap3'`` into the ``INSTALLED_APPS`` list
    **before** ``'django.contrib.admin'``
 3. Have fun!
-
-Switch to Bootstrap3
-~~~~~~~~~~~~~~~~~~~~
-
-Do the previous steps, then add
-``'django_admin_bootstrapped.bootstrap3'`` into the ``INSTALLED_APPS``
-list **before** ``'django_admin_bootstrapped'``.
 
 Goodies
 -------
