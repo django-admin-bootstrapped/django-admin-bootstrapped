@@ -6,7 +6,7 @@
       {% get_language_info for LANGUAGE_CODE as current %}
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current.name_local|capfirst }}<span class="caret"></span></a>
 
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu scrollable-dropdown-menu">
         {% for language in LANGUAGES %}
         {% if language.0 != LANGUAGE_CODE %}
         <li>

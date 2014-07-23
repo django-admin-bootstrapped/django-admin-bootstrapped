@@ -66,3 +66,18 @@ td.action-checkbox {
 .tooltip.in {opacity: 1} /* Hard to see against black text otherwise */
 
 #_changelist {clear: both;}
+
+.scrollable-dropdown-menu {
+    overflow-x: hidden;
+    max-height: 322px;
+}
+
+.scrollable-dropdown-menu li form a {
+    clear: both;
+    color: #333;
+    display: block;
+    font-weight: normal;
+    line-height: 1.42857;
+    padding: 3px 20px;
+    white-space: nowrap;
+}
