@@ -37,3 +37,8 @@ def language_selector(context):
 @register.filter(name='column_width')
 def column_width(value):
     return 12 // len(list(value))
+
+@register.filter(name='fieldset_column_width')
+def fieldset_column_width(fieldset):
+    width = max([len(list(line)) for line in fieldset])
+    return 12 // width
