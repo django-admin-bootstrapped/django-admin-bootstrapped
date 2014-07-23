@@ -36,4 +36,4 @@ def language_selector(context):
 
 @register.filter(name='column_width')
 def column_width(value):
-    return 12/len(list(value))
+    return 12 // len(list(value))
