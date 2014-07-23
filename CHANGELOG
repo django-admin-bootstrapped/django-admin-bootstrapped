@@ -1,3 +1,12 @@
+==== 1.6.6 (2014-07-23) ====
+
+WARNING: bootstrap2 is deprecated, please upgrade to bootstrap3, it will removed in a few releases
+
+- Fix fieldsets with more than one field per row #110 (Riccardo)
+- Fix language selector (Riccardo)
+- bootstrap3 misc fixes #111 (David Rideout)
+- fix django cms template in django 1.6 #107 (Riccardo, nordbit)
+
 ==== 1.6.5 (2014-05-24) ====
 
 - lot of bugfixes for the Bootstrap 3 theme (Guillaume Andreu Sabater, xwrogue3)
