@@ -15,8 +15,13 @@ Installation
 ------------
 
 1. Download it from PyPi with ``pip install django-admin-bootstrapped``
-2. Add ``'django_admin_bootstrapped.bootstrap3'`` into the ``INSTALLED_APPS`` list
-   **before** ``'django.contrib.admin'``
+2. Add into the ``INSTALLED_APPS`` **before** ``'django.contrib.admin'``:
+
+::
+ 
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
+
 3. Have fun!
 
 Goodies
@@ -76,6 +81,8 @@ this:
 
 You can now use the inline as usual. The result will look like this:
 
+.. image:: https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_inlines.png
+
 This feature was brought to you by `Kyle
 Bock <https://github.com/kwbock>`__. Thank you Kyle!
 
@@ -88,6 +95,8 @@ add the following to your settings.py: DEFAULT\_CONTENT\_TYPE =
 
 Generic lookups in admin
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: https://a248.e.akamai.net/camo.github.com/2848fec376b4af6d6a08e2a3a7d575569115f998/687474703a2f2f692e696d6775722e636f6d2f766970547453732e706e67
 
 All that needs to be done is change the admin widget with either
 formfield\_overrides like this:
@@ -126,11 +135,17 @@ Screenshots
 Homepage
 ~~~~~~~~
 
+.. image:: https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_index.png
+
 List view with filters in dropdown
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. image:: https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_list_filter.png
+
 Change form view
 ~~~~~~~~~~~~~~~~
+
+.. image:: https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_change_form.png
 
 .. |PyPI version| image:: https://pypip.in/d/django-admin-bootstrapped/badge.png
    :target: https://pypi.python.org/pypi/django-admin-bootstrapped
