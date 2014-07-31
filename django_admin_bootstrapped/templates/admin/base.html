@@ -8,15 +8,9 @@
     {% block extrastyle %}{% endblock %}
 
     <!-- Le styles, placed after extrastyle to correctly override default styling -->
-    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet"/>
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    <link href="{% static "bootstrap/css/bootstrap-responsive.min.css" %}" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
+    <!-- <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" /> -->
+    <link href="//cdn.noodle.com/static/css/vendor.min.css" rel="stylesheet" type="text/css" />
+    <link href="//cdn.noodle.com/static/css/main.min.css" rel="stylesheet" type="text/css" />
 
     <!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
     <script type="text/javascript">
@@ -47,36 +41,27 @@
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
 
 <!-- Container -->
-<div class="container-fluid">
+
 
     {% if not is_popup %}
     <!-- Header -->
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
+        <div class="page-inner clearfix">
+            <div class="row-fixed row-fluid">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
                 {% block branding %}{% endblock %}
-                <div class="nav-collapse collapse pull-right">
-                    <ul class="nav">
+                <div class="user-menu-container nav nav-collapse collapse pull-right">
+                    <ul class="nav user-menus pull-right">
                         {% if user.is_active and user.is_staff %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.get_short_name user.get_username user.first_name user.username %}{% endfilter %}</strong> <b class="caret"></b></a>
-                            <ul class="dropdown-menu pull-right">
-                                {% if user.has_usable_password %}
-                                <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
-                                {% endif %}
-                                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
-                            </ul>
-                        </li>
                         {% block languages %}
-                        <li class="divider-vertical"></li>
                         {% language_selector %}
                         {% endblock languages %}
                         {% block logs %}
+                        {% block userlinks %}
                         <li class="dropdown" id="recent-actions-module">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Recent Actions' %} <b class="caret"></b></a>
                             {% load log %}
@@ -100,12 +85,19 @@
                             </ul>
                         </li>
                         {% endblock %}
-                        {% block userlinks %}
                         {% url 'django-admindocs-docroot' as docsroot %}
                         {% if docsroot %}
-                        <li class="divider-vertical"></li>
                         <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
                         {% endif %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% filter force_escape %}{% firstof user.get_short_name user.get_username user.first_name user.username %}{% endfilter %} <b class="caret"></b></a>
+                            <ul class="dropdown-menu pull-right">
+                                {% if user.has_usable_password %}
+                                <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                                {% endif %}
+                                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+                            </ul>
+                        </li>
                         {% endblock %}
                         {% endif %}
                         {% block nav-global %}{% endblock %}
@@ -115,15 +107,31 @@
         </div>
     </div>
     <!-- END Header -->
+    <!-- 
+    <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12">
             {% block breadcrumbs %}
             {% endblock %}
         </div>
     </div>
+    -->
+    {% else %}
+
+    <div class="container-fluid">
+
     {% endif %}
 
     <!-- Content -->
+    <div class="page-container clearfix">
+    <div class="row-fluid">
+        <div class="span12">
+            <section id="main" class="main-content">
+                <div class="container-fluid page-inner page-inner--main-content-container">
+    <!-- main-content -->
+                
+    
+
     <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block navbar %}
         <div class="row-fluid">
@@ -156,7 +164,13 @@
         {% block content %}{{ content }}{% endblock %}
         {% block sidebar %}{% endblock %}
     </div>
+    <!-- /.main-content -->
+    </div>
+            </section>
+        </div>
+    </div>
     <!-- END Content -->
+    </div>
 
     {% block footer %}<footer id="footer"></footer>{% endblock %}
 </div>
