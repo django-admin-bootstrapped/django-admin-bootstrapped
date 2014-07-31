@@ -12,6 +12,8 @@
     <link href="//cdn.noodle.com/static/css/vendor.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdn.noodle.com/static/css/main.min.css" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
+
     <!-- <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" /> -->
     <script type="text/javascript">
     //<![CDATA[
@@ -106,16 +108,12 @@
             </div>
         </div>
     </div>
-    <!-- END Header -->
-    <!-- 
-    <div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span12">
-            {% block breadcrumbs %}
+        <div class="page-inner container-fluid">
+                {% block breadcrumbs %}
             {% endblock %}
-        </div>
-    </div>
-    -->
+            </div>
+    <!-- END Header -->
+    <div class="container-fluid">
     {% else %}
 
     <div class="container-fluid">
@@ -127,20 +125,18 @@
     <div class="row-fluid">
         <div class="span12">
             <section id="main" class="main-content">
-                <div class="container-fluid page-inner page-inner--main-content-container">
+                <div class="container-fluid page-inner">
     <!-- main-content -->
                 
     
 
     <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block navbar %}
-        <div class="row-fluid">
-            <div class="navbar">
-                <div class="navbar-inner">
+        <div class="row-fluid header-row">
+            <div class="span12">
                     {% block pretitle %}{% endblock %}
-                    {% block content_title %}{% if title %}<a class="brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>{% endif %}{% endblock %}
-                    {% block object-tools %}{% endblock %}
-                </div>
+                    <div class="object-tools-wrapper">{% block object-tools %}{% endblock %}</div>
+                    {% block content_title %}{% if title %}<h1 class="h3">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</h1>{% endif %}{% endblock %}
             </div>
         </div>
         {% endblock navbar %}

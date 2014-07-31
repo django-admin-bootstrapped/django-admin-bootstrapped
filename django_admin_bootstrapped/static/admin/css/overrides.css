@@ -7,6 +7,11 @@ a:focus {
 .sidebar-nav {
     padding: 9px 0;
 }
+
+textarea, .large {
+    width:40em;
+}
+
 .control-group input[type=text] {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -18,9 +23,7 @@ a:focus {
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
-.controls > p {
-    padding-top: 5px;
-}
+
 .selector .selector-filter label {
     display: none;
 }
@@ -28,15 +31,50 @@ a:focus {
     font-size: 100%;
     margin: 0;
 }
-.checkbox{
-    padding-bottom: 5px;
+.controls>.checkbox:first-child {
+    padding: 0px;
 }
+
+.checkbox .canonical-wrapper {
+    float: left;
+    margin-right: .5em;
+}
+
+.form-horizontal .controls {
+    position: relative;
+    margin-left: 170px;
+    padding-left: 20px;
+}
+
+.controls .canonical-wrapper .canonical-selector {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    margin-top: 2px;
+}
+
+.checkbox .canonical-wrapper .canonical-selector {
+    margin-top: -4px;
+}
+
+
+.checkbox .canonical-wrapper input[type="checkbox"] {
+    float: right;
+    margin-left: 0px;
+}
+
 .checkbox label {
     margin-bottom: -20px;
 }
 fieldset.collapse {
     height: inherit;
 }
+
+.inline-related fieldset {
+    background-color: transparent;
+}
+
 .add-row {
     margin-bottom: 20px;
 }
@@ -48,12 +86,72 @@ legend a:hover {
     width: auto !important;
 }
 
+.help-block {
+    font-size: .8em;
+    padding: .2em 0;
+}
+
 /* change_list actions */
 .actions select {
     margin-top: 5px;
 }
 
+/* fieldset and legend */
+
+legend {
+    border:0px;
+    line-height: 1.8em;
+    margin-bottom: 0px;
+}
+
+fieldset .fields {
+    border-top:1px solid #e5e5e5;
+    padding: 1.5em 0;
+}
+
+
+/* canonical styles */
+
+.field-canon_fields {
+    display: none;
+}
+
+/* modify table styles */
+
+.table-bordered th, .table-bordered td {
+    background-color: #FFF;
+}
+
+td.original {
+    min-width: 0px;
+    max-width: 0px;
+    padding: 0px;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+td.field-is_canonical {
+    border-left: 0px;
+    text-align: center;
+}
+
+td .vTextField,
+td .vLargeTextField {
+    width: 95%;
+}
+
+td .small {
+    width: 80%;
+    min-width: 3em;
+}
+
+td select {
+    width: auto;
+    min-width: 4em;
+    max-width: 16em;
+}
+
 /* change_list table display */
+
 th.action-checkbox-column {
     width: 1.5em;
     text-align:center;
@@ -64,3 +162,33 @@ td.action-checkbox {
 }
 
 .tooltip.in {opacity: 1} /* Hard to see against black text otherwise */
+
+.navbar .brand {
+    padding-left: 0px;
+}
+
+.breadcrumb {
+    background: 0;
+    border-bottom: 0px;
+    padding: 1em 0 .5em 0;
+    margin-bottom: 0px;
+}
+
+/* header-row */
+.header-row .object-tools-wrapper {
+    float: right;
+    margin-top:11px;
+}
+
+/* form-actions */
+.bottom-form-actions {
+    padding: 1em;
+    position: fixed;
+    z-index: 100;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+

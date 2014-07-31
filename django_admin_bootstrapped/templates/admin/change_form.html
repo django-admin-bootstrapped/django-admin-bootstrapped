@@ -52,9 +52,12 @@
         {{ adminform.form.non_field_errors }}
     </div>
     {% endif %}
+    {% comment %}
+    hiding this for now as it is handled by having save actions fixed to bottom of page
     <div class="row-fluid">
         {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
     </div>
+    {% endcomment %}
     <div class="row-fluid">
         <div id="content-main" class="span12">
             <div>
@@ -87,7 +90,7 @@
         </div>
     </div>
     <div class="row-fluid">
-        <div class="form-actions">
+        <div class="form-actions bottom-form-actions">
             {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
         </div>
     </div>

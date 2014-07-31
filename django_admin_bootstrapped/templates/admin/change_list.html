@@ -128,8 +128,7 @@
         </div>
         {# {% if cl.formset and cl.result_count %} #}
         <div class="row-fluid">
-            <div class="navbar">
-                <div class="navbar-inner">
+            <div class="form-actions bottom-form-actions">
                     <div class="form-inline pull-left">
                         {% if action_form and actions_on_bottom and cl.full_result_count %}
                             {% admin_actions %}
@@ -138,8 +137,6 @@
                     <div class="pull-right">
                         <input type="submit" name="_save" class="btn btn-primary default" value="{% trans 'Save' %}"/>
                     </div>
-                </div>
-            </div>
         </div>
         {# {% endif %} #}
     </div>
