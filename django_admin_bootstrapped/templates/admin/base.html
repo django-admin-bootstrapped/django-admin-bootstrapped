@@ -58,6 +58,7 @@
                 {% block branding %}{% endblock %}
                 <div class="user-menu-container nav nav-collapse collapse pull-right">
                     <ul class="nav user-menus pull-right">
+                    {% block usermenu %}
                         {% if user.is_active and user.is_staff %}
                         {% block languages %}
                         {% language_selector %}
@@ -103,6 +104,7 @@
                         {% endblock %}
                         {% endif %}
                         {% block nav-global %}{% endblock %}
+                    {% endblock %}
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
