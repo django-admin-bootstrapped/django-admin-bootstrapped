@@ -81,3 +81,18 @@ td.action-checkbox {
     padding: 3px 20px;
     white-space: nowrap;
 }
+
+#content-main {
+    clear: both;
+}
+
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    text-align: left;
+  }
+}
+@media (min-width: 970px) {
+  .form-horizontal .control-label {
+    text-align: right;
+  }
+}

@@ -61,7 +61,7 @@
 
         {% block field_sets %}
         {% for fieldset in adminform %}
-          {% include "admin/includes/fieldset.html" %}
+          {% include "admin/includes/fieldset.html" with group_column_width=adminform|form_fieldset_column_width %}
         {% endfor %}
         {% endblock %}
 
