@@ -9,7 +9,7 @@ of modification on your side, just add it to the installed apps.
 Requirements
 ------------
 
--  Django ``>=1.4.x``.
+-  Django ``>=1.4.x`` and ``<1.7``
 
 Installation
 ------------
