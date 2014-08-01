@@ -16,25 +16,24 @@
     {% if fieldset.description %}
         <div class="description">{{ fieldset.description|safe }}</div>
     {% endif %}
-    {% with group_column_width=fieldset|fieldset_column_width %}
         {% for line in fieldset %}
             <div class="row"><div class="control-group {% if line.fields|length_is:'1' and line.errors %} error{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
                 {% for field in line %}
                     <div class="col-md-{{ group_column_width }} form-group {% if not line.fields|length_is:'1' %} field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% endif %}">
                         {% if field.is_checkbox %}
-                            <div class="control-label col-sm-3">
+                            <div class="control-label col-md-3">
                                 {{ field.label_tag }}
                             </div>
-                            <div class="controls col-sm-9">
+                            <div class="controls col-md-9">
                                 <div class="checkbox">
                                     {% if field.field.help_text %}{{ field.field.help_text|safe }}{% endif %} {{ field.field }}
                                 </div>
                             </div>
                         {% else %}
-                            <div class="control-label col-sm-3">
+                            <div class="control-label col-md-3">
                                 {{ field.label_tag }}
                             </div>
-                            <div class="controls col-sm-9">
+                            <div class="controls col-md-9">
                                 {% if field.is_readonly %}
                                     <p>{{ field.contents }}</p>
                                 {% else %}
@@ -50,6 +49,5 @@
                 {% endfor %}
             </div></div>
         {% endfor %}
-    {% endwith %}
     </div>
 </fieldset>
