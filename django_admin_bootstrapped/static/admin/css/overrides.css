@@ -8,6 +8,10 @@ a:focus {
     padding: 9px 0;
 }
 
+.fieldset-content .nav {
+    margin-bottom: 0px;
+}
+
 textarea, .large {
     width:40em;
 }
@@ -44,6 +48,7 @@ textarea, .large {
     position: relative;
     margin-left: 170px;
     padding-left: 20px;
+    min-width:220px;
 }
 
 .controls .canonical-wrapper .canonical-selector {
@@ -65,7 +70,7 @@ textarea, .large {
 }
 
 .checkbox label {
-    margin-bottom: -20px;
+    margin-bottom: 0px;
 }
 fieldset.collapse {
     height: inherit;
@@ -181,7 +186,7 @@ td.action-checkbox {
 }
 
 /* form-actions */
-.bottom-form-actions {
+.form-horizontal .bottom-form-actions {
     padding: 1em;
     position: fixed;
     z-index: 100;
@@ -191,4 +196,26 @@ td.action-checkbox {
     margin: 0;
     box-sizing: border-box;
 }
+
+.results-side-panel .navbar-search {
+    margin:.75em 1.25em;
+}
+
+.results-side-panel .navbar-search .search-query {
+    border-radius: 15px;
+}
+
+.results-side-panel .nav-list .nav-header {
+    margin-left:0px;
+    margin-right: 0px;
+    text-shadow:none;
+    height: auto;
+    padding:.5em 0;
+}
+
+/* main css overrides */
+#main {
+    margin-bottom: 5em;
+}
+
 

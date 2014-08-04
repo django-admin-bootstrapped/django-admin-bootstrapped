@@ -28,11 +28,39 @@
 
 {% block object-tools %}
 {% if change %}{% if not is_popup %}
-  <div class="pull-right">
+  <div class="object-tools-wrapper">
     {% block object-tools-items %}
-    <a href="history/" class="btn btn-inverse historylink">{% trans "History" %}</a>
-    {% if has_absolute_url %}<a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="btn viewsitelink">{% trans "View on site" %}</a>{% endif%}
+    <fieldset class="results-side-panel--fieldset clearfix">
+      <legend class="visuallyhidden">history</legend>
+      <div class="fieldset-content">  
+    <a href="history/" class="btn btn-block historylink">{% trans "History" %}</a>
+    {% if has_absolute_url %}
+        <a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="btn btn-block viewsitelink">
+            {% trans "View on site" %}
+        </a>
+    {% endif%}
+</div>
+</fieldset>
     {% endblock %}
+    
+    <fieldset class="results-side-panel--fieldset clearfix">
+      <legend class="visuallyhidden">fields</legend>
+      <div class="fieldset-content">    
+        <ul class="nav nav-block nav-stacked">
+        {% for fieldset in adminform %}
+            <li><a href="#fieldset-{{ fieldset.name|slugify }}">{{ fieldset.name }}</a></li>
+        {% endfor %}
+        {% for inline_admin_formset in inline_admin_formsets %}
+            <li>
+                <a href="#{{ inline_admin_formset.formset.prefix }}-group">
+                    {{ inline_admin_formset.opts.verbose_name_plural }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    </fieldset>
+
   </div>
 {% endif %}{% endif %}
 {% endblock %}
