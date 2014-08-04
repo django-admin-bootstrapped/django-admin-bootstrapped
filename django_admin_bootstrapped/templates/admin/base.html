@@ -60,24 +60,7 @@
                     <ul class="nav user-menus pull-right">
                     {% block usermenu %}
                         {% if user.is_active and user.is_staff %}
-                        {% block languages %}
-                        {% language_selector %}
-                        {% endblock languages %}
-                        {% block logs %}
-                        {% url 'django-admindocs-docroot' as docsroot %}
-                        {% if docsroot %}
-                        <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
-                        {% endif %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% filter force_escape %}{% firstof user.get_short_name user.get_username user.first_name user.username %}{% endfilter %} <b class="caret"></b></a>
-                            <ul class="dropdown-menu pull-right">
-                                {% if user.has_usable_password %}
-                                <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
-                                {% endif %}
-                                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
-                            </ul>
-                        </li>
-                        {% endblock %}
+                            {% include "admin/includes/usermenu.html" %}
                         {% endif %}
                         {% block nav-global %}{% endblock %}
                     {% endblock %}

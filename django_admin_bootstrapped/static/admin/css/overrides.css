@@ -186,7 +186,7 @@ td.action-checkbox {
 }
 
 /* form-actions */
-.form-horizontal .bottom-form-actions {
+.main-content .bottom-form-actions {
     padding: 1em;
     position: fixed;
     z-index: 100;
