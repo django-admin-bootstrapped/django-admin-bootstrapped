@@ -57,34 +57,43 @@
 {% block coltype %}flex{% endblock %}
 
 {% block object-tools %}
-    <ul class="object-tools form-inline pull-left inline">
-        {% block object-tools-items %}
+    
+
+    {% block object-tools-items %}
+ <fieldset class="results-side-panel--fieldset clearfix">
+      <legend class="visuallyhidden">Object Tools</legend>
+      <div class="fieldset-content">    
         {% if has_add_permission %}
-        <li>
-        <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-primary">
-            <i class="icon-plus icon-white"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+            <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-block">
+            <i class="fa fa-plus"></i> {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
         </a>
-        </li>
         {% endif %}
+
+        </div></fieldset>
         {% endblock %}
+
         {% if action_form and actions_on_top and cl.full_result_count %}
             {% admin_actions %}
         {% endif %}
-    </ul>
-
+<hr>
     <div class="pull-right">
-        {% block search %}{% search_form cl %}{% endblock %}
+        {% block search %}
+            {% search_form cl %}
+        {% endblock %}
         {% if cl.has_filters %}
-        <ul class="nav pull-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Filter' %} <b class="caret"></b></a>
-                <ul class="dropdown-menu pull-right">
-                    {% for spec in cl.filter_specs %}
-                        {% admin_list_filter cl spec %}
-                    {% endfor %}
-                </ul>
+    <fieldset class="results-side-panel--fieldset clearfix">
+      <legend class="visuallyhidden">fields</legend>
+      <div class="fieldset-content">    
+        <ul class="nav nav-list">
+            <li class="nav-header">
+                {% trans 'Filter' %} 
             </li>
+            {% for spec in cl.filter_specs %}
+                {% admin_list_filter cl spec %}
+            {% endfor %}
         </ul>
+    </div>
+</fieldset>
         {% endif %}
     </div>
 {% endblock %}
@@ -128,8 +137,7 @@
         </div>
         {# {% if cl.formset and cl.result_count %} #}
         <div class="row-fluid">
-            <div class="navbar">
-                <div class="navbar-inner">
+            <div class="form-actions bottom-form-actions">
                     <div class="form-inline pull-left">
                         {% if action_form and actions_on_bottom and cl.full_result_count %}
                             {% admin_actions %}
@@ -138,8 +146,6 @@
                     <div class="pull-right">
                         <input type="submit" name="_save" class="btn btn-primary default" value="{% trans 'Save' %}"/>
                     </div>
-                </div>
-            </div>
         </div>
         {# {% endif %} #}
     </div>

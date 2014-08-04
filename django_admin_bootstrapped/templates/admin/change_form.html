@@ -28,11 +28,39 @@
 
 {% block object-tools %}
 {% if change %}{% if not is_popup %}
-  <div class="pull-right">
+  <div class="object-tools-wrapper">
     {% block object-tools-items %}
-    <a href="history/" class="btn btn-inverse historylink">{% trans "History" %}</a>
-    {% if has_absolute_url %}<a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="btn viewsitelink">{% trans "View on site" %}</a>{% endif%}
+    <fieldset class="results-side-panel--fieldset clearfix">
+      <legend class="visuallyhidden">history</legend>
+      <div class="fieldset-content">  
+    <a href="history/" class="btn btn-block historylink">{% trans "History" %}</a>
+    {% if has_absolute_url %}
+        <a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="btn btn-block viewsitelink">
+            {% trans "View on site" %}
+        </a>
+    {% endif%}
+</div>
+</fieldset>
     {% endblock %}
+    
+    <fieldset class="results-side-panel--fieldset clearfix">
+      <legend class="visuallyhidden">fields</legend>
+      <div class="fieldset-content">    
+        <ul class="nav nav-block nav-stacked">
+        {% for fieldset in adminform %}
+            <li><a href="#fieldset-{{ fieldset.name|slugify }}">{{ fieldset.name }}</a></li>
+        {% endfor %}
+        {% for inline_admin_formset in inline_admin_formsets %}
+            <li>
+                <a href="#{{ inline_admin_formset.formset.prefix }}-group">
+                    {{ inline_admin_formset.opts.verbose_name_plural }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    </fieldset>
+
   </div>
 {% endif %}{% endif %}
 {% endblock %}
@@ -52,9 +80,12 @@
         {{ adminform.form.non_field_errors }}
     </div>
     {% endif %}
+    {% comment %}
+    hiding this for now as it is handled by having save actions fixed to bottom of page
     <div class="row-fluid">
         {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
     </div>
+    {% endcomment %}
     <div class="row-fluid">
         <div id="content-main" class="span12">
             <div>
@@ -87,7 +118,7 @@
         </div>
     </div>
     <div class="row-fluid">
-        <div class="form-actions">
+        <div class="form-actions bottom-form-actions">
             {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
         </div>
     </div>
