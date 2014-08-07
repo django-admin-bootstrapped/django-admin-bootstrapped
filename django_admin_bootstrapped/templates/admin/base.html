@@ -80,6 +80,7 @@
     <!-- Content -->
     <div class="page-container clearfix">
     <div class="row-fluid">
+    {% block main %}
         <div class="span3 backpack">
             <div class="backpack-top-bar">
             </div>
@@ -133,8 +134,14 @@
         <div class="row-fluid header-row">
             <div class="span12">
                     {% block pretitle %}{% endblock %}
-                    
-                    {% block content_title %}{% if title %}<h1 class="h3">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</h1>{% endif %}{% endblock %}
+
+                    {% block content_title %}
+                        {% if title %}
+                        <h1 class="h3">
+                            {% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}
+                        </h1>
+                        {% endif %}
+                    {% endblock %}
             </div>
         </div>
         {% endblock navbar %}
@@ -161,9 +168,11 @@
     <!-- /.main-content -->
     </div>
             </section>
+    {% endblock %}
         </div>
     </div>
     <!-- END Content -->
+    
     </div>
 
     {% block footer %}<footer id="footer"></footer>{% endblock %}

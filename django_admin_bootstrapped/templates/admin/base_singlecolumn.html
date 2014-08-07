@@ -1,0 +1,78 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% load admin_static bootstrapped_goodies_tags %}
+{% load url from future %}
+
+{% block title %}
+    {% render_with_template_if_exist "admin/admin_title.html" "Noodle Listing Management" %} | {% trans 'Django site admin' %}
+{% endblock %}
+
+{% block branding %}
+    <a class="brand" href="{% url 'admin:index' %}">
+        {% render_with_template_if_exist "admin/admin_title.html" "Noodle Listing Management" %}
+    </a>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+
+{% block main %}
+<!-- Content -->
+    <div class="page-container clearfix">
+    <div class="row-fluid">
+        <div class="span12">
+            {% block userlinks %}{% endblock %}
+            <div id="breadcrumb" class="breadcrumb-wrapper">
+            {% block breadcrumbs %}
+            {% endblock %}
+            </div>
+            <section id="main" class="main-content">
+                <div class="container-fluid page-inner">
+    <!-- main-content -->
+                
+    
+
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% block navbar %}
+        <div class="row-fluid header-row">
+            <div class="span12">
+                    {% block pretitle %}{% endblock %}
+
+                    {% block content_title %}
+                        {% if title %}
+                        <h1 class="h3">
+                            {% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}
+                        </h1>
+                        {% endif %}
+                    {% endblock %}
+            </div>
+        </div>
+        {% endblock navbar %}
+
+        {% block messages %}
+        {% if messages %}
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="alert alert-info">
+                    <ul class="unstyled">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endblock messages %}
+
+        {% block content %}{{ content }}{% endblock %}
+        {% block sidebar %}{% endblock %}
+    </div>
+    <!-- /.main-content -->
+    </div>
+            </section>
+        </div>
+    </div>
+    <!-- END Content -->
+
+{% endblock %}
