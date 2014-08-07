@@ -1,4 +1,4 @@
-{% extends "admin/base_site.html" %}
+{% extends "admin/base_sidepanel.html" %}
 {% load i18n admin_static bootstrapped_goodies_tags %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
@@ -14,14 +14,10 @@
 {% endblock %}
 
 {% block object-tools %}
-<ul class="nav">
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <b class="caret"></b></a>
-        <ul class="dropdown-menu" role="menu">
+        <h2 class="filter-results-heading">{% trans "Applications" %} </h3>
+        <ul class="nav nav-list" role="menu">
             {% for app in app_list %}
-            <li class="dropdown-submenu">
-                <a href="#">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}</a>
-                <ul class="dropdown-menu">
+            <li class="nav-header">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}</li>
                 {% for model in app.models %}
                     <li>
                         {% if model.admin_url %}
@@ -31,12 +27,8 @@
                         {% endif %}
                     </li>
                 {% endfor %}
-                </ul>
-            </li>
             {% endfor %}
         </ul>
-    </li>
-</ul>
 {% endblock %}
 
 

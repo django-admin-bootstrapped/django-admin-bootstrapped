@@ -1,4 +1,4 @@
-{% extends "admin/base_site.html" %}
+{% extends "admin/base_singlecolumn.html" %}
 {% load i18n admin_static %}
 {% load url from future %}
 
@@ -11,7 +11,7 @@
 @media (min-width: 768px) {
 .form-signin {
     max-width: 50%;
-    margin: 0 auto 20px;
+    margin: 20px auto;
     background-color: #fff;
     border: 1px solid #e5e5e5;
     -webkit-border-radius: 5px;
@@ -51,6 +51,7 @@
     </div>
     {% endfor %}
   {% endif %}
+  {% block signin_messaging %}{% endblock %}
   <div class="control-group">
     <div class="control-label">
         <label for="id_username" class="required">{% trans 'Username:' %}</label> 

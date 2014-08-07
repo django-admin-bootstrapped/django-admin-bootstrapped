@@ -1,4 +1,4 @@
-<fieldset class="_module _aligned" id="fieldset-{{ forloop.counter }}" style="background:transparent">
+<fieldset class="_module _aligned fieldset-{{ fieldset.name|slugify }}" id="fieldset-{{ fieldset.name|slugify }}">
     {% if fieldset.name %}
     <legend>
         {% if 'collapse' in fieldset.classes %}
@@ -20,21 +20,19 @@
             {% for field in line %}
                 <div{% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}"{% endif %}>
                     {% if field.is_checkbox %}
-                        <div class="control-label">
-                            {{ field.label_tag }}
-                        </div>
-                        <div class="controls">
-                            <div class="checkbox">
-                                {% if field.field.help_text %}{{ field.field.help_text|safe }}{% endif %} {{ field.field }}
-                            </div>
-                        </div>
+                    <div class="controls">
+                        <label class="checkbox">
+                            {% if field.field.help_text %}{{ field.field.help_text|safe }}{% endif %} {{ field.field }} {{ field.label_tag }}
+                        </label>
+                    </div>
+                        
                     {% else %}
                         <div class="control-label">
                             {{ field.label_tag }}
                         </div>
                         <div class="controls">
                             {% if field.is_readonly %}
-                                <p>{{ field.contents }}</p>
+                                {{ field.contents }}
                             {% else %}
                                 {{ field.field }}
                             {% endif %}
