@@ -1,6 +1,15 @@
+==== 1.6.7 (2014-08-12) ====
+
+WARNING: bootstrap2 is deprecated, please upgrade to bootstrap3, it will be removed in the next major release
+
+- Fix fieldsets horizontal #110 (Riccardo)
+- Fix app_name not visible with django 1.7 (Peter Lauri)
+- Separate messages alert so that each message gets proper rendering #116 (Riccardo)
+- Update compatibility to django >= 1.4, django < 1.7 #119 (Peter Lauri, Riccardo)
+
 ==== 1.6.6 (2014-07-23) ====
 
-WARNING: bootstrap2 is deprecated, please upgrade to bootstrap3, it will removed in a few releases
+WARNING: bootstrap2 is deprecated, please upgrade to bootstrap3, it will be removed in a few releases
 
 - Fix fieldsets with more than one field per row #110 (Riccardo)
 - Fix language selector (Riccardo)
