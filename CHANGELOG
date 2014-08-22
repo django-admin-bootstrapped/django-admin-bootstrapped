@@ -1,3 +1,10 @@
+==== 2.0.0 (UNRELEASED) ====
+
+- Removal of bootstrap2 theme (Riccardo)
+- Drop support for django < 1.6 (Riccardo)
+- Django 1.7 support #117, #124 (Riccardo)
+- Remove hardcoded urls (history, delete, etc...) #121, #123 (Riccardo)
+
 ==== 1.6.8 (2014-08-22) ====
 
 WARNING: bootstrap2 is deprecated, please upgrade to bootstrap3, it will be removed in the next major release
