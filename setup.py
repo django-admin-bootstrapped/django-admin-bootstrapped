@@ -23,7 +23,7 @@ setup(
     version='2.0.0-dev',
     description='A Bootstrap theme for Django Admin',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
-    url='https://github.com/riccardo-forina/django-admin-bootstrapped',
+    url='https://github.com/django-admin-bootstrapped/django-admin-bootstrapped',
     license='BSD License',
     platforms=['OS Independent'],
     classifiers=CLASSIFIERS,
