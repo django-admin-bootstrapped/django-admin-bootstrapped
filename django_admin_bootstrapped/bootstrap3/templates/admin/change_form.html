@@ -28,7 +28,10 @@
 {% if change %}{% if not is_popup %}
   <ul class="nav navbar-nav navbar-right">
     {% block object-tools-items %}
-    <li><a href="history/" class="historylink">{% trans "History" %}</a></li>
+    <li>
+        {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+        <a href="{% add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
+    </li>
     {% if has_absolute_url %}<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif%}
     {% endblock %}
   </ul>
