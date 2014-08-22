@@ -20,7 +20,7 @@ setup(
     author="Riccardo Forina",
     author_email="riccardo@forina.me",
     name='django-admin-bootstrapped',
-    version='1.6.8',
+    version='2.0.0-dev',
     description='A Bootstrap theme for Django Admin',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     url='https://github.com/riccardo-forina/django-admin-bootstrapped',
@@ -29,7 +29,7 @@ setup(
     classifiers=CLASSIFIERS,
     install_requires=[
         'setuptools',
-        'Django>=1.4,<1.7',
+        'Django>=1.6',
     ],
     packages=find_packages(),
     include_package_data=True,

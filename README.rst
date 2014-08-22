@@ -9,16 +9,18 @@ of modification on your side, just add it to the installed apps.
 Requirements
 ------------
 
--  Django ``>=1.4.x`` and ``<1.7``
+-  Django ``>=1.6``
 
 Installation
 ------------
+
+Since ``2.0`` we are targeting Bootstrap 3 and recent Django versions.
+The old ``1.x`` series works with Django ``>=1.4`` and  ``<1.7``.
 
 1. Download it from PyPi with ``pip install django-admin-bootstrapped``
 2. Add into the ``INSTALLED_APPS`` **before** ``'django.contrib.admin'``:
 
 ::
- 
     'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
 
