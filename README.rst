@@ -21,6 +21,7 @@ The old ``1.x`` series works with Django ``>=1.4`` and  ``<1.7``.
 2. Add into the ``INSTALLED_APPS`` **before** ``'django.contrib.admin'``:
 
 ::
+
     'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
 
