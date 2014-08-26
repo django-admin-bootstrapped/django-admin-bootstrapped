@@ -27,6 +27,32 @@ The old ``1.x`` series works with Django ``>=1.4`` and  ``<1.7``.
 
 3. Have fun!
 
+Configuration
+-------
+
+`Messages <http://docs.djangoproject.com/en/dev/ref/contrib/messages>`__ will have ``alert-info`` tag by default, 
+so you may want to add Bootstrap 3 tags for different message levels to make them styled appropriately:
+::
+    from django.contrib import messages
+    
+    MESSAGE_TAGS = {
+                messages.SUCCESS: 'alert-success success',
+                messages.WARNING: 'alert-warning warning',
+                messages.ERROR: 'alert-danger error'
+    }
+::
+
+Now, adding messages like this:
+::
+    messages.success(request, "My success message")
+    messages.warning(request, "My warning message")
+    messages.error(request, "My error message")
+::
+
+will result into this:
+
+.. image:: https://i.imgur.com/SQNMZZE.png
+
 Goodies
 -------
 
