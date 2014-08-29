@@ -34,6 +34,10 @@ a:focus {
 .checkbox label {
     margin-bottom: -20px;
 }
+.checkbox .help-block {
+    margin-top: 0;
+}
+
 fieldset.collapse {
     height: inherit;
 }
@@ -95,4 +99,12 @@ td.action-checkbox {
   .form-horizontal .control-label {
     text-align: right;
   }
+}
+
+/* bootstrap 3.2 change */
+.checkbox input[type="checkbox"] {
+    position: static;
+    float: left;
+    margin-left: 0px;
+    margin-right: 5px;
 }
