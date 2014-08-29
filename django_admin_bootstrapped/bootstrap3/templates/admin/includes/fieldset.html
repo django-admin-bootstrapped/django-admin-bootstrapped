@@ -26,7 +26,7 @@
                             </div>
                             <div class="controls col-md-9">
                                 <div class="checkbox">
-                                    {% if field.field.help_text %}{{ field.field.help_text|safe }}{% endif %} {{ field.field }}
+                                    {{ field.field }} {% if field.field.help_text %}<span class="help-block">{{ field.field.help_text|safe }}</span>{% endif %}
                                 </div>
                             </div>
                         {% else %}
