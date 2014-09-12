@@ -20,7 +20,7 @@ setup(
     author="Riccardo Forina",
     author_email="riccardo@forina.me",
     name='django-admin-bootstrapped',
-    version='2.0.0-dev',
+    version='2.0.0',
     description='A Bootstrap theme for Django Admin',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     url='https://github.com/django-admin-bootstrapped/django-admin-bootstrapped',

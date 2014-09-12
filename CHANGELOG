@@ -1,9 +1,10 @@
-==== 2.0.0 (UNRELEASED) ====
+==== 2.0.0 (2014-09-12) ====
 
 - Removal of bootstrap2 theme (Riccardo)
 - Drop support for django < 1.6 (Riccardo)
-- Django 1.7 support #117, #124 (Riccardo)
+- Django 1.7 support #117, #118, #124 (Riccardo)
 - Remove hardcoded urls (history, delete, etc...) #121, #123 (Riccardo)
+- Fix checkboxes rendering with bootstrap 3.2.0 #126 (Riccardo)
 
 ==== 1.6.8 (2014-08-22) ====
 
