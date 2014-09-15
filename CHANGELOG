@@ -1,3 +1,7 @@
+==== 2.0.1 (2014-09-15) ====
+
+- Add missing models.py in bootstrap3 for django 1.6 #132 (Riccardo)
+
 ==== 2.0.0 (2014-09-12) ====
 
 - Removal of bootstrap2 theme (Riccardo)
