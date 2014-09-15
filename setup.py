@@ -19,6 +19,8 @@ CLASSIFIERS = [
 setup(
     author="Riccardo Forina",
     author_email="riccardo@forina.me",
+    maintainer="Riccardo Magliocchetti",
+    maintainer_email="riccardo.magliocchetti@gmail.com",
     name='django-admin-bootstrapped',
     version='2.0.0',
     description='A Bootstrap theme for Django Admin',
