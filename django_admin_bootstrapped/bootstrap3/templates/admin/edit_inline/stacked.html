@@ -34,9 +34,11 @@
 
           <div class="{% if not forloop.last %}collapse{% endif %}{% if not inline_admin_formset.opts.start_collapsed %} in{% endif %}">
           {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
+          {% with stacked_prefix=forloop.counter0 %}
           {% for fieldset in inline_admin_form %}
             {% include "admin/includes/fieldset.html" with group_column_width=fieldset|fieldset_column_width %}
           {% endfor %}
+          {% endwith %}
           {% if inline_admin_form.has_auto_field or inline_admin_form.needs_explicit_pk_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
           {{ inline_admin_form.fk_field.field }}
           </div>

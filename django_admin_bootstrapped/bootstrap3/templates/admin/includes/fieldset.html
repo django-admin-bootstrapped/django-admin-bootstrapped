@@ -1,9 +1,9 @@
 {% load bootstrapped_goodies_tags %}
-<fieldset class="_module _aligned" id="fieldset-{{ forloop.counter }}" style="background:transparent">
+<fieldset class="_module _aligned" id="fieldset-{% if stacked_prefix %}{{ stacked_prefix }}-{% endif %}{{ forloop.counter }}" style="background:transparent">
     {% if fieldset.name %}
     <legend>
         {% if 'collapse' in fieldset.classes %}
-        <a data-toggle="collapse" data-target="#fieldset-{{ forloop.counter }} .fields">
+        <a data-toggle="collapse" data-target="#fieldset-{% if stacked_prefix %}{{ stacked_prefix }}-{% endif %}{{ forloop.counter }} .fields">
         {{ fieldset.name }}
         &nbsp;<span class="btn btn-xs btn-default"><span class="glyphicon glyphglyphicon glyphicon-resize-full"></i></span>
         </a>
