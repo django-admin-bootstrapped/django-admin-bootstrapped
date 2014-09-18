@@ -1,3 +1,8 @@
+==== 2.0.2 (2014-09-18) ====
+
+- Fix inline fieldsets collapsing in stacked inlines (Riccardo)
+- Fix application label in breadcrumbs #133 (P.A. Schembri)
+
 ==== 2.0.1 (2014-09-15) ====
 
 - Add missing models.py in bootstrap3 for django 1.6 #132 (Riccardo)
