@@ -116,9 +116,11 @@
                 {% admin_actions %}
             {% endif %}
         </div>
+{% if cl.formset and cl.result_count %}
         <div class="navbar-form pull-right">
             <input type="submit" name="_save" class="btn btn-primary default" value="{% trans 'Save' %}"/>
         </div>
+{% endif %}
     </div>
 </div>
 {# {% endif %} #}
