@@ -77,7 +77,7 @@ def render_app_label(context, app, fallback="Application label"):
 
 
 @register.simple_tag(takes_context=True)
-def render_app_description(context, app, template="/admin_app_name.html", fallback="Application description"):
+def render_app_description(context, app, template="/admin_app_description.html", fallback="Application description"):
     """ Render the application description using a default template name. If it cannot find a
         template matching the given path, fallback to the application name. If the given
         object is not a dict containing the 'name' key, fallback to the fallback value.
