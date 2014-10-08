@@ -19,20 +19,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
             {% for app in app_list %}
-            <li class="dropdown-submenu">
-                <a href="#">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}</a>
-                <ul class="dropdown-menu">
-                {% for model in app.models %}
-                    <li>
-                        {% if model.admin_url %}
-                            <a href="{{ model.admin_url }}">{{ model.name }}</a>
-                        {% else %}
-                            {{ model.name }}
-                        {% endif %}
-                    </li>
-                {% endfor %}
-                </ul>
-            </li>
+            <li><a href="#{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}</a></li>
             {% endfor %}
         </ul>
     </li>
