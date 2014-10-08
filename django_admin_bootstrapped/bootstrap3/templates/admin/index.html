@@ -31,7 +31,9 @@
                 {% endif %}
             </li>
             {% endfor %}
+            {% if not forloop.last %}
             <li role="presentation" class="divider"></li>
+            {% endif %}
             {% endfor %}
         </ul>
     </li>
