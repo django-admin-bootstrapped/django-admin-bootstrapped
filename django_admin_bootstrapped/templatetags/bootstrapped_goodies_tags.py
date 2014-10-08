@@ -59,9 +59,11 @@ def render_name(context, app, template="/admin_app_name.html", fallback="Applica
     """
     text = fallback
     try:
-        # build template path as app_label/template_name
-        template = app['app_label'] + template
-        text = render_to_string(template, context)
+        try:
+            template = app['app_label'] + template
+            text = render_to_string(template, context)
+        except:
+            text = app['name']
     except:
         pass
     return text
