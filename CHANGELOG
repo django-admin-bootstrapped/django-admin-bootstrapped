@@ -1,4 +1,4 @@
-==== 2.0.5 (UNRELEASED) ====
+==== 2.0.5 (2014-10-08) ====
 
 - Fix hidden display of actions links in change_list (Marcio Mazza)
 - Remove hardcoded username and password label for login #137 (Riccardo)
