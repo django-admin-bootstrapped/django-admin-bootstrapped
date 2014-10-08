@@ -19,7 +19,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
             {% for app in app_list %}
-                <li><a href="#{% render_app_name app %}">{% render_app_description app %}</a></li>
+                <li><a href="#{% render_app_name app %}">{% render_app_name app %}</a></li>
             {% endfor %}
         </ul>
     </li>
