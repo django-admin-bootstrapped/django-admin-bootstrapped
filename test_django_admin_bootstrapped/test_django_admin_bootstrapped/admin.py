@@ -31,9 +31,13 @@ class TestMeAdmin(admin.ModelAdmin):
     list_filter = ['test_ip', 'test_url', 'test_int', ]
     list_per_page = 3
     date_hierarchy = 'test_date'
+    actions = ['useless_action']
     inlines = [TestThatStackedInline, TestThatTabularInline, TestSortable]
     save_as = True
     save_on_top = True
+
+    def useless_action(self, request, queryset):
+        self.message_user(request, "Useless action successfully executed.")
 
 
 class TestMeAdminFieldsets(TestMeAdmin):
