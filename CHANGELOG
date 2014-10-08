@@ -2,6 +2,8 @@
 
 - Fix hidden display of actions links in change_list (Marcio Mazza)
 - Remove hardcoded username and password label for login #137 (Riccardo)
+- Make navbar RTL aware #139 (pajooh)
+- Show save button on change list conditionally #138 (Riccardo)
 
 ==== 2.0.4 (2014-09-25) ====
 
