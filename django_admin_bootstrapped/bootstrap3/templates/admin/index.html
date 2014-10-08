@@ -19,7 +19,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
             {% for app in app_list %}
-            <li><a href="#{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}">{% render_with_template_if_exist app.name|lower|add:"/admin_app_name.html" app.name %}</a></li>
+                <li><a href="#{% render_app_name app %}">{% render_app_description app %}</a></li>
             {% endfor %}
         </ul>
     </li>
@@ -30,11 +30,10 @@
 {% block content %}
 <div class="row">
     <div id="content-main" class="col-sm-12">
-
         <div class="tabbable">
             {% for app in app_list %}
                 {% include "admin/bootstrapped_extra/app_name.html" %}
-                {% render_with_template_if_exist app.name|lower|add:"/admin_app_description.html" "" %}
+                {% render_with_template_if_exist app.app_label|add:"/admin_app_description.html" "" %}
                 <table summary="{% blocktrans with name=app.name %}Models available in the {{ name }} application.{% endblocktrans %}" class="table table-striped table-bordered">
                 {% for model in app.models %}
                     <tr>
