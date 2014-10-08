@@ -59,3 +59,42 @@ def fieldset_column_width(fieldset):
         return 12 // width
     except ValueError:
         return 12
+
+
+@register.simple_tag(takes_context=True)
+def render_app_name(context, app, template="/admin_app_name.html"):
+    """ Render the application name using the default template name. If it cannot find a
+        template matching the given path, fallback to the application name.
+    """
+    try:
+        template = app['app_label'] + template
+        text = render_to_string(template, context)
+    except:
+        text = app['name']
+    return text
+
+
+@register.simple_tag(takes_context=True)
+def render_app_label(context, app, fallback=""):
+    """ Render the application label.
+    """
+    try:
+        text = app['app_label']
+    except KeyError:
+        text = fallback
+    except TypeError:
+        text = app
+    return text
+
+
+@register.simple_tag(takes_context=True)
+def render_app_description(context, app, fallback="", template="/admin_app_description.html"):
+    """ Render the application description using the default template name. If it cannot find a
+        template matching the given path, fallback to the fallback argument.
+    """
+    try:
+        template = app['app_label'] + template
+        text = render_to_string(template, context)
+    except:
+        text = fallback
+    return text
