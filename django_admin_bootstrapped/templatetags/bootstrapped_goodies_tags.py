@@ -53,24 +53,21 @@ def fieldset_column_width(fieldset):
 
 
 @register.simple_tag(takes_context=True)
-def render_name(context, app, template="/admin_app_name.html", fallback="Application name"):
+def render_app_name(context, app, template="/admin_app_name.html"):
     """ Render the application name using the default template name. If it cannot find a
         template matching the given path, fallback to the application name.
     """
-    text = fallback
+    text = None
     try:
-        try:
-            template = app['app_label'] + template
-            text = render_to_string(template, context)
-        except:
-            text = app['name']
+        template = app['app_label'] + template
+        text = render_to_string(template, context)
     except:
-        pass
+        text = app['name']
     return text
 
 
 @register.simple_tag(takes_context=True)
-def render_label(context, app, fallback="Application label"):
+def render_app_label(context, app, fallback=""):
     """ Render the application label.
     """
     text = fallback
@@ -84,7 +81,7 @@ def render_label(context, app, fallback="Application label"):
 
 
 @register.simple_tag(takes_context=True)
-def render_description(context, app, template="/admin_app_description.html", fallback="Application description"):
+def render_app_description(context, app, fallback="", template="/admin_app_description.html"):
     """ Render the application description using the default template name. If it cannot find a
         template matching the given path, fallback to the fallback argument.
     """
