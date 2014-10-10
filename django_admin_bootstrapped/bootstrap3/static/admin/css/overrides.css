@@ -108,3 +108,8 @@ td.action-checkbox {
     margin-left: 0px;
     margin-right: 5px;
 }
+
+/* admin/css/forms.css makes labels too small */
+.control-label label {
+    font-size: 14px;
+}
