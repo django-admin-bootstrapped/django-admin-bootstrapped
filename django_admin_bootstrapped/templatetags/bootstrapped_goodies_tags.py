@@ -50,3 +50,45 @@ def form_fieldset_column_width(form):
 def fieldset_column_width(fieldset):
     width = max([len(list(line)) for line in fieldset])
     return 12 // width
+
+
+@register.simple_tag(takes_context=True)
+def render_app_name(context, app, template="/admin_app_name.html"):
+    """ Render the application name using the default template name. If it cannot find a
+        template matching the given path, fallback to the application name.
+    """
+    text = None
+    try:
+        template = app['app_label'] + template
+        text = render_to_string(template, context)
+    except:
+        text = app['name']
+    return text
+
+
+@register.simple_tag(takes_context=True)
+def render_app_label(context, app, fallback=""):
+    """ Render the application label.
+    """
+    text = fallback
+    try:
+        text = app['app_label']
+    except KeyError:
+        pass
+    except TypeError:
+        text = app
+    return text
+
+
+@register.simple_tag(takes_context=True)
+def render_app_description(context, app, fallback="", template="/admin_app_description.html"):
+    """ Render the application description using the default template name. If it cannot find a
+        template matching the given path, fallback to the fallback argument.
+    """
+    text = fallback
+    try:
+        template = app['app_label'] + template
+        text = render_to_string(template, context)
+    except:
+        pass
+    return text
