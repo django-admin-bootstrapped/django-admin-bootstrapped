@@ -36,17 +36,26 @@ def language_selector(context):
 
 @register.filter(name='column_width')
 def column_width(value):
-    return 12 // len(list(value))
+    try:
+        return 12 // len(list(value))
+    except ZeroDivisionError:
+        return 12
 
 @register.filter(name='form_fieldset_column_width')
 def form_fieldset_column_width(form):
     def max_line(fieldset):
         return max([len(list(line)) for line in fieldset])
 
-    width = max([max_line(fieldset) for fieldset in form])
-    return 12 // width
+    try:
+        width = max([max_line(fieldset) for fieldset in form])
+        return 12 // width
+    except ValueError:
+        return 12
 
 @register.filter(name='fieldset_column_width')
 def fieldset_column_width(fieldset):
-    width = max([len(list(line)) for line in fieldset])
-    return 12 // width
+    try:
+        width = max([len(list(line)) for line in fieldset])
+        return 12 // width
+    except ValueError:
+        return 12
