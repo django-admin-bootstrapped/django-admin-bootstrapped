@@ -25,6 +25,9 @@ class TestMe(models.Model):
     test_filepath = models.FilePathField(blank=True, help_text="Lorem dolor")
     test_positive_small_int = models.PositiveSmallIntegerField(help_text="Lorem dolor")
 
+    def get_absolute_url(self):
+        return ''
+
     class Meta:
         verbose_name = u'Test me'
         verbose_name_plural = u'Lot of Test me'
