@@ -4,6 +4,8 @@
 - Cleanup applicated related fields (P.A. Schembri)
 - Don't break fieldsets with empty inlines (Christopher Trudeau)
 - Fixup app label in breadcrumbs (P.A. Schembri)
+- Navbar fixups #143 (Riccardo)
+- Improve header contrast #150 (Riccardo)
 
 ==== 2.0.5 (2014-10-08) ====
 
