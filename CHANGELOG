@@ -6,6 +6,7 @@
 - Fixup app label in breadcrumbs (P.A. Schembri)
 - Navbar fixups #143 (Riccardo)
 - Improve header contrast #150 (Riccardo)
+- Cleanup login ui #142 (Riccardo)
 
 ==== 2.0.5 (2014-10-08) ====
 
