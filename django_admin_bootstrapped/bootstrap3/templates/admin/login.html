@@ -9,7 +9,7 @@
 <style type="text/css">
 @media (min-width: 768px) {
 .form-signin {
-    max-width: 50%;
+    max-width: 380px;
     margin: 0 auto 20px;
     background-color: #fff;
     border: 1px solid #e5e5e5;
@@ -21,13 +21,19 @@
         box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 .form-signin-inner{
-    padding: 19px 29px 29px;
+    padding: 9px 29px 29px;
 }
-.form-signin .form-signin-heading, .form-signin .checkbox {
-    margin-bottom: 10px;
+.form-signin .form-signin-heading, .form-signin .checkbox, .form-signin h2 {
+    margin-bottom: 30px;
 }
 .form-signin .form-actions{
     margin: 0;
+}
+#id_username, #id_password{
+    display: block;
+    font-size: 16px;
+    height: 44px;
+    width: 100%;
 }
 }
 </style>
@@ -35,7 +41,7 @@
 
 {% block content %}
 <div id="content-main">
-<form class="form-signin form-horizontal" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+<form class="form-signin" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
   <div class="form-signin-inner">
   {% blocktrans %}<h2>Login</h2>{% endblocktrans %}
   {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
@@ -51,22 +57,14 @@
     {% endfor %}
   {% endif %}
   <div class="form-group">
-    <div class="control-label col-sm-2">
-        <label for="id_username" class="required">{% trans form.username.label %}</label>
-    </div>
-    <div class="controls col-sm-10">
-        {{ form.username }}
-        {% if not form.this_is_the_login_form.errors %}<span class="text-danger">{{ form.username.errors|striptags }}</span>{% endif %}
-    </div>
+    <label for="id_username" class="required">{% trans form.username.label %}</label>
+    {% if not form.this_is_the_login_form.errors %}<p class="text-danger">{{ form.username.errors|striptags }}</p>{% endif %}
+    {{ form.username }}
   </div>
   <div class="form-group">
-    <div class="control-label col-sm-2">
-        <label for="id_password" class="required">{% trans form.password.label %}</label>
-    </div>
-    <div class="controls col-sm-10">
-        {{ form.password }}
-        {% if not form.this_is_the_login_form.errors %}<span class="text-danger">{{ form.password.errors|striptags }}</span>{% endif %}
-    </div>
+    <label for="id_password" class="required">{% trans form.password.label %}</label>
+    {% if not form.this_is_the_login_form.errors %}<p class="text-danger">{{ form.password.errors|striptags }}</p>{% endif %}
+    {{ form.password }}
     <input type="hidden" name="this_is_the_login_form" value="1" />
     <input type="hidden" name="next" value="{{ next }}" />
   </div>
@@ -79,9 +77,7 @@
   </div>
   {% endif %}
   <div class="form-actions clearfix">
-    <div class="controls col-sm-offset-2 col-sm-10">
-      <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
-    </div>
+      <input type="submit" value="{% trans 'Log in' %}" class="btn btn-lg btn-primary btn-block" />
   </div>
   </div>
 </form>
