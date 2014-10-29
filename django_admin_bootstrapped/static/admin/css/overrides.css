@@ -130,3 +130,8 @@ td.action-checkbox {
 #content-navbar-collapse .btn-primary:focus {
     background-color: #265a88;
 }
+
+.form-control-inline {
+    width: auto;
+    display: inline;
+}
