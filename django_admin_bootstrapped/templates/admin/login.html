@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_static %}
+{% load i18n admin_static bootstrapped_goodies_tags %}
 
 {% block nav-global %}{% endblock %}
 
@@ -59,12 +59,12 @@
   <div class="form-group">
     <label for="id_username" class="required">{% trans form.username.label %}</label>
     {% if not form.this_is_the_login_form.errors %}<p class="text-danger">{{ form.username.errors|striptags }}</p>{% endif %}
-    {{ form.username }}
+    {% dab_field_rendering form.username %}
   </div>
   <div class="form-group">
     <label for="id_password" class="required">{% trans form.password.label %}</label>
     {% if not form.this_is_the_login_form.errors %}<p class="text-danger">{{ form.password.errors|striptags }}</p>{% endif %}
-    {{ form.password }}
+    {% dab_field_rendering form.password %}
     <input type="hidden" name="this_is_the_login_form" value="1" />
     <input type="hidden" name="next" value="{{ next }}" />
   </div>

@@ -1,4 +1,4 @@
-{% load i18n admin_static admin_modify %}
+{% load i18n admin_static admin_modify bootstrapped_goodies_tags %}
 <div class="_inline-group" id="{{ inline_admin_formset.formset.prefix }}-group">
   <div class="tabular inline-related {% if forloop.last %}last-related{% endif %}">
 {{ inline_admin_formset.formset.management_form }}
@@ -54,7 +54,7 @@
                   {% if field.errors %}
                   <div class="alert alert-danger">{{ field.errors|striptags }}</div>
                   {% endif %}
-                  {{ field.field }}
+                  {% dab_field_rendering field.field %}
               {% endif %}
               </td>
             {% endfor %}
