@@ -1,3 +1,7 @@
+==== 2.1.1 (UNRELEASED) ====
+
+- Add missing translation to search button (Chun-Wei Shen)
+
 ==== 2.1.0 (2014-10-23) ====
 
 - Make form labels bigger (Marcio Mazza)
