@@ -1,4 +1,4 @@
-==== 2.1.1 (UNRELEASED) ====
+==== 2.1.1 (2014-11-10) ====
 
 - Add missing translation to search button (Chun-Wei Shen)
 - Fix js error on add view #155 (Riccardo, Marc)
