@@ -1,6 +1,8 @@
 ==== 2.1.1 (UNRELEASED) ====
 
 - Add missing translation to search button (Chun-Wei Shen)
+- Fix js error on add view #155 (Riccardo, Marc)
+- Fix opts.module_name RemovedInDjango18Warning #154 (Riccardo)
 
 ==== 2.1.0 (2014-10-23) ====
 
