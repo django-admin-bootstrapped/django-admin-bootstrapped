@@ -118,7 +118,7 @@
         handle: '.drag-handler',
         items: ".dynamic-{{ inline_admin_formset.formset.prefix }}:not(:last:visible)"
     });
-    $("#{{ opts.module_name }}_form").submit(function(e) {
+    $("#{{ opts.model_name }}_form").submit(function(e) {
         var sortable_field_name = "{{ inline_admin_formset.opts.sortable_field_name }}",
             i = 0;
         var initial_form_count = $('#id_{{ inline_admin_formset.formset.prefix }}-INITIAL_FORMS').val();
