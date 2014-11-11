@@ -22,7 +22,6 @@ The old ``1.x`` series works with Django ``>=1.4`` and  ``<1.7``.
 
 ::
 
-    'django_admin_bootstrapped.bootstrap3',
     'django_admin_bootstrapped',
 
 3. Have fun!
