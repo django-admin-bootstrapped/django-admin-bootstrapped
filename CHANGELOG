@@ -1,3 +1,11 @@
+==== 2.2.0 (UNRELEASED) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Move bootstrap3 static and templates back to django admin bootstrapped (Riccardo)
+- Upgrade bootstrap to 3.3.0 (Riccardo)
+
 ==== 2.1.1 (2014-11-10) ====
 
 - Add missing translation to search button (Chun-Wei Shen)
