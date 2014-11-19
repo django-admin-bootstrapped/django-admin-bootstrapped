@@ -1,4 +1,4 @@
-==== 2.2.0 (UNRELEASED) ====
+==== 2.2.0 (2014-11-19) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
 Please remove it from the INSTALLED_APPS in settings.py

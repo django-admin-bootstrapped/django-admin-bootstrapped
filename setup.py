@@ -22,7 +22,7 @@ setup(
     maintainer="Riccardo Magliocchetti",
     maintainer_email="riccardo.magliocchetti@gmail.com",
     name='django-admin-bootstrapped',
-    version='2.1.1',
+    version='2.2.0',
     description='A Bootstrap theme for Django Admin',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     url='https://github.com/django-admin-bootstrapped/django-admin-bootstrapped',
