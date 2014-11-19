@@ -55,14 +55,14 @@
         <div class="navbar-inner">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
                     {% block branding %}{% endblock %}
                 </div>
-                <div class="navbar-collapse collapse navbar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
+                <div id="header-navbar-collapse" class="navbar-collapse collapse navbar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
                     <ul class="nav navbar-nav">
                         {% if user.is_active and user.is_staff %}
                         <li class="dropdown">
@@ -131,7 +131,19 @@
         <div class="navbar navbar-default">
             <div class="navbar-inner">
                 {% block pretitle %}{% endblock %}
-                {% block content_title %}{% if title %}<a class="navbar-brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>{% endif %}{% endblock %}
+                {% block content_title %}
+                    {% if title %}
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#content-navbar-collapse" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>
+                    </div>
+                    {% endif %}
+                {% endblock %}
                 {% block object-tools %}{% endblock %}
             </div>
         </div>

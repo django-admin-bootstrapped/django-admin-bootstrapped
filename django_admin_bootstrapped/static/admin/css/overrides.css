@@ -119,3 +119,9 @@ td.action-checkbox {
         margin-right: 0px;
     }
 }
+
+#content-navbar-collapse .btn-primary {
+    color: #fff;
+    padding: 6px 12px;
+    margin-top: 8px;
+}

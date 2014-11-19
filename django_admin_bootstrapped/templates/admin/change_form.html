@@ -26,15 +26,17 @@
 
 {% block object-tools %}
 {% if change %}{% if not is_popup %}
+<div id="content-navbar-collapse" class="navbar-collapse collapse">
   <ul class="nav navbar-nav navbar-right">
     {% block object-tools-items %}
     <li>
         {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
-        <a href="{% add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
+        <a role="button" href="{% add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
     </li>
     {% if has_absolute_url %}<li><a href="{% url 'admin:view_on_site' content_type_id original.pk %}" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif%}
     {% endblock %}
   </ul>
+</div>
 {% endif %}{% endif %}
 {% endblock %}
 
