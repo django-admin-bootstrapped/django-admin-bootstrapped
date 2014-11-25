@@ -13,10 +13,13 @@
 </ul>
 {% endblock %}
 
+{% block content-navbar-collapse %}
+{% endblock %}
+
 {% block object-tools %}
 <ul class="nav navbar-nav">
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <span class="caret"></span></a>
+        <a role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Applications" %} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
             {% for app in app_list %}
             <li>
