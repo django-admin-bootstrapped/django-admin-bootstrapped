@@ -9,7 +9,7 @@
         <div class="well well-small inline-related{% if forloop.last %} empty-form last-related{% endif %}" id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
           <legend>
             {% if not forloop.last %}
-            <a data-toggle="collapse" data-target="#{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %} .collapse">
+            <a data-toggle="collapse" data-target="#{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %} > .collapse">
             {% endif %}
             {% if inline_admin_form.original %}{{ inline_admin_form.original }}{% else %}#{{ forloop.counter }}{% endif %} <small class="inline_label">({{ inline_admin_formset.opts.verbose_name }})</small>
             {% if not forloop.last %}
@@ -34,7 +34,7 @@
 
           <div class="{% if not forloop.last %}collapse{% endif %}{% if not inline_admin_formset.opts.start_collapsed %} in{% endif %}">
           {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
-          {% with stacked_prefix=forloop.counter0 %}
+          {% with stacked_prefix=forloop.counter %}
           {% for fieldset in inline_admin_form %}
             {% include "admin/includes/fieldset.html" with group_column_width=fieldset|fieldset_column_width %}
           {% endfor %}
