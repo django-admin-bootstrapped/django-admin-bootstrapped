@@ -125,3 +125,7 @@ td.action-checkbox {
     padding: 6px 12px;
     margin-top: 8px;
 }
+
+#content-navbar-collapse .btn-primary:hover {
+    background-color: #265a88;
+}
