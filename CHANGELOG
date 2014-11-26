@@ -1,3 +1,12 @@
+==== 2.2.1 (2014-11-XX) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+. Fix "Add model" button hover #156 (Riccardo)
+. Remove spurious hamburger icon in index (Riccardo)
+- Fix collapsible handling with stacked inlines #129 (Brandon Cazander)
+
 ==== 2.2.0 (2014-11-19) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
