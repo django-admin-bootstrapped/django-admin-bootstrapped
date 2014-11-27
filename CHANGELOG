@@ -1,3 +1,11 @@
+==== 2.2.2 (UNRELEASED) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Fix "Add model" button focus #156 (Riccardo)
+- Cleanup django-filer templates #158 (Riccardo)
+
 ==== 2.2.1 (2014-11-26) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
