@@ -5,10 +5,9 @@
 {# upload stuff #}
 {{ media.js }}
 <script type="text/javascript" src="{% static "admin/js/jquery.min.js" %}></script>
-<script type="text/javascript" src="{% filer_staticmedia_prefix %}js/jquery-ui-1.7.2.custom.min.js"></script>
 <script type="text/javascript" src="{% filer_staticmedia_prefix %}js/jquery.cookie.js"></script>
 <script type="text/javascript" src="{% filer_staticmedia_prefix %}js/fileuploader.js"></script>
-<script type="text/javascript" src="{% static "admin/js/RelatedObjectLookups.js" %}></script>
+<script type="text/javascript" src="{% admin_js_base %}admin/js/RelatedObjectLookups.js" %}></script>
 <script type="text/javascript" src="{% filer_staticmedia_prefix %}js/popup_handling.js"></script>
 {% if action_form %}{% if actions_on_top or actions_on_bottom %}
 <script type="text/javascript">
@@ -57,16 +56,23 @@
 </div>
 {% endblock %}
 
+{% block content_title %}{% endblock %}
 
-{% block content_title %}
-
-{% if folder.can_have_subfolders %}<a id="id_new_folder" href="{% url 'admin:filer-directory_listing-make_root_folder' %}?parent_id={{ folder.id }}" class="btn btn-primary" onclick="return showAddAnotherPopup(this);" title="{% trans "Adds a new Folder" %}">{% trans "New Folder" %}</a>{% endif %}
-<a id="id_upload_button" href="#" class="btn" title="{% trans 'upload files' %}">{% trans 'Upload' %}</a>
+{% block object-tools %}
+<div id="content-navbar-collapse" class="navbar-collapse collapse">
+    <ul class="object-tools nav navbar-nav">
+        {% block object-tools-items %}
+            {% if folder.can_have_subfolders %}{% if can_make_folder %}
+                <li><a role="button" id="id_new_folder" href="{% url 'admin:filer-directory_listing-make_root_folder' %}?parent_id={{ folder.id }}" class="btn btn-primary" onclick="return showAddAnotherPopup(this);" title="{% trans "Adds a new Folder" %}">{% trans "New Folder" %}</a><li><span>&nbsp;</span>{% endif %}{% endif %}
+                <li><a role="button" id="id_upload_button" href="#" class="btn btn-primary" title="{% trans 'upload files' %}">{% trans 'Upload' %}</a></li>
 {% include 'admin/filer/tools/upload_button_js.html' %}
+        {% endblock %}
+    </ul>
 
-{% include "admin/filer/tools/search_form.html" %}
-
+    {% block search %}{% include "admin/filer/tools/search_form.html" %}{% endblock %}
+</div>
 {% endblock %}
+
 {% block content %}
 
     <div class="span9">
