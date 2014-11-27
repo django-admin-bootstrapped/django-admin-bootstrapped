@@ -131,8 +131,6 @@
         <div class="navbar navbar-default">
             <div class="navbar-inner">
                 {% block pretitle %}{% endblock %}
-                {% block content_title %}
-                    {% if title %}
                     <div class="navbar-header">
                         {% block content-navbar-collapse %}
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#content-navbar-collapse" aria-expanded="false" aria-controls="navbar">
@@ -142,10 +140,12 @@
                             <span class="icon-bar"></span>
                         </button>
                         {% endblock %}
+                    {% block content_title %}
+                    {% if title %}
                         <a class="navbar-brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>
-                    </div>
                     {% endif %}
-                {% endblock %}
+                    {% endblock %}
+                    </div>
                 {% block object-tools %}{% endblock %}
             </div>
         </div>
