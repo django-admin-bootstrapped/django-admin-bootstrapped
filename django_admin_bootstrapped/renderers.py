@@ -7,6 +7,7 @@ from django.forms import (FileInput, CheckboxInput, RadioSelect, CheckboxSelectM
 
 from bootstrap3 import renderers
 from bootstrap3.html import add_css_class
+from bootstrap3.text import text_value
 
 class BootstrapFieldRenderer(renderers.FieldRenderer):
     """
