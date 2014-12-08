@@ -1,3 +1,11 @@
+==== 2.3.1 (2014-12-XX) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Add missing import in custom field rendering #162 (James Oakley)
+- Add missing timezone handling to base template #164 (qxcv)
+
 ==== 2.3.0 (2014-12-04) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
