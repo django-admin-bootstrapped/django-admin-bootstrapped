@@ -22,6 +22,7 @@
     <script type="text/javascript">
     //<![CDATA[
         window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";
+        window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";
     //]]>
     </script>
     <script src="{% static "admin/js/jquery-1.9.1.min.js" %}"></script>
