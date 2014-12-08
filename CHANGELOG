@@ -5,6 +5,7 @@ Please remove it from the INSTALLED_APPS in settings.py
 
 - Add missing import in custom field rendering #162 (James Oakley)
 - Add missing timezone handling to base template #164 (qxcv)
+- Add custom field rendering tests #163 (Riccardo)
 
 ==== 2.3.0 (2014-12-04) ====
 
