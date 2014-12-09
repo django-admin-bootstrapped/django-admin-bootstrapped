@@ -168,6 +168,15 @@ fields <https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.
 This feature (and many more) was brought to you by `Jacob
 Magnusson <https://github.com/jmagnusson>`__. Thank you Jacob!
 
+Contributing
+------------
+
+Every code, documentation and UX contribution is welcome.
+
+Found an issue? Report it in the bugtracker!
+
+Have some free time? Help fixing an already filed issue, just remember to work on a separate branch please.
+
 Screenshots
 -----------
 
