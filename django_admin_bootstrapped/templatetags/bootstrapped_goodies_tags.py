@@ -1,8 +1,11 @@
 from django import template
 from django.template.loader import render_to_string, TemplateDoesNotExist
+from django.utils.importlib import import_module
 
 register = template.Library()
 
+from django.conf import settings
+CUSTOM_FIELD_RENDERER = getattr(settings, 'DAB_FIELD_RENDERER', False)
 
 @register.simple_tag(takes_context=True)
 def render_with_template_if_exist(context, template, fallback):
@@ -22,7 +25,6 @@ def language_selector(context):
             * "set_language" url configured (see https://docs.djangoproject.com/en/dev/topics/i18n/translation/#the-set-language-redirect-view)
     """
     output = ""
-    from django.conf import settings
     i18 = getattr(settings, 'USE_I18N', False)
     if i18:
         template = "admin/language_selector.html"
@@ -98,3 +100,13 @@ def render_app_description(context, app, fallback="", template="/admin_app_descr
     except:
         text = fallback
     return text
+
+@register.simple_tag(takes_context=True, name="dab_field_rendering")
+def custom_field_rendering(context, field, *args, **kwargs):
+    """ Wrapper for rendering the field via an external renderer """
+    if CUSTOM_FIELD_RENDERER:
+        mod, cls = CUSTOM_FIELD_RENDERER.rsplit(".", 1)
+        field_renderer = getattr(import_module(mod), cls)
+        if field_renderer:
+            return field_renderer(field, **kwargs).render()
+    return field

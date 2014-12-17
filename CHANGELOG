@@ -1,3 +1,45 @@
+==== 2.3.1 (2014-12-08) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Add missing import in custom field rendering #162 (James Oakley)
+- Add missing timezone handling to base template #164 (qxcv)
+- Add custom field rendering tests #163 (Riccardo)
+
+==== 2.3.0 (2014-12-04) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Fix "Add model" button focus #156 (Riccardo)
+- Cleanup django-filer templates (UI is terrible though) #158 (Riccardo)
+- Add support for custom field rendering #152 (Riccardo)
+
+==== 2.2.1 (2014-11-26) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Fix "Add model" button hover #156 (Riccardo)
+- Remove spurious hamburger icon in index (Riccardo)
+- Fix collapsible handling with stacked inlines #129 (Brandon Cazander)
+
+==== 2.2.0 (2014-11-19) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Move bootstrap3 static and templates back to django admin bootstrapped (Riccardo)
+- Upgrade bootstrap to 3.3.1 (Riccardo)
+- Make inner header responsive #144 (Riccardo)
+
+==== 2.1.1 (2014-11-10) ====
+
+- Add missing translation to search button (Chun-Wei Shen)
+- Fix js error on add view #155 (Riccardo, Marc)
+- Fix opts.module_name RemovedInDjango18Warning #154 (Riccardo)
+
 ==== 2.1.0 (2014-10-23) ====
 
 - Make form labels bigger (Marcio Mazza)
