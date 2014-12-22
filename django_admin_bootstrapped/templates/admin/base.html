@@ -157,7 +157,7 @@
         <div class="row">
             <div class="col-sm-12">
                 {% for message in messages %}
-                <div class="alert alert-info {% if message.tags %}{{ message.tags }}{% endif %}">
+                <div class="alert {{ message.tags|default:'alert-info' }}">
                     {{ message }}
                 </div>
                 {% endfor %}
