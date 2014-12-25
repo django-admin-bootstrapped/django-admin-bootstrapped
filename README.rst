@@ -30,15 +30,16 @@ Configuration
 -------------
 
 For a full bootstrap3 experience you may want to use a custom renderer for the fields.
-There's a django-bootstrap3 based one available in tree: after installing django-bootstrap3
-you have to add:
+There's one available in tree that requires the ``django-bootstrap3`` application installed.
+You have to add to your project settings file:
 ::
 
     DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 
 `Messages <http://docs.djangoproject.com/en/dev/ref/contrib/messages>`__ will have ``alert-info`` tag by default, 
-so you may want to add Bootstrap 3 tags for different message levels to make them styled appropriately:
+so you may want to add Bootstrap 3 tags for different message levels to make them styled appropriately.
+Add to your project settings file:
 ::
 
     from django.contrib import messages
