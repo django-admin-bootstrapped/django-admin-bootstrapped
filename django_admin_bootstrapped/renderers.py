@@ -6,7 +6,10 @@ from django.contrib.admin.widgets import (AdminDateWidget, AdminTimeWidget,
 from django.forms import (FileInput, CheckboxInput, RadioSelect, CheckboxSelectMultiple)
 
 from bootstrap3 import renderers
-from bootstrap3.html import add_css_class
+try:
+    from bootstrap3.utils import add_css_class
+except ImportError:
+    from bootstrap3.html import add_css_class
 from bootstrap3.text import text_value
 
 class BootstrapFieldRenderer(renderers.FieldRenderer):
