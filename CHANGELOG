@@ -6,6 +6,7 @@ Please remove it from the INSTALLED_APPS in settings.py
 - Cleanup messages tags usage in alerts #166 (Patrick Miller)
 - Cope with django-bootstrap3 api update #171 (Fernando Gonzalez)
 - Update bootstrap to 3.3.2 #170 (Riccardo)
+- Make the filter menu in change list scrollable #169 (Riccardo)
 
 ==== 2.3.1 (2014-12-08) ====
 
