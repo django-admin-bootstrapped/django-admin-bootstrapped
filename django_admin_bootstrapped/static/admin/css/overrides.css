@@ -1,4 +1,4 @@
-/* overrides to default admin style */
+/* overrides to default admin and bootstrap styles */
 
 a:active,
 a:focus {
@@ -6,16 +6,6 @@ a:focus {
 }
 .sidebar-nav {
     padding: 9px 0;
-}
-.form-group input[type=text] {
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
-}
-.form-group select {
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
 }
 .controls > p {
     padding-top: 5px;
