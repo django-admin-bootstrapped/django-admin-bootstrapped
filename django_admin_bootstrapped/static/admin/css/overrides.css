@@ -11,7 +11,6 @@ a:focus {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
-    height: 28px;
 }
 .form-group select {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
