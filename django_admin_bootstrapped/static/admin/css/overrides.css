@@ -17,6 +17,10 @@ a:focus {
 .controls > ul label {
     font-size: 14px;
 }
+.controls > ul .form-control {
+    height: auto;
+    margin: 9px 0;
+}
 .selector .selector-filter label {
     display: none;
 }
