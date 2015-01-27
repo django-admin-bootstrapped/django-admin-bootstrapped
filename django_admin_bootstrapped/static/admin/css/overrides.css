@@ -10,6 +10,13 @@ a:focus {
 .controls > p {
     padding-top: 5px;
 }
+.controls > ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+.controls > ul label {
+    font-size: 14px;
+}
 .selector .selector-filter label {
     display: none;
 }
