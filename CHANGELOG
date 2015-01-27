@@ -1,3 +1,12 @@
+==== 2.X.X (2015-XX-XX) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Import firstof from future to ensure Django 1.8 compatibility (Jamie Curle)
+- Fix CheckboxSelectMultiple style #174 (Riccardo)
+- Fix input-group-addon rendering #172 (Riccardo)
+
 ==== 2.3.2 (2015-01-23) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
