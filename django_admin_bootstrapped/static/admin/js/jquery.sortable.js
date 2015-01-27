@@ -29,7 +29,6 @@ $.fn.sortable = function(options) {
         else
             placeholder = $('<' + (/^ul|ol$/i.test(this.tagName) ? 'li' : 'div') + ' class="sortable-placeholder">').html("&nbsp;");
 
-        console.log(this.tagName);
         items.find(options.handle).mousedown(function() {
             isHandle = true;
         }).mouseup(function() {
