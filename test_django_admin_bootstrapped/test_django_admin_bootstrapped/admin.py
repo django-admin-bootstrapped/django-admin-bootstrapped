@@ -1,5 +1,9 @@
+from django.forms.widgets import CheckboxSelectMultiple
 from django.contrib import admin
+from django.db import models
+
 from django_admin_bootstrapped.admin.models import SortableInline
+
 from .models import TestMe, TestThat, TestMeProxyForFieldsets, TestSortable
 
 
@@ -35,6 +39,10 @@ class TestMeAdmin(admin.ModelAdmin):
     inlines = [TestThatStackedInline, TestThatTabularInline, TestSortable]
     save_as = True
     save_on_top = True
+
+    formfield_overrides = {
+        models.ManyToManyField: {'widget': CheckboxSelectMultiple }
+    }
 
     def useless_action(self, request, queryset):
         self.message_user(request, "Useless action successfully executed.")
