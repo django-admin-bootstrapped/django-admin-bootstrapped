@@ -93,7 +93,7 @@
         };
         $(rows).formset({
             prefix: "{{ inline_admin_formset.formset.prefix }}",
-            addText: "<span class='btn'><i class='icon-plus'></i> {% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|title %}Add another {{ verbose_name }}{% endblocktrans %}</span>",
+            addText: "<span class='btn'><i class='glyphicon glyphicon-plus'></i> {% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|title %}Add another {{ verbose_name }}{% endblocktrans %}</span>",
             formCssClass: "dynamic-{{ inline_admin_formset.formset.prefix }}",
             deleteCssClass: "inline-deletelink",
             deleteText: "{% trans "Remove" %}",

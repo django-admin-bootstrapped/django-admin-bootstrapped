@@ -33,7 +33,7 @@
                 <td>
                     {% if item.file_type == 'Folder' and item_perms.change %}
                     <div class="pull-right">
-                        <a class="btn btn-default btn-xs changelink" href="{{ subfolder.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with subfolder.name as item_label %}Change '{{ item_label }}' folder details{% endblocktrans %}"><i class="icon-edit"></i> {% trans "Change" %}</a>
+                        <a class="btn btn-default btn-xs changelink" href="{{ subfolder.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with subfolder.name as item_label %}Change '{{ item_label }}' folder details{% endblocktrans %}"><i class="glyphicon glyphicon-edit"></i> {% trans "Change" %}</a>
                     </div>
                     {% endif %}
                     <div>
@@ -63,7 +63,7 @@
                     <div class="pull-right">
                         <a class="btn btn-default btn-xs deletelink" href="{% url 'admin:filer_file_delete' file.pk %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}"" title="{% blocktrans with file.label as item_label %}Delete '{{ item_label }}'{% endblocktrans %}">{% trans "Delete" %}</a>
 
-                        <a class="btn btn-default btn-xs changelink" href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}"><i class="icon-edit"></i>{% trans "Change" %}</a>
+                        <a class="btn btn-default btn-xs changelink" href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}"><i class="glyphicon glyphicon-edit"></i>{% trans "Change" %}</a>
                     </div>
                     {% endif %}
                     
