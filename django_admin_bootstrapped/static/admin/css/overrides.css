@@ -10,14 +10,17 @@ a:focus {
 .controls > p {
     padding-top: 5px;
 }
-.controls > ul {
+.controls > ul,
+.controls > .related-widget-wrapper > ul {
     list-style-type: none;
     padding-left: 0px;
 }
-.controls > ul label {
+.controls > ul label,
+.controls > .related-widget-wrapper > ul label {
     font-size: 14px;
 }
-.controls > ul .form-control {
+.controls > ul .form-control,
+.controls > .related-widget-wrapper > ul .form-control {
     height: auto;
     margin: 9px 0;
 }
