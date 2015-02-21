@@ -1,3 +1,11 @@
+==== 2.X.X (2015-0X-XX) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Django 1.8 compatibility fixes #177, #178 (Joel Burton)
+- Fixed some glyphicons classes conversion from bootstrap 2 (Riccardo)
+
 ==== 2.3.3 (2015-02-10) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
