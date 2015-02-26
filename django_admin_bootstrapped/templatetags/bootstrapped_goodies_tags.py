@@ -1,6 +1,9 @@
 from django import template
 from django.template.loader import render_to_string, TemplateDoesNotExist
-from django.utils.importlib import import_module
+try:
+    from django.utils.importlib import import_module
+except ImportError:
+    from importlib import import_module
 
 register = template.Library()
 
