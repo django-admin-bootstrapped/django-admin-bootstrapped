@@ -55,9 +55,18 @@ legend a:hover {
     width: auto !important;
 }
 
+
 /* change_list actions */
+.actions {
+    height: 40px;
+    display: inline-block;
+}
 .actions select {
     margin-top: 5px;
+}
+.action-counter {
+    margin-left: 5px;
+    vertical-align: sub;
 }
 
 /* change_list table display */
