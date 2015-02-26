@@ -3,7 +3,7 @@ from django.db import models
 
 class TestMe(models.Model):
     test_m2m = models.ManyToManyField('self', blank=True, help_text="Lorem dolor")
-    test_ip = models.IPAddressField(help_text="Lorem dolor")
+    test_ip = models.GenericIPAddressField(help_text="Lorem dolor")
     test_url = models.URLField(help_text="Lorem dolor")
     test_int = models.IntegerField(help_text="Lorem dolor")
     test_img = models.ImageField(upload_to='dummy', blank=True)
@@ -42,7 +42,7 @@ class TestMeProxyForFieldsets(TestMe):
 
 class TestThat(models.Model):
     that = models.ForeignKey(TestMe, help_text="Lorem dolor")
-    test_ip = models.IPAddressField(help_text="Lorem dolor")
+    test_ip = models.GenericIPAddressField(help_text="Lorem dolor")
     test_url = models.URLField(help_text="Lorem dolor")
     test_int = models.IntegerField(help_text="Lorem dolor")
     test_date = models.DateField(help_text="Lorem dolor")
