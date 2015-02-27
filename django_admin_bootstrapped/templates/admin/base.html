@@ -144,7 +144,7 @@
                         {% endblock %}
                     {% block content_title %}
                     {% if title %}
-                        <a class="navbar-brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</a>
+                        <span class="navbar-brand">{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</span>
                     {% endif %}
                     {% endblock %}
                     </div>
