@@ -8,6 +8,7 @@ Please remove it from the INSTALLED_APPS in settings.py
 - Django 1.9 compatibility fixes (Riccardo)
 - Fix running test project under a wsgi server (Riccardo)
 - Cleanup change list actions and pagination a bit (Riccardo)
+- Hide fieldset rows without visible fields (Sylvain Fankhauser)
 
 ==== 2.3.3 (2015-02-10) ====
 
