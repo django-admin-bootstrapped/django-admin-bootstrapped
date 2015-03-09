@@ -7,8 +7,8 @@
         <span class="action-counter">{{ selection_note }}</span>
         {% if cl.result_count != cl.result_list|length %}
         <span class="all" style="vertical-align:sub">{{ selection_note_all }}</span>
-        <span class="question"><a class="btn btn-primary" href="javascript:;" title="{% trans "Click here to select the objects across all pages" %}">{% blocktrans with cl.result_count as total_count %}Select all {{ total_count }} {{ module_name }}{% endblocktrans %}</a></span>
-        <span class="clear"><a class="btn btn-primary" href="javascript:;">{% trans "Clear selection" %}</a></span>
+        <span class="question"><a class="btn btn-default" href="javascript:;" title="{% trans "Click here to select the objects across all pages" %}">{% blocktrans with cl.result_count as total_count %}Select all {{ total_count }} {{ module_name }}{% endblocktrans %}</a></span>
+        <span class="clear"><a class="btn btn-default" href="javascript:;">{% trans "Clear selection" %}</a></span>
         {% endif %}
     {% endif %}
 </div>
