@@ -9,6 +9,7 @@ Please remove it from the INSTALLED_APPS in settings.py
 - Fix running test project under a wsgi server (Riccardo)
 - Cleanup change list actions and pagination a bit (Riccardo)
 - Hide fieldset rows without visible fields (Sylvain Fankhauser)
+- Add ability to run tests from setup (Riccardo)
 
 ==== 2.3.3 (2015-02-10) ====
 
