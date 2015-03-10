@@ -33,6 +33,7 @@ setup(
         'setuptools',
         'Django>=1.6',
     ],
+    test_suite='django_admin_bootstrapped.runtests.runtests',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False
