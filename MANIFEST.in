@@ -1,2 +1,3 @@
 include README.rst LICENSE
 recursive-include django_admin_bootstrapped *
+global-exclude *pyc
