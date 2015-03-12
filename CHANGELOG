@@ -1,3 +1,9 @@
+==== 2.4.0 (2015-XX-XX) ====
+
+- bootstrap3 sub-application has been removed (Riccardo)
+- Drop bootstrap3 theme for a flat look (Riccardo)
+- Drop unmaintaned django-cms integration #52, #112 (Riccardo)
+
 ==== 2.3.4 (2015-03-10) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
