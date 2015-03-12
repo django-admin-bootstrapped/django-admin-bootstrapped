@@ -1,5 +1,9 @@
 /* overrides to default admin and bootstrap styles */
 
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
 a:active,
 a:focus {
     outline: none;
