@@ -4,6 +4,13 @@
 - Drop bootstrap3 theme for a flat look (Riccardo)
 - Drop unmaintaned django-cms integration #52, #112 (Riccardo)
 
+==== 2.3.5 (2015-03-13) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Reverted commit that broken fieldsets on django 1.6. Oops! (Riccardo)
+
 ==== 2.3.4 (2015-03-10) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
