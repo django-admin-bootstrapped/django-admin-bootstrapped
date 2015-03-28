@@ -62,11 +62,12 @@ legend a:hover {
 
 /* change_list actions */
 .actions {
-    height: 40px;
     display: inline-block;
 }
 .actions select {
     margin-top: 5px;
+    display: inherit;
+    width: inherit;
 }
 .action-counter {
     margin-left: 5px;
