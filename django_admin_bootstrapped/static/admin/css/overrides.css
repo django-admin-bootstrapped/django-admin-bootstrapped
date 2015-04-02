@@ -152,3 +152,8 @@ td.action-checkbox {
     width: auto;
     display: inline;
 }
+
+.spacer {
+    margin-bottom: 20px;
+    clear: both;
+}
