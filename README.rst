@@ -9,13 +9,14 @@ of modification on your side, just add it to the installed apps.
 Requirements
 ------------
 
--  Django ``>=1.6``
+-  Django ``==1.7``
+
+Django 1.6 has been supported up to the ``2.3.x`` series
+
+Django 1.7 will be supported up to the ``2.4.x`` series
 
 Installation
 ------------
-
-Since ``2.0`` we are targeting Bootstrap 3 and recent Django versions.
-The old ``1.x`` series works with Django ``>=1.4`` and  ``<1.7``.
 
 1. Download it from PyPi with ``pip install django-admin-bootstrapped``
 2. Add into the ``INSTALLED_APPS`` **before** ``'django.contrib.admin'``:
@@ -67,13 +68,13 @@ Goodies
 Translate/change an application name with a template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**This will be removed in 2.5.0**
+
 With a version of django ``< 1.7`` you can't change the application
 name, but django-admin-bootstrapped let you do it in a really easy way.
 Create a file named ``admin_app_name.html`` into the application's
 template folder. Eg: ``myapp/templates/admin_app_name.html`` or
-``project/templates/myapp/admin_app_name.html``. Please be warned that
-since this is already possible using plain django the feature
-will be removed in favour of the upstream solution.
+``project/templates/myapp/admin_app_name.html``.
 
 You can also change the default Django Administration title, just add a
 ``admin_title.html`` file into your ``project/templates/admin/`` folder.

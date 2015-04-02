@@ -1,9 +1,12 @@
 ==== 2.4.0 (2015-XX-XX) ====
 
+WARNING: we plan to do a very quick cycle for this series and move to django 1.8 support only
+
 - bootstrap3 sub-application has been removed (Riccardo)
 - Drop bootstrap3 theme for a flat look (Riccardo)
 - Drop unmaintaned django-cms integration #52, #112 (Riccardo)
 - Cleanup change list actions spacing #186 (David Rideout)
+- Bump minimum django version to 1.7 (Riccardo)
 
 ==== 2.3.5 (2015-03-13) ====
 
