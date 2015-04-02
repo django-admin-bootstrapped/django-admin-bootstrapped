@@ -8,6 +8,8 @@ WARNING: we plan to do a very quick cycle for this series and move to django 1.8
 - Cleanup change list actions spacing #186 (David Rideout)
 - Bump minimum django version to 1.7 (Riccardo)
 - Hide fieldset rows without visible fields (Sylvain Fankhauser)
+- Update screenshots in README.rst #187 (Riccardo)
+- Update bootstrap to 3.3.4 #184 (Riccardo)
 
 ==== 2.3.5 (2015-03-13) ====
 
