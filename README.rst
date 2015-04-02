@@ -120,12 +120,11 @@ this:
         model = TestSortable
         extra = 0
 
-You can now use the inline as usual. The result will look like this:
+You can now use the inline as usual. See the screenshots section to see what the result
+will look like.
 
-.. image:: https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_inlines.png
+This feature was brought to you by `Kyle Bock <https://github.com/kwbock>`__. Thank you Kyle!
 
-This feature was brought to you by `Kyle
-Bock <https://github.com/kwbock>`__. Thank you Kyle!
 
 XHTML Compatible
 ~~~~~~~~~~~~~~~~
@@ -136,8 +135,6 @@ add the following to your settings.py: DEFAULT\_CONTENT\_TYPE =
 
 Generic lookups in admin
 ~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: https://a248.e.akamai.net/camo.github.com/2848fec376b4af6d6a08e2a3a7d575569115f998/687474703a2f2f692e696d6775722e636f6d2f766970547453732e706e67
 
 All that needs to be done is change the admin widget with either
 formfield\_overrides like this:
@@ -185,17 +182,17 @@ Screenshots
 Homepage
 ~~~~~~~~
 
-.. image:: https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_index.png
+.. image:: https://cloud.githubusercontent.com/assets/12932/6967318/d7064abe-d95e-11e4-91bc-6de527550557.png
 
 List view with filters in dropdown
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_list_filter.png
+.. image:: https://cloud.githubusercontent.com/assets/12932/6967319/d71a9c6c-d95e-11e4-86cf-47e8857582c1.png
 
 Change form view
 ~~~~~~~~~~~~~~~~
 
-.. image:: https://riccardo.forina.me/static/screens/django_admin_bootstrapped_screen_v02_change_form.png
+.. image:: https://cloud.githubusercontent.com/assets/12932/6966950/98661ba6-d95c-11e4-8bb3-e4b18759115b.png
 
 .. |PyPI version| image:: https://pypip.in/d/django-admin-bootstrapped/badge.png
    :target: https://pypi.python.org/pypi/django-admin-bootstrapped
