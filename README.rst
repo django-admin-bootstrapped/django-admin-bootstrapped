@@ -64,12 +64,6 @@ will result into this:
 Goodies
 -------
 
-Translate/change admin title with a template
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can change the default Django Administration title, just add a
-``admin_title.html`` file into your ``project/templates/admin/`` folder.
-
 Add custom html to the change form of any model with a template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
