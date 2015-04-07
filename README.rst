@@ -64,18 +64,10 @@ will result into this:
 Goodies
 -------
 
-Translate/change an application name with a template
+Translate/change admin title with a template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**This will be removed in 2.5.0**
-
-With a version of django ``< 1.7`` you can't change the application
-name, but django-admin-bootstrapped let you do it in a really easy way.
-Create a file named ``admin_app_name.html`` into the application's
-template folder. Eg: ``myapp/templates/admin_app_name.html`` or
-``project/templates/myapp/admin_app_name.html``.
-
-You can also change the default Django Administration title, just add a
+You can change the default Django Administration title, just add a
 ``admin_title.html`` file into your ``project/templates/admin/`` folder.
 
 Add custom html to the change form of any model with a template
