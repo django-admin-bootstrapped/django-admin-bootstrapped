@@ -1,17 +1,17 @@
-{% load i18n admin_static bootstrapped_goodies_tags %}
+{% load i18n admin_urls admin_static bootstrapped_goodies_tags %}
 <div class="_inline-group" id="{{ inline_admin_formset.formset.prefix }}-group">
-  <h2>{{ inline_admin_formset.opts.verbose_name_plural|title }}</h2>
+  <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
 {{ inline_admin_formset.formset.management_form }}
 {{ inline_admin_formset.formset.non_form_errors }}
 
     <div class="items">
         {% for inline_admin_form in inline_admin_formset %}
-        <div class="well well-small inline-related{% if forloop.last %} empty-form last-related{% endif %}" id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
+        <div class="well well-small inline-related{% if inline_admin_form.original or inline_admin_form.show_url %} has_original{% endif %}{% if forloop.last %} empty-form last-related{% endif %}" id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
           <legend>
             {% if not forloop.last %}
             <a data-toggle="collapse" data-target="#{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %} > .collapse">
             {% endif %}
-            {% if inline_admin_form.original %}{{ inline_admin_form.original }}{% else %}#{{ forloop.counter }}{% endif %} <small class="inline_label">({{ inline_admin_formset.opts.verbose_name }})</small>
+            {% if inline_admin_form.original %}{{ inline_admin_form.original }}{% if inline_admin_form.model_admin.show_change_link and inline_admin_form.model_admin.has_registered_model %} <a href="{% url inline_admin_form.model_admin.opts|admin_urlname:'change' inline_admin_form.original.pk|admin_urlquote %}" class="inlinechangelink">{% trans "Change" %}</a>{% endif %}{% else %}#{{ forloop.counter }}{% endif %} <small class="inline_label">({{ inline_admin_formset.opts.verbose_name|capfirst }})</small>
             {% if not forloop.last %}
             <span class="btn btn-default btn-xs"><i class="glyphicon glyphicon-resize-full"></i></span>
             {% if inline_admin_formset.opts.sortable_field_name %}
@@ -19,7 +19,7 @@
             {% endif %}
             </a>
             {% endif %}
-            {% if inline_admin_form.show_url %}<a href="../../../r/{{ inline_admin_form.original_content_type_id }}/{{ inline_admin_form.original.id }}/">{% trans "View on site" %}</a>{% endif %}
+            {% if inline_admin_form.show_url %}<a href="{{ inline_admin_form.absolute_url }}">{% trans "View on site" %}</a>{% endif %}
             <div class="pull-right">
                 {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}<div class="delete control-group"><div class="checkbox">{{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}</div></div>{% endif %}
             </div>
@@ -39,7 +39,7 @@
             {% include "admin/includes/fieldset.html" with group_column_width=fieldset|fieldset_column_width %}
           {% endfor %}
           {% endwith %}
-          {% if inline_admin_form.has_auto_field or inline_admin_form.needs_explicit_pk_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
+          {% if inline_admin_form.needs_explicit_pk_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
           {{ inline_admin_form.fk_field.field }}
           </div>
         </div>
@@ -93,7 +93,7 @@
         };
         $(rows).formset({
             prefix: "{{ inline_admin_formset.formset.prefix }}",
-            addText: "<span class='btn'><i class='glyphicon glyphicon-plus'></i> {% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|title %}Add another {{ verbose_name }}{% endblocktrans %}</span>",
+            addText: "<span class='btn'><i class='glyphicon glyphicon-plus'></i> {% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|capfirst %}Add another {{ verbose_name }}{% endblocktrans %}</span>",
             formCssClass: "dynamic-{{ inline_admin_formset.formset.prefix }}",
             deleteCssClass: "inline-deletelink",
             deleteText: "{% trans "Remove" %}",
