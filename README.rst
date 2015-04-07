@@ -9,11 +9,10 @@ of modification on your side, just add it to the installed apps.
 Requirements
 ------------
 
--  Django ``==1.7``
+-  Django ``==1.8``
 
-Django 1.6 has been supported up to the ``2.3.x`` series
-
-Django 1.7 will be supported up to the ``2.4.x`` series
+With Django ``1.6`` use version ``2.3.5``
+With Django ``1.7`` use version ``2.4.0``
 
 Installation
 ------------
