@@ -1,6 +1,6 @@
-{% load firstof from future %}
-{% load admin_static bootstrapped_goodies_tags %}
+{% load i18n admin_static bootstrapped_goodies_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
     <title>{% block title %}{% endblock %}</title>
@@ -57,16 +57,29 @@
                 </div>
                 <div id="header-navbar-collapse" class="navbar-collapse collapse navbar-{% if LANGUAGE_BIDI %}left{% else %}right{% endif %}">
                     <ul class="nav navbar-nav">
-                        {% if user.is_active and user.is_staff %}
+                        {% if has_permission %}
+                        {% block usertools %}
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.get_short_name user.get_username user.first_name user.username %}{% endfilter %}</strong> <span class="caret"></span></a>
+                            {% block welcome-msg %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.get_short_name user.get_username user.first_name user.username %}{% endfilter %}</strong> <span class="caret"></span></a>
+                            {% endblock %}
                             <ul class="dropdown-menu">
+                                {% if site_url %}
+                                    <li><a href="{{ site_url }}">{% trans 'View site' %}</a></li>
+                                {% endif %}
+                                {% if user.is_active and user.is_staff %}
+                                    {% url 'django-admindocs-docroot' as docsroot %}
+                                    {% if docsroot %}
+                                        <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
+                                    {% endif %}
+                                {% endif %}
                                 {% if user.has_usable_password %}
                                 <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
                                 {% endif %}
                                 <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
                             </ul>
                         </li>
+                        {% endblock %}
                         {% block languages %}
                         <li class="divider-vertical"></li>
                         {% language_selector %}
@@ -83,7 +96,7 @@
                                         <i class="glyphicon glyphicon-{% if entry.is_addition %}plus{% endif %}{% if entry.is_change %}edit{% endif %}{% if entry.is_deletion %}remove{% endif %}"></i>
                                         {{ entry.object_repr }}
                                         {% if entry.content_type %}
-                                        <span class="mini quiet">({% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %})</span>
+                                        <span class="mini quiet">({% filter capfirst %}{{ entry.content_type }}{% endfilter %})</span>
                                         {% else %}
                                         <span class="mini quiet">({% trans 'Unknown content' %})</span>
                                         {% endif %}
@@ -150,7 +163,7 @@
             <div class="col-sm-12">
                 {% for message in messages %}
                 <div class="alert {{ message.tags|default:"alert-info" }}">
-                    {{ message }}
+                    {{ message|capfirst }}
                 </div>
                 {% endfor %}
             </div>

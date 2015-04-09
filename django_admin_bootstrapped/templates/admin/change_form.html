@@ -11,7 +11,7 @@
 
 {% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
 
-{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+{% block bodyclass %}{{ block.super }} {{ opts.app_label }}-{{ opts.object_model }} change-form{% endblock %}
 
 {% if not is_popup %}
 {% block breadcrumbs %}
@@ -33,7 +33,7 @@
         {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
         <a role="button" href="{% add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
     </li>
-    {% if has_absolute_url %}<li><a href="{% url 'admin:view_on_site' content_type_id original.pk %}" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif%}
+    {% if has_absolute_url %}<li><a href="{% url 'admin:view_on_site' content_type_id original.pk %}" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif %}
     {% endblock %}
   </ul>
 </div>
@@ -47,11 +47,11 @@
 {% endwith %}
 
 
-<form class="form-horizontal" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
+<form class="form-horizontal" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
     <div class="alert alert-warning">{% blocktrans %}Fields in <strong>bold</strong> are required.{% endblocktrans %}</div>
     {% if errors %}
     <div class="alert alert-danger">
-        {% blocktrans count counter=errors|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+        {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
         {{ adminform.form.non_field_errors }}
     </div>
     {% endif %}
@@ -78,15 +78,26 @@
 
         {% block after_related_objects %}{% endblock %}
 
-        {% if adminform and add %}
+        {% block admin_change_form_document_ready %}
+
         <script type="text/javascript">
             (function($) {
                 $(document).ready(function() {
-                    $('form#{{ opts.model_name }}_form :input:visible:enabled:first').focus();
+                    $('.add-another').click(function(e) {
+                        e.preventDefault();
+                        showAddAnotherPopup(this);
+                    });
+                    $('.related-lookup').click(function(e) {
+                        e.preventDefault();
+                        showRelatedObjectLookupPopup(this);
+                    });
+                {% if adminform and add %}
+                    $('form#{{ opts.model_name }}_form :input:visible:enabled:first').focus()
+                {% endif %}
                 });
             })(django.jQuery);
         </script>
-        {% endif %}
+        {% endblock %}
 
         {# JavaScript for prepopulated fields #}
         {% prepopulated_fields_js %}
