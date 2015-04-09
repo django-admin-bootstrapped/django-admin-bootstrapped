@@ -1,6 +1,8 @@
 ==== 2.5.0 (2015-0X-XX) ====
 
 - Bump minimum django version to 1.8 (Riccardo)
+- Update templates to match django 1.8 features (Riccardo)
+- Covert more fields to dab_field_rendering (Riccardo)
 
 ==== 2.4.0 (2015-04-02) ====
 
