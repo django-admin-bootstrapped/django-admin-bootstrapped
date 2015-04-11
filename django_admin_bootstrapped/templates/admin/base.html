@@ -10,6 +10,7 @@
 
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/admin-tabpanel.css" %}" />
 
     <script type="text/javascript">
     //<![CDATA[
@@ -20,6 +21,7 @@
     <script src="{% static "admin/js/jquery-1.9.1.min.js" %}"></script>
     <script src="{% static "admin/js/jquery-migrate-1.2.1.min.js" %}"></script>
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "admin/js/tabpanel.js" %}"></script>
 
     {% block extrahead %}{% endblock %}
 
@@ -30,6 +32,11 @@
                 $(document).ready(function() {
                     $('input[type="submit"]').addClass('btn');
                     $('[title]').tooltip();
+
+                    {# Tabpanel #}
+                    var tabpanel_data = {{tabs|safe|default_if_none:'{}'}};
+                    var tabs_pos = '{{tabs_pos|safe}}';
+                    create_tabs(tabpanel_data, tabs_pos);
                 });
             }(jQuery));
     //]]>
