@@ -4,16 +4,18 @@
 {% if i18n_is_set %}
     <li class="dropdown">
       {% get_language_info for LANGUAGE_CODE as current %}
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current.name_local|capfirst }}<span class="caret"></span></a>
+      {% get_available_languages as LANGUAGES %}
+      {% get_language_info_list for LANGUAGES as languages %}
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-foo={{ current.code }}>{{ current.name_local|capfirst }}<span class="caret"></span></a>
 
       <ul class="dropdown-menu scrollable-dropdown-menu">
-        {% for language in LANGUAGES %}
-        {% if language.0 != LANGUAGE_CODE %}
+        {% for language in languages %}
+        {% if language.code != current.code %}
         <li>
-        <form name="setLang{{language.1}}" action="{% url 'set_language' %}" method="POST">
+            <form name="setLang{{language.code}}" action="{% url 'set_language' %}" method="POST">
                 {% csrf_token %}
-                <input type="hidden" name="language" value="{{language.0}}" />
-                <a href="#" onclick="document.setLang{{language.1}}.submit();return false;">{% trans language.1|capfirst%}</a>
+                <input type="hidden" name="language" value="{{ language.code }}" />
+                <a class="dab-update-lang" href="#" onclick="document.setLang{{ language.code }}.submit();return false;">{{ language.name_local|capfirst }}</a>
             </form>
         </li>
         {% endif %}
