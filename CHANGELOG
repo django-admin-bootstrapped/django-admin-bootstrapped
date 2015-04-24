@@ -5,6 +5,7 @@
 - Update templates to match django 1.8 features (Riccardo)
 - Covert more fields to dab_field_rendering (Riccardo)
 - Add RTL support (Ali Vakilzade)
+- Add missing locale middleware to test project (Riccardo)
 
 ==== 2.4.0 (2015-04-02) ====
 
