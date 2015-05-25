@@ -113,11 +113,13 @@ td.action-checkbox {
 @media (min-width: 768px) {
   .form-horizontal .control-label {
     text-align: left;
+    display: table;
   }
 }
 @media (min-width: 970px) {
   .form-horizontal .control-label {
     text-align: right;
+    display: table;
   }
 }
 
