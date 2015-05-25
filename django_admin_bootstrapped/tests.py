@@ -1,9 +1,10 @@
 from __future__ import absolute_import
 
 from django.test import TestCase
-from django.contrib.admin.widgets import AdminDateWidget
+from django.contrib.admin.widgets import AdminDateWidget, AdminSplitDateTime
 from django.template import Template, Context
 from django import forms
+import unittest
 
 try:
     from bootstrap3 import renderers
@@ -19,6 +20,7 @@ else:
                 char = forms.CharField(max_length=255)
                 hidden = forms.CharField(max_length=255, widget=forms.HiddenInput())
                 date = forms.DateField(widget=AdminDateWidget())
+                datetime = forms.DateTimeField(widget=AdminSplitDateTime())
 
             self.form = TestForm({
                 'char': 'hi there',
@@ -47,3 +49,10 @@ else:
             html = self.render_template(field)
             # we prepend these classes
             self.assertIn('class="form-control form-control-inline', html)
+
+        @unittest.expectedFailure
+        def test_render_datetime(self):
+            field = self.form['datetime']
+            html = self.render_template(field)
+            self.assertIn('vDateField', html)
+            self.assertIn('vTimeField', html)
