@@ -15,18 +15,21 @@ a:focus {
     padding-top: 5px;
 }
 .controls > ul,
-.controls > .related-widget-wrapper > ul {
+.controls .related-widget-wrapper > ul {
     list-style-type: none;
     padding-left: 0px;
 }
 .controls > ul label,
-.controls > .related-widget-wrapper > ul label {
+.controls .related-widget-wrapper > ul label {
     font-size: 14px;
 }
 .controls > ul .form-control,
-.controls > .related-widget-wrapper > ul .form-control {
+.controls .related-widget-wrapper > ul .form-control {
     height: auto;
     margin: 9px 0;
+}
+.controls .related-widget-wrapper {
+    float: none;
 }
 .selector .selector-filter label {
     display: none;
