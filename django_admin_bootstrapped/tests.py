@@ -4,7 +4,6 @@ from django.test import TestCase
 from django.contrib.admin.widgets import AdminDateWidget, AdminSplitDateTime
 from django.template import Template, Context
 from django import forms
-import unittest
 
 try:
     from bootstrap3 import renderers
@@ -50,7 +49,6 @@ else:
             # we prepend these classes
             self.assertIn('class="form-control form-control-inline', html)
 
-        @unittest.expectedFailure
         def test_render_datetime(self):
             field = self.form['datetime']
             html = self.render_template(field)

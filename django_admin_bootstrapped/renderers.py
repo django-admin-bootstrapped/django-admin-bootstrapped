@@ -25,21 +25,29 @@ class BootstrapFieldRenderer(renderers.FieldRenderer):
         html = self.field.as_widget(attrs=self.widget.attrs)
         return html
 
-    def add_class_attrs(self):
-        classes = self.widget.attrs.get('class', '')
-        if isinstance(self.widget, ReadOnlyPasswordHashWidget):
+    def add_class_attrs(self, widget=None):
+        if not widget:
+            widget = self.widget
+
+        # for multiwidgets we recursively update classes for each sub-widget
+        if isinstance(widget, AdminSplitDateTime):
+            for w in widget.widgets:
+                self.add_class_attrs(w)
+            return
+
+        classes = widget.attrs.get('class', '')
+        if isinstance(widget, ReadOnlyPasswordHashWidget):
             classes = add_css_class(classes, 'form-control-static', prepend=True)
-        elif isinstance(self.widget, (AdminDateWidget,
-                                      AdminTimeWidget,
-                                      AdminSplitDateTime,
-                                      RelatedFieldWidgetWrapper)):
+        elif isinstance(widget, (AdminDateWidget,
+                                 AdminTimeWidget,
+                                 RelatedFieldWidgetWrapper)):
             # for some admin widgets we don't want the input to take full horizontal space
             classes = add_css_class(classes, 'form-control form-control-inline', prepend=True)
-        elif not isinstance(self.widget, (CheckboxInput,
-                                          RadioSelect,
-                                          CheckboxSelectMultiple,
-                                          FileInput)):
+        elif not isinstance(widget, (CheckboxInput,
+                                     RadioSelect,
+                                     CheckboxSelectMultiple,
+                                     FileInput)):
             classes = add_css_class(classes, 'form-control', prepend=True)
             # For these widget types, add the size class here
             classes = add_css_class(classes, self.get_size_class())
-        self.widget.attrs['class'] = classes
+        widget.attrs['class'] = classes
