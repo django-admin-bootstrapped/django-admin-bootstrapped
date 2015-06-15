@@ -1,9 +1,15 @@
+==== 2.5.1 (2015-06-15) ====
+
+- Cleanup time and m2m widget rendering (Riccardo)
+- Fix AdminSplitDateTime bootstrap3 rendering #168 (Riccardo)
+- Support setting admin site title as upstream django #195 (Riccardo)
+
 ==== 2.5.0 (2015-04-24) ====
 
 - Bump minimum django version to 1.8 (Riccardo)
 - Hide custom way to override admin and app titles (Riccardo)
 - Update templates to match django 1.8 features (Riccardo)
-- Covert more fields to dab_field_rendering (Riccardo)
+- Convert more fields to dab_field_rendering (Riccardo)
 - Add RTL support (Ali Vakilzade)
 - Add missing locale middleware to test project (Riccardo)
 
