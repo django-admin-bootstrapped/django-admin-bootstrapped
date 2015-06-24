@@ -65,7 +65,7 @@
                         {% block usertools %}
                         <li class="dropdown">
                             {% block welcome-msg %}
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.get_short_name user.get_username user.first_name user.username %}{% endfilter %}</strong> <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome,' %} <strong>{% filter force_escape %}{% firstof user.get_short_name user.get_username %}{% endfilter %}</strong> <span class="caret"></span></a>
                             {% endblock %}
                             <ul class="dropdown-menu">
                                 {% if site_url %}
