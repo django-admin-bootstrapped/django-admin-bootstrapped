@@ -1,3 +1,10 @@
+==== 2.5.2 (2015-06-24) ====
+
+- Fix user model username handling #200 (Riccardo)
+- Remove duplicated breadcrumbs dividers #201 (Riccardo)
+- Bootstrapify auth/user/change_password.html (Riccardo)
+- Upgrade bootstrap to 3.3.5 #202 (Riccardo)
+
 ==== 2.5.1 (2015-06-15) ====
 
 - Cleanup time and m2m widget rendering (Riccardo)
