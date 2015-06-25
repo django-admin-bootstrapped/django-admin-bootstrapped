@@ -31,13 +31,23 @@ a:focus {
 .controls .related-widget-wrapper {
     float: none;
 }
+
 .selector .selector-filter label {
     display: none;
 }
 .selector h2 {
     font-size: 100%;
     margin: 0;
+    padding: 6px;
 }
+.selector select {
+    height: 17.2em;
+    border: 1px #ccc solid;
+}
+.selector .selector-chosen select {
+    border-top: 0;
+}
+
 .checkbox{
     padding-bottom: 5px;
 }
