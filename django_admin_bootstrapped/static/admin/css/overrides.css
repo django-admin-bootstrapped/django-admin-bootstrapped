@@ -81,8 +81,8 @@ a:focus {
 .selector > .selector-available > select > option, .selector > .selector-chosen > select > option {
     padding: 6px;
     border-bottom-width: 1px;
-    border-bottom-color: lightgray;
-    border-bottom-style: groove
+    border-bottom-color: rgba(211, 211, 211, 0.35);
+    border-bottom-style: solid
 }
 
 /* selector field title */
