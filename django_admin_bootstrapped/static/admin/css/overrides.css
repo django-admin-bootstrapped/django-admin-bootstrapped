@@ -32,6 +32,9 @@ a:focus {
     float: none;
 }
 
+
+/* SELECTOR (FILTER INTERFACE) */
+
 .selector .selector-filter {
     border: 0px solid #ccc;
     border-width: 0 0px;
