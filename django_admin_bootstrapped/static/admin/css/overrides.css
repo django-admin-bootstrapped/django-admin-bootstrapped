@@ -172,3 +172,13 @@ td.action-checkbox {
     margin-bottom: 20px;
     clear: both;
 }
+
+p.file-upload {
+    line-height: 29px;
+    margin: 1;
+    padding: 1;
+    color: #666;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+}
