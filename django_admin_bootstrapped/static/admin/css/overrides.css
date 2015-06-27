@@ -77,12 +77,6 @@ a:focus {
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
 }
 
-
-/* can't resize selector-chosen height, so we'll just move it down to match selector-available*/
-.selector > .selector-chosen > select {
-    margin-top: 13px;
-}
-
 /* selector object list items */
 .selector > .selector-available > select > option, .selector > .selector-chosen > select > option {
     padding: 6px;
