@@ -247,12 +247,19 @@ td.action-checkbox {
     clear: both;
 }
 
+/* FILE UPLOAD WIDGET*/
+
 p.file-upload {
     line-height: 29px;
     margin: 1;
-    padding: 1;
+    padding: 2px 0px 10px 0px;
     color: #666;
     font-size: inherit;
     font-weight: inherit;
     font-family: inherit;
+}
+
+p.file-upload > input[type="file"] {
+    display: inline;
+    margin-left: 5px;
 }
