@@ -44,9 +44,7 @@ a:focus {
 .selector .selector-filter label {
     display: none;
 }
-.selector h2 {
 
-}
 .selector select {
     height: 17.2em;
     width: 100%; /* fix offscreen scroll-bar on selector-chosen */
