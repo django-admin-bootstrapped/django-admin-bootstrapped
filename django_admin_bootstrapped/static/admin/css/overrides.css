@@ -32,20 +32,86 @@ a:focus {
     float: none;
 }
 
+/* SELECTOR (FILTER INTERFACE) */
+.selector .selector-filter {
+    border: 0px solid #ccc;
+    border-width: 0 0px;
+    padding: 4px 0px 4px 0px;
+}
 .selector .selector-filter label {
     display: none;
 }
-.selector h2 {
-    font-size: 100%;
-    margin: 0;
-    padding: 6px;
-}
 .selector select {
     height: 17.2em;
+    width: 100%; /* fix offscreen scroll-bar on selector-chosen */
     border: 1px #ccc solid;
 }
 .selector .selector-chosen select {
     border-top: 0;
+}
+/* fix offscreen scroll-bar on selector-chosen */
+.selector-available, .selector-chosen {
+    width: 47%;
+}
+/* selector object list */
+.selector > .selector-available > select, .selector > .selector-chosen > select {
+    font-size: 12px;
+    color: #666;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0px 0px 4px 4px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+/* selector object list items */
+.selector > .selector-available > select > option, .selector > .selector-chosen > select > option {
+    padding: 6px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(211, 211, 211, 0.35);
+    border-bottom-style: solid
+}
+/* selector field title */
+.selector > .selector-available > h2, .selector > .selector-chosen > h2 {
+    text-align: left;
+    background: rgba(211, 211, 211, 0.2);
+    color: #777;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    font-size: 100%;
+    font-weight: 600;
+    margin: 0px;
+    padding: 10px 0px 6px 10px;
+    height: 36px;
+    border-radius: 4px 4px 0px 0px;
+}
+/* selector filter box bootstrapping */
+.selector .selector-available input {
+    width: 80%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #777;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+.selector .selector-available p {
+    background: rgba(211, 211, 211, 0.2);
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 0px 0px 7px 6px;
+}
+/* selector chooseall and clearall button spacing */
+a.selector-chooseall {
+    padding: 0px 20px 3px 0;
+}
+a.selector-clearall {
+    padding: 0px 0 3px 20px;
 }
 
 .checkbox{
