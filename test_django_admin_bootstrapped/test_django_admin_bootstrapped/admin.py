@@ -22,11 +22,12 @@ class TestThatStackedFieldsetInline(admin.StackedInline):
 class TestThatTabularInline(admin.TabularInline):
     model = TestThat
 
-
-class TestSortable(admin.StackedInline, SortableInline):
+class TestSortableInline(admin.StackedInline, SortableInline):
     model = TestSortable
     extra = 0
 
+class TestSortableAdmin(admin.ModelAdmin):
+    model = TestSortable
 
 class TestMeAdmin(admin.ModelAdmin):
     list_display = ['test_ip', 'test_url', 'test_int', 'test_img', 'test_file', 'test_date', 'test_char', 'test_bool', 'test_time', 'test_slug', 'test_text', 'test_email', 'test_float', 'test_bigint', 'test_positive_integer', 'test_decimal', 'test_comma_separated_int', 'test_small_int', 'test_nullbool', 'test_filepath', 'test_positive_small_int', ]
@@ -36,7 +37,7 @@ class TestMeAdmin(admin.ModelAdmin):
     list_per_page = 3
     date_hierarchy = 'test_date'
     actions = ['useless_action']
-    inlines = [TestThatStackedInline, TestThatTabularInline, TestSortable]
+    inlines = [TestThatStackedInline, TestThatTabularInline, TestSortableInline]
     save_as = True
     save_on_top = True
 
@@ -66,3 +67,4 @@ class TestMeAdminFieldsets(TestMeAdmin):
 
 admin.site.register(TestMeProxyForFieldsets, TestMeAdminFieldsets)
 admin.site.register(TestMe, TestMeAdmin)
+admin.site.register(TestSortable, TestSortableAdmin)

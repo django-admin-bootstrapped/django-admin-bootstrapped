@@ -47,6 +47,7 @@ class TestThat(models.Model):
     test_int = models.IntegerField(help_text="Lorem dolor")
     test_date = models.DateField(help_text="Lorem dolor")
     test_bool = models.BooleanField(help_text="Lorem dolor", default=True)
+    test_fk = models.ForeignKey('TestSortable', help_text="Lorem dolor", null=True, blank=True)
 
     class Meta:
         verbose_name = u'Test that'
