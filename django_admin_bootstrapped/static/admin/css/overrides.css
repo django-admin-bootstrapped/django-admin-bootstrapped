@@ -30,6 +30,11 @@ a:focus {
 }
 .controls .related-widget-wrapper {
     float: none;
+    padding-top: 7px;
+}
+.controls .related-widget-wrapper-link {
+    display: inline-block;
+    margin-bottom: 5px;
 }
 
 /* SELECTOR (FILTER INTERFACE) */
