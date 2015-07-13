@@ -257,3 +257,10 @@ p.file-upload > input[type="file"] {
     display: inline;
     margin-left: 5px;
 }
+
+.pagination .this-page {
+  z-index: 2;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
