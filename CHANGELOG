@@ -1,8 +1,9 @@
-==== 2.5.3 (2015-0X-XX) ====
+==== 2.5.4 (2015-07-02) ====
 
 - Boostrap more auth/user/change_password.html (Josh Kelley)
 - Cleanup filter-horizontal style (Walker Boyle, Riccardo)
 - Cleanup file-upload widget (Walker Boyle)
+- Bootstrapify admin/related_widget_wrapper.html (Riccardo)
 
 ==== 2.5.2 (2015-06-24) ====
 

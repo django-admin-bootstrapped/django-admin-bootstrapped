@@ -31,6 +31,10 @@ a:focus {
 .controls .related-widget-wrapper {
     float: none;
 }
+.controls .related-widget-wrapper-link {
+    display: inline-block;
+    margin: 7px 7px 3px 7px;
+}
 
 /* SELECTOR (FILTER INTERFACE) */
 .selector .selector-filter {
@@ -252,4 +256,11 @@ p.file-upload {
 p.file-upload > input[type="file"] {
     display: inline;
     margin-left: 5px;
+}
+
+.pagination .this-page {
+  z-index: 2;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }
