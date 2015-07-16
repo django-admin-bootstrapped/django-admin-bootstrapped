@@ -1,3 +1,10 @@
+==== 2.3.6 (2015-XX-XX) ====
+
+WARNING: bootstrap3 application is deprecated, would be removed in the next major release
+Please remove it from the INSTALLED_APPS in settings.py
+
+- Backport rtl support from master #209 (Yehuda Deutsch)
+
 ==== 2.3.5 (2015-03-13) ====
 
 WARNING: bootstrap3 application is deprecated, would be removed in the next major release
