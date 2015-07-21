@@ -11,7 +11,8 @@ Requirements
 
 -  Django ``==1.8``
 
-With Django ``1.6`` use version ``2.3.5``
+With Django ``1.6`` use version ``2.3.6``
+
 With Django ``1.7`` use version ``2.4.0``
 
 Installation
