@@ -1,12 +1,15 @@
-from django import template
-from django.template.loader import render_to_string, TemplateDoesNotExist
-
 from importlib import import_module
+
+from django import template
+from django.conf import settings
+from django.template.loader import render_to_string
+
 
 register = template.Library()
 
-from django.conf import settings
+
 CUSTOM_FIELD_RENDERER = getattr(settings, 'DAB_FIELD_RENDERER', False)
+
 
 @register.simple_tag(takes_context=True)
 def render_with_template_if_exist(context, template, fallback):
@@ -44,6 +47,7 @@ def column_width(value):
     except ZeroDivisionError:
         return 12
 
+
 @register.filter(name='form_fieldset_column_width')
 def form_fieldset_column_width(form):
     def max_line(fieldset):
@@ -54,6 +58,7 @@ def form_fieldset_column_width(form):
         return 12 // width
     except ValueError:
         return 12
+
 
 @register.filter(name='fieldset_column_width')
 def fieldset_column_width(fieldset):
@@ -101,6 +106,7 @@ def render_app_description(context, app, fallback="", template="/admin_app_descr
     except:
         text = fallback
     return text
+
 
 @register.simple_tag(takes_context=True, name="dab_field_rendering")
 def custom_field_rendering(context, field, *args, **kwargs):
