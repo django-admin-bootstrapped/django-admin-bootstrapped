@@ -1,12 +1,15 @@
+from importlib import import_module
+
 from django import template
+from django.conf import settings
 from django.template.loader import render_to_string, TemplateDoesNotExist
 
-from importlib import import_module
 
 register = template.Library()
 
-from django.conf import settings
+
 CUSTOM_FIELD_RENDERER = getattr(settings, 'DAB_FIELD_RENDERER', False)
+
 
 @register.simple_tag(takes_context=True)
 def render_with_template_if_exist(context, template, fallback):
@@ -16,6 +19,7 @@ def render_with_template_if_exist(context, template, fallback):
     except:
         pass
     return text
+
 
 @register.simple_tag(takes_context=True)
 def language_selector(context):
@@ -102,6 +106,7 @@ def render_app_description(context, app, fallback="", template="/admin_app_descr
         text = fallback
     return text
 
+
 @register.simple_tag(takes_context=True, name="dab_field_rendering")
 def custom_field_rendering(context, field, *args, **kwargs):
     """ Wrapper for rendering the field via an external renderer """
@@ -110,4 +115,14 @@ def custom_field_rendering(context, field, *args, **kwargs):
         field_renderer = getattr(import_module(mod), cls)
         if field_renderer:
             return field_renderer(field, **kwargs).render()
+    return field
+
+
+@register.filter
+def bootstrap_field(field):
+    klass = field.field.widget.attrs.get('class', '')
+    klass = klass.split(" ")
+    if 'form-control' not in klass:
+        klass.append('form-control')
+    field.field.widget.attrs['class'] = " ".join(klass)
     return field
