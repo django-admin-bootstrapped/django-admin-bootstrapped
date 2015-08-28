@@ -2,7 +2,11 @@
 <div class="_inline-group" id="{{ inline_admin_formset.formset.prefix }}-group">
   <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
 {{ inline_admin_formset.formset.management_form }}
-{{ inline_admin_formset.formset.non_form_errors }}
+{% if inline_admin_formset.formset.non_form_errors %}
+    <div class="alert alert-danger">
+        {{ inline_admin_formset.formset.non_form_errors }}
+    </div>
+{% endif %}
 
     <div class="items">
         {% for inline_admin_form in inline_admin_formset %}
@@ -33,7 +37,11 @@
           {% endfor %}{% endfor %}
 
           <div class="{% if not forloop.last %}collapse{% endif %}{% if not inline_admin_formset.opts.start_collapsed %} in{% endif %}">
-          {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
+          {% if inline_admin_form.form.non_field_errors %}
+              <div class="alert alert-danger">
+                {{ inline_admin_form.form.non_field_errors }}
+              </div>
+          {% endif %}
           {% with stacked_prefix=forloop.counter %}
           {% for fieldset in inline_admin_form %}
             {% include "admin/includes/fieldset.html" with group_column_width=fieldset|fieldset_column_width %}
