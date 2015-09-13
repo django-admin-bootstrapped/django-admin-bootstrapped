@@ -24,7 +24,7 @@ class GenericContentTypeSelect(Select):
             extra_attrs = {
                 'data-generic-lookup-enabled': 'yes',
                 'data-admin-url': silent_reverse('admin:{0.app_label}_' \
-                                             '{0.name}_changelist'.format(ct)),
+                                             '{0.model}_changelist'.format(ct)),
             }
 
         if option_value in selected_choices:
