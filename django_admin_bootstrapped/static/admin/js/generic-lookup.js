@@ -48,7 +48,7 @@ TODO 2: Don't presume the object id field's name attribute is `object_id`
                                               .parents('select:first');
         var $objectIdField = $('[name=object_id]');
         var $lookupBox = $('<a>')
-                .append('<i class="icon-th-list" style="margin-left: 6px"></i>')
+                .append('<i class="glyphicon glyphicon-th-list" style="margin-left: 6px"></i>')
                 .attr({
                     id: 'lookup_' + $objectIdField.attr('id'),
                     title: gettext('Browse')
