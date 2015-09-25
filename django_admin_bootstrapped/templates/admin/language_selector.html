@@ -6,7 +6,7 @@
       {% get_language_info for LANGUAGE_CODE as current %}
       {% get_available_languages as LANGUAGES %}
       {% get_language_info_list for LANGUAGES as languages %}
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-foo={{ current.code }}>{{ current.name_local|capfirst }}<span class="caret"></span></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-foo={{ current.code }}>{{ current.name_local|capfirst }} <span class="caret"></span></a>
 
       <ul class="dropdown-menu scrollable-dropdown-menu">
         {% for language in languages %}
