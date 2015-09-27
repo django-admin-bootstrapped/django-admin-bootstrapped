@@ -1,7 +1,9 @@
 ==== 2.5.6 (2015-XX-XX) ====
 
-- Fix data-admin-url model lookup for Django 1.8 ContentType (#218) (Andrew Yager)
-- Fix glyphicon display for generic-lookup (#214) (Andrew Yager)
+- Fix data-admin-url model lookup for Django 1.8 ContentType #218 (Andrew Yager)
+- Fix glyphicon display for generic-lookup #214 (Andrew Yager)
+- Add space before caret in language selector #219 (Benoit Formet)
+- Fix duplicate error messages in tabular inlines #220 (Josh Kelley)
 
 ==== 2.5.5 (2015-09-05) ====
 
