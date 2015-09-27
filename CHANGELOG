@@ -1,4 +1,4 @@
-==== 2.5.6 (2015-XX-XX) ====
+==== 2.5.6 (2015-09-27) ====
 
 - Fix data-admin-url model lookup for Django 1.8 ContentType #218 (Andrew Yager)
 - Fix glyphicon display for generic-lookup #214 (Andrew Yager)
