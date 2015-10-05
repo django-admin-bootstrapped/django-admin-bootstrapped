@@ -7,7 +7,7 @@
 </div>
 <div class="pull-right">
 <!--Add a hidden submit button to set the default action on press of the Enter key-->
-<div style="display:none;"><input type="submit" value="{% trans 'Save' %}" name="_save"/></div>
+<div style="display:none;"><input type="submit" value="{% trans 'Save' %}" name="_save" /></div>
 <!-- -->
 {% if show_save_as_new %}<input type="submit" value="{% trans 'Save as new' %}" class="btn btn-default" name="_saveasnew" {{ onclick_attrib }}/>{% endif %}
 {% if show_save_and_add_another %}<input type="submit" value="{% trans 'Save and add another' %}" class="btn btn-default" name="_addanother" {{ onclick_attrib }} />{% endif %}
