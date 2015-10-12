@@ -1,0 +1,24 @@
+# http://docs.travis-ci.com/user/languages/python/
+
+language: python
+python:
+#     - 2.6 # Invalid syntax in File "/home/travis/virtualenv/python2.6.9/lib/python2.6/site-packages/django/utils/lru_cache.py", line 28
+    - 2.7
+    - pypy
+#    - 3.2 # Invalid syntax in File "/home/travis/build/d33tah/django-admin-bootstrapped/django_admin_bootstrapped/../test_django_admin_bootstrapped/test_django_admin_bootstrapped/models.py", line 32
+    - 3.3
+    - 3.4
+    - 3.5
+#    - nightly # https://bugs.python.org/issue24934
+    - pypy3
+
+env:
+    - DJANGO_VERSION=1.8
+
+install:
+    pip install django-bootstrap3 django-filer Django==$DJANGO_VERSION
+
+script:
+    python setup.py test
+
+sudo: false
