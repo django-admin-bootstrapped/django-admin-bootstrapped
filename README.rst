@@ -1,6 +1,9 @@
 django-admin-bootstrapped
 =========================
 
+.. image:: https://travis-ci.org/d33tah/django-admin-bootstrapped.svg?branch=travis-ci
+    :target: https://travis-ci.org/d33tah/django-admin-bootstrapped
+
 |PyPI version|
 
 A Django admin theme using Bootstrap. It doesn't need any kind
