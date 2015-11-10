@@ -1,8 +1,8 @@
 django-admin-bootstrapped
 =========================
 
-.. image:: https://travis-ci.org/django-admin-boostrapped/django-admin-bootstrapped.svg
-    :target: https://travis-ci.org/django-admin-boostrapped/django-admin-bootstrapped
+.. image:: https://travis-ci.org/django-admin-bootstrapped/django-admin-bootstrapped.svg
+    :target: https://travis-ci.org/django-admin-bootstrapped/django-admin-bootstrapped
 
 |PyPI version|
 
