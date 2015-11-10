@@ -51,7 +51,11 @@ def column_width(value):
 @register.filter(name='form_fieldset_column_width')
 def form_fieldset_column_width(form):
     def max_line(fieldset):
-        return max([len(list(line)) for line in fieldset])
+        try:
+            return max([len(list(line)) for line in fieldset])
+        # This ValueError is for case that fieldset has no line.
+        except ValueError:
+            return 0
 
     try:
         width = max([max_line(fieldset) for fieldset in form])
