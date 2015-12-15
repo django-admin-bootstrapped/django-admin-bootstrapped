@@ -1,3 +1,9 @@
+==== 2.5.7 (2015-12-15) ====
+
+- travis-ci integration (Jacek Wielemborek)
+- Handle fieldsets with empty lines (Kevin Gu)
+- Require django < 1.9 (Riccardo)
+
 ==== 2.5.6 (2015-09-27) ====
 
 - Fix data-admin-url model lookup for Django 1.8 ContentType #218 (Andrew Yager)
