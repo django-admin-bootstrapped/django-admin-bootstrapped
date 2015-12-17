@@ -85,9 +85,11 @@
 </form>
 
 <script type="text/javascript">
-$(document).ready(function() {
-  $('#id_username').attr('autocapitalize', 'off').focus();
-})
+(function($) {
+  $(document).ready(function() {
+    $('#id_username').attr('autocapitalize', 'off').focus();
+  });
+})(jQuery);
 </script>
 </div>
 {% endblock %}
