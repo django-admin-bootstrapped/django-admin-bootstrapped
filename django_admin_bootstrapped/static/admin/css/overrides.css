@@ -264,3 +264,14 @@ p.file-upload > input[type="file"] {
   background-color: #337ab7;
   border-color: #337ab7;
 }
+
+
+/* Standard and required fields on admin form. */
+label {
+  font-weight: normal;
+}
+
+label.required {
+  font-weight: 800;
+}
+
