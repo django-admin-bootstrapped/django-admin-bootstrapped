@@ -19,6 +19,15 @@ class TestThatStackedFieldsetInline(admin.StackedInline):
         }),
     )
 
+class TestAnotherStackedFieldsetInline(admin.StackedInline):
+    model = TestThat
+    fieldsets = (
+        ('A collapsed fieldset', {
+            'classes': ('collapse',),
+            'fields': ['test_ip', 'test_url', 'test_date',]
+        }),
+    )
+
 class TestThatTabularInline(admin.TabularInline):
     model = TestThat
 
@@ -51,7 +60,7 @@ class TestMeAdmin(admin.ModelAdmin):
 
 class TestMeAdminFieldsets(TestMeAdmin):
     actions_on_bottom = True
-    inlines= [TestThatStackedFieldsetInline]
+    inlines= [TestThatStackedFieldsetInline, TestAnotherStackedFieldsetInline]
     fieldsets = (
         ('A fieldset', {
             'fields': ['test_m2m', 'test_ip', 'test_url', 'test_int', 'test_img', 'test_file', 'test_date', 'test_char', 'test_bool', 'test_time', 'test_slug', 'test_text', ],

@@ -42,10 +42,12 @@
                 {{ inline_admin_form.form.non_field_errors }}
               </div>
           {% endif %}
-          {% with stacked_prefix=forloop.counter %}
+          {% with forloop.counter|stringformat:"s" as counter %}
+          {% with inline_admin_formset.formset.prefix|add:"-"|add:counter as stacked_prefix %}
           {% for fieldset in inline_admin_form %}
             {% include "admin/includes/fieldset.html" with group_column_width=fieldset|fieldset_column_width %}
           {% endfor %}
+          {% endwith %}
           {% endwith %}
           {% if inline_admin_form.needs_explicit_pk_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
           {{ inline_admin_form.fk_field.field }}
