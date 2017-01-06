@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% load i18n %}{% load admin_static bootstrapped_goodies_tags %}{% load url from future %}
+
+{% block title %}{% render_with_template_if_exist "admin/admin_title.html" "Django administration" %} | {% trans 'Django site admin' %}{% endblock %}
+
+{% block branding %}
+<a class="brand" href="{% url 'admin:index' %}">{% render_with_template_if_exist "admin/admin_title.html" "Django administration" %}</a>
+{% endblock %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/djangocms-3-0-overrides.css' %}" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script type="text/javascript">
+if (window.self!==window.top) { document.write('<link rel="stylesheet" type="text/css" href="{% static 'djangocms_admin_style/css/djangocms-admin-frontend.css' %}" />'); }
+</script>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
