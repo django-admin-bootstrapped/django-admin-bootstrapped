@@ -1,3 +1,8 @@
+==== 2.5.8 (2017-05-22) ====
+
+- Fix $ usage with jQuery.noConflict() in login (Levi Cameron <levi.cameron@alliancesoftware.com.au>)
+- Remove deprecated url import from future (@hellpanderrr)
+
 ==== 2.5.7 (2015-12-15) ====
 
 - travis-ci integration (Jacek Wielemborek)
