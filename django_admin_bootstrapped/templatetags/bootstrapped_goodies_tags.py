@@ -15,7 +15,7 @@ CUSTOM_FIELD_RENDERER = getattr(settings, 'DAB_FIELD_RENDERER', False)
 def render_with_template_if_exist(context, template, fallback):
     text = fallback
     try:
-        text = render_to_string(template, context)
+        text = render_to_string(template, context.flatten())
     except:
         pass
     return text
@@ -34,7 +34,7 @@ def language_selector(context):
         template = "admin/language_selector.html"
         context['i18n_is_set'] = True
         try:
-            output = render_to_string(template, context)
+            output = render_to_string(template, context.flatten())
         except:
             pass
     return output
@@ -80,7 +80,7 @@ def render_app_name(context, app, template="/admin_app_name.html"):
     """
     try:
         template = app['app_label'] + template
-        text = render_to_string(template, context)
+        text = render_to_string(template, context.flatten())
     except:
         text = app['name']
     return text
@@ -106,7 +106,7 @@ def render_app_description(context, app, fallback="", template="/admin_app_descr
     """
     try:
         template = app['app_label'] + template
-        text = render_to_string(template, context)
+        text = render_to_string(template, context.flatten())
     except:
         text = fallback
     return text
