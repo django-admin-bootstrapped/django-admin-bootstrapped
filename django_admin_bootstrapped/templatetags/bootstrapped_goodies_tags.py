@@ -1,3 +1,5 @@
+import logging
+
 from importlib import import_module
 
 from django import template
@@ -10,14 +12,16 @@ register = template.Library()
 
 CUSTOM_FIELD_RENDERER = getattr(settings, 'DAB_FIELD_RENDERER', False)
 
+log = logging.getLogger('django_admin_bootstrapped.'+__name__)
+
 
 @register.simple_tag(takes_context=True)
 def render_with_template_if_exist(context, template, fallback):
     text = fallback
     try:
         text = render_to_string(template, context)
-    except:
-        pass
+    except Exception as e:
+        log.debug(e, exc_info=True)
     return text
 
 @register.simple_tag(takes_context=True)
@@ -35,8 +39,8 @@ def language_selector(context):
         context['i18n_is_set'] = True
         try:
             output = render_to_string(template, context)
-        except:
-            pass
+        except Exception as e:
+            log.debug(e, exc_info=True)
     return output
 
 
@@ -81,7 +85,8 @@ def render_app_name(context, app, template="/admin_app_name.html"):
     try:
         template = app['app_label'] + template
         text = render_to_string(template, context)
-    except:
+    except Exception as e:
+        log.debug(e, exc_info=True)
         text = app['name']
     return text
 
@@ -107,7 +112,8 @@ def render_app_description(context, app, fallback="", template="/admin_app_descr
     try:
         template = app['app_label'] + template
         text = render_to_string(template, context)
-    except:
+    except Exception as e:
+        log.debug(e, exc_info=True)
         text = fallback
     return text
 
