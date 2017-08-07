@@ -4,15 +4,26 @@ from importlib import import_module
 
 from django import template
 from django.conf import settings
-from django.template.loader import render_to_string
-
-
-register = template.Library()
-
+from django.template.engine import Engine
 
 CUSTOM_FIELD_RENDERER = getattr(settings, 'DAB_FIELD_RENDERER', False)
 
+register = template.Library()
 log = logging.getLogger('django_admin_bootstrapped.'+__name__)
+
+
+def render_to_string(template_name, context):
+    """
+    This is to replace django.template.loader.render_to_string
+    since that now expects a dict context, instead of a Context().
+    This uses default Django Template Engine to render the template
+    and context, like it did in Django <= 1.10.
+
+    For more info, see:
+    - https://code.djangoproject.com/ticket/27722
+    - https://docs.djangoproject.com/en/1.11/releases/1.11/#django-template-backends-django-template-render-prohibits-non-dict-context
+    """
+    return Engine(app_dirs=True).render_to_string(template_name, context=context)
 
 
 @register.simple_tag(takes_context=True)
