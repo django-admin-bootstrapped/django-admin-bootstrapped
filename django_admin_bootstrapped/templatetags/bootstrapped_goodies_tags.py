@@ -1,14 +1,29 @@
+import logging
+
 from importlib import import_module
 
 from django import template
 from django.conf import settings
-from django.template.loader import render_to_string
-
-
-register = template.Library()
-
+from django.template.engine import Engine
 
 CUSTOM_FIELD_RENDERER = getattr(settings, 'DAB_FIELD_RENDERER', False)
+
+register = template.Library()
+log = logging.getLogger('django_admin_bootstrapped.'+__name__)
+
+
+def render_to_string(template_name, context):
+    """
+    This is to replace django.template.loader.render_to_string
+    since that now expects a dict context, instead of a Context().
+    This uses default Django Template Engine to render the template
+    and context, like it did in Django <= 1.10.
+
+    For more info, see:
+    - https://code.djangoproject.com/ticket/27722
+    - https://docs.djangoproject.com/en/1.11/releases/1.11/#django-template-backends-django-template-render-prohibits-non-dict-context
+    """
+    return Engine(app_dirs=True).render_to_string(template_name, context=context)
 
 
 @register.simple_tag(takes_context=True)
@@ -16,8 +31,8 @@ def render_with_template_if_exist(context, template, fallback):
     text = fallback
     try:
         text = render_to_string(template, context)
-    except:
-        pass
+    except Exception as e:
+        log.debug(e, exc_info=True)
     return text
 
 @register.simple_tag(takes_context=True)
@@ -35,8 +50,8 @@ def language_selector(context):
         context['i18n_is_set'] = True
         try:
             output = render_to_string(template, context)
-        except:
-            pass
+        except Exception as e:
+            log.debug(e, exc_info=True)
     return output
 
 
@@ -81,7 +96,8 @@ def render_app_name(context, app, template="/admin_app_name.html"):
     try:
         template = app['app_label'] + template
         text = render_to_string(template, context)
-    except:
+    except Exception as e:
+        log.debug(e, exc_info=True)
         text = app['name']
     return text
 
@@ -107,7 +123,8 @@ def render_app_description(context, app, fallback="", template="/admin_app_descr
     try:
         template = app['app_label'] + template
         text = render_to_string(template, context)
-    except:
+    except Exception as e:
+        log.debug(e, exc_info=True)
         text = fallback
     return text
 
