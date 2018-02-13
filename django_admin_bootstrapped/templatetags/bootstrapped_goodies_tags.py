@@ -60,7 +60,7 @@ def form_fieldset_column_width(form):
     try:
         width = max([max_line(fieldset) for fieldset in form])
         return 12 // width
-    except ValueError:
+    except (ValueError, ZeroDivisionError):
         return 12
 
 
@@ -69,7 +69,7 @@ def fieldset_column_width(fieldset):
     try:
         width = max([len(list(line)) for line in fieldset])
         return 12 // width
-    except ValueError:
+    except (ValueError, ZeroDivisionError):
         return 12
 
 
