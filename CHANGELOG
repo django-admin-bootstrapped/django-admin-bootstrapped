@@ -1,3 +1,7 @@
+==== 2.6.0 (2020-03-10) ====
+
+- Support for Django 2
+
 ==== 2.5.7 (2015-12-15) ====
 
 - travis-ci integration (Jacek Wielemborek)

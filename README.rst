@@ -12,7 +12,7 @@ of modification on your side, just add it to the installed apps.
 Requirements
 ------------
 
--  Django ``==1.8``
+-  Django ``>1.8,<3.0``
 
 With Django ``1.6`` use version ``2.3.6``
 
@@ -21,14 +21,17 @@ With Django ``1.7`` use version ``2.4.0``
 Installation
 ------------
 
-1. Download it from PyPi with ``pip install django-admin-bootstrapped``
-2. Add into the ``INSTALLED_APPS`` **before** ``'django.contrib.admin'``:
+1. Clone from github: ``git clone https://github.com/Showmax/django-admin-bootstrapped.git``
+2. Build the package: ``cd django-admin-bootstrapped && python setup.py sdist``
+3. Install the package: ``pip install dist/django-admin-bootstrapped-*.tar.gz``
+   (you may need to specify version if you have more builds in ``dist/``)
+4. Add into the ``INSTALLED_APPS`` **before** ``'django.contrib.admin'``:
 
 ::
 
     'django_admin_bootstrapped',
 
-3. Have fun!
+5. Have fun!
 
 Configuration
 -------------
@@ -41,13 +44,13 @@ You have to add to your project settings file:
     DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 
-`Messages <http://docs.djangoproject.com/en/dev/ref/contrib/messages>`__ will have ``alert-info`` tag by default, 
+`Messages <http://docs.djangoproject.com/en/dev/ref/contrib/messages>`__ will have ``alert-info`` tag by default,
 so you may want to add Bootstrap 3 tags for different message levels to make them styled appropriately.
 Add to your project settings file:
 ::
 
     from django.contrib import messages
-    
+
     MESSAGE_TAGS = {
                 messages.SUCCESS: 'alert-success success',
                 messages.WARNING: 'alert-warning warning',
