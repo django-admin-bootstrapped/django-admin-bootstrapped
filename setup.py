@@ -18,9 +18,7 @@ CLASSIFIERS = [
 
 setup(
     author="Riccardo Forina",
-    author_email="riccardo@forina.me",
-    maintainer="Riccardo Magliocchetti",
-    maintainer_email="riccardo.magliocchetti@gmail.com",
+    # maintainer="Riccardo Magliocchetti",
     name='django-admin-bootstrapped',
     version='2.5.7',
     description='A Bootstrap theme for Django Admin',
@@ -31,7 +29,7 @@ setup(
     classifiers=CLASSIFIERS,
     install_requires=[
         'setuptools',
-        'Django>=1.8,<1.9',
+        'Django>=1.8', # ,<1.9
     ],
     test_suite='django_admin_bootstrapped.runtests.runtests',
     packages=find_packages(),
