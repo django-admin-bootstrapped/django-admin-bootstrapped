@@ -264,3 +264,9 @@ p.file-upload > input[type="file"] {
   background-color: #337ab7;
   border-color: #337ab7;
 }
+.col-md-9 {
+ position: inherit;
+}
+.col-md-12 {
+ position: inherit;
+}
