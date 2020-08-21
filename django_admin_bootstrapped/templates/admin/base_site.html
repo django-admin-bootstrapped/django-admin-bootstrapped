@@ -1,5 +1,5 @@
 {% extends "admin/base.html" %}
-{% load i18n %}{% load admin_static bootstrapped_goodies_tags %}
+{% load i18n %}{% load static bootstrapped_goodies_tags %}
 
 {% block title %}{% render_with_template_if_exist "admin/admin_title.html" title %} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 

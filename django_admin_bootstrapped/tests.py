@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django.test import TestCase
 from django.contrib.admin.widgets import AdminDateWidget, AdminSplitDateTime
 from django.template import Template, Context

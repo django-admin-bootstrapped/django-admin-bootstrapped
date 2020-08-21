@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django.contrib.auth.forms import ReadOnlyPasswordHashWidget
 from django.contrib.admin.widgets import (AdminDateWidget, AdminTimeWidget,
                                           AdminSplitDateTime, RelatedFieldWidgetWrapper)
