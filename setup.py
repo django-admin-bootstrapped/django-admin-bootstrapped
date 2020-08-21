@@ -9,7 +9,6 @@ CLASSIFIERS = [
     'License :: OSI Approved :: BSD License',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
-    'Programming Language :: Python :: 2',
     'Programming Language :: Python :: 3',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Software Development',
@@ -31,7 +30,7 @@ setup(
     classifiers=CLASSIFIERS,
     install_requires=[
         'setuptools',
-        'Django>=1.8',
+        'Django>=2.2',
     ],
     test_suite='django_admin_bootstrapped.runtests.runtests',
     packages=find_packages(),

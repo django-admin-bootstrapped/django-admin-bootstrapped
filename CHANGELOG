@@ -1,3 +1,6 @@
+- Require Django >= 2.2
+- Comaptible wioth Django 3.1
+
 ==== 2.5.7 (2015-12-15) ====
 
 - travis-ci integration (Jacek Wielemborek)
