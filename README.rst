@@ -12,11 +12,8 @@ of modification on your side, just add it to the installed apps.
 Requirements
 ------------
 
--  Django ``==1.8``
+-  Django ``>=2.2``
 
-With Django ``1.6`` use version ``2.3.6``
-
-With Django ``1.7`` use version ``2.4.0``
 
 Installation
 ------------
@@ -41,13 +38,13 @@ You have to add to your project settings file:
     DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 
-`Messages <http://docs.djangoproject.com/en/dev/ref/contrib/messages>`__ will have ``alert-info`` tag by default, 
+`Messages <http://docs.djangoproject.com/en/dev/ref/contrib/messages>`__ will have ``alert-info`` tag by default,
 so you may want to add Bootstrap 3 tags for different message levels to make them styled appropriately.
 Add to your project settings file:
 ::
 
     from django.contrib import messages
-    
+
     MESSAGE_TAGS = {
                 messages.SUCCESS: 'alert-success success',
                 messages.WARNING: 'alert-warning warning',
